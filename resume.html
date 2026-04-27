@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김수진 이력서 — 챌린저스 Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #FF4B36;
+    --red-dark: #E03A26;
+    --red-light: #FFF0EE;
+    --red-mid: #FF7A6A;
+    --dark: #1A1A1A;
+    --gray: #767676;
+    --gray-light: #F5F5F5;
+    --gray-mid: #E8E8E8;
+    --white: #FFFFFF;
+    --border: #E0E0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--dark);
+    background: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.4px;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+  }
+
+  /* HEADER CARD */
+  .header-card {
+    background: var(--dark);
+    border-radius: 20px;
+    padding: 44px 48px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red), #FF8C42);
+  }
+
+  .header-card::after {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,75,54,0.2) 0%, transparent 70%);
+    top: -80px; right: -60px;
+  }
+
+  .header-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,75,54,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,75,54,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,75,54,0.15);
+    border: 1px solid rgba(255,75,54,0.25);
+    color: var(--red-mid);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-name {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.2px;
+  }
+
+  .header-contacts {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-chip {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: -0.2px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 40px;
+    margin-bottom: 10px;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 1px;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.6px;
+    margin-bottom: 4px;
+  }
+
+  .card-sub {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .divider-red {
+    width: 32px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), #FF8C42);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* SUMMARY */
+  .summary-text {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.8;
+    letter-spacing: -0.2px;
+  }
+
+  /* COMPANY BLOCK */
+  .company-block { margin-bottom: 32px; }
+  .company-block:last-child { margin-bottom: 0; }
+
+  .company-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .company-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.4px;
+  }
+
+  .company-period {
+    font-size: 12px;
+    color: var(--gray);
+    flex-shrink: 0;
+  }
+
+  .company-meta {
+    font-size: 12.5px;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .company-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  /* PROJECT BLOCK */
+  .project-block {
+    margin-bottom: 20px;
+    padding-left: 16px;
+    border-left: 3px solid var(--red-light);
+  }
+
+  .project-block:last-child { margin-bottom: 0; }
+
+  .project-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .project-name span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray);
+    margin-left: 8px;
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .bullet-list li {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    letter-spacing: -0.2px;
+  }
+
+  .bullet-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gray);
+  }
+
+  .bullet-list.result li {
+    color: var(--red-dark);
+    font-weight: 600;
+  }
+
+  .bullet-list.result li::before { color: var(--red); }
+
+  .result-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 8px 0 4px;
+  }
+
+  /* SUB PROJECT */
+  .sub-project {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--red);
+  }
+
+  .sub-project:last-child { margin-bottom: 0; }
+
+  .sub-project-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+
+  .sub-project p {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* TOOLS */
+  .tool-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+    letter-spacing: -0.2px;
+  }
+
+  .tool-row:last-child { margin-bottom: 0; }
+
+  .tool-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  .tool-val { color: var(--dark); }
+
+  /* COVER LETTER */
+  .cl-section { margin-bottom: 28px; }
+  .cl-section:last-child { margin-bottom: 0; }
+
+  .cl-section-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--red-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .cl-section-title::before {
+    content: '';
+    width: 3px; height: 14px;
+    background: var(--red);
+    border-radius: 2px;
+  }
+
+  .cl-body {
+    font-size: 13.5px;
+    color: var(--dark);
+    line-height: 1.85;
+    letter-spacing: -0.2px;
+  }
+
+  .cl-body + .cl-body { margin-top: 12px; }
+
+  .quote-box {
+    background: var(--red-light);
+    border-left: 3px solid var(--red);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.75;
+    font-style: italic;
+    letter-spacing: -0.2px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: -0.2px;
+  }
+
+  @media print {
+    nav { display: none; }
+    body { background: white; }
+    .page-wrap { padding: 20px; }
+    .card { box-shadow: none; border: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">김수진 <span>·</span> 이력서</div>
+  <ul class="nav-links">
+    <li><a href="#summary">소개</a></li>
+    <li><a href="#experience">경력</a></li>
+    <li><a href="#coverletter">자기소개서</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header-card">
+    <div class="header-grid"></div>
+    <div class="header-eyebrow">Product Manager</div>
+    <div class="header-name">김수진</div>
+    <p class="header-tagline">사용자 행동 데이터로 문제를 정의하고, 기능과 정책으로 비즈니스 임팩트를 만들어온 PM입니다.<br>행동 장벽을 제거하고 올바른 구조를 설계해 전환율을 직접 움직여왔습니다.</p>
+    <div class="header-contacts">
+      <span class="contact-chip">📞 010-4772-6950</span>
+      <span class="contact-chip">✉️ soowlsee@gmail.com</span>
+      <span class="contact-chip">💼 PM 경력 27개월</span>
+      <span class="contact-chip">🎂 1996.10.18</span>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="card" id="summary">
+    <div class="card-label">Summary</div>
+    <div class="card-title">한 줄 소개</div>
+    <div class="divider-red"></div>
+    <p class="summary-text">
+      사용자 행동 데이터로 문제를 정의하고, 기능과 정책으로 비즈니스 임팩트를 만들어왔습니다. 가설을 세우고, 행동 장벽을 제거하며, 그 결과를 비즈니스 지표로 연결하는 것이 핵심 강점입니다. 다양한 이해관계자의 요구를 납득 가능한 기준으로 정리하고, 콘텐츠 우선순위를 데이터 기반으로 재정의해 사용자 선택 부담을 줄이는 구조를 만들어왔습니다.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="card" id="experience">
+    <div class="card-label">Experience</div>
+    <div class="card-title">경력기술서</div>
+    <div class="divider-red"></div>
+
+    <!-- 굿네이버스 -->
+    <div class="company-block">
+      <div class="company-header">
+        <div class="company-name">굿네이버스 인터내셔날</div>
+        <div class="company-period">2022.08 – 2024.07 (2년)</div>
+      </div>
+      <div class="company-meta">정규직 · 서비스팀 PM · 사원</div>
+      <p style="font-size:13px; color:var(--dark); margin-bottom:12px; letter-spacing:-0.2px;">사용자 행동 데이터 기반 문제 정의 및 기능 전환 중심의 B2C 플랫폼 PM</p>
+      <ul class="bullet-list" style="margin-bottom:20px;">
+        <li>기부 플랫폼 PC/Mobile 서비스 기획 및 운영 전반 담당</li>
+        <li>사용자 행동 데이터로 행동 장벽을 특정하고 기능 전환으로 비즈니스 지표 개선</li>
+        <li>개발·디자인·CS·마케팅·법무 등 다부서 이해관계자와 협업하여 서비스 개선 주도</li>
+      </ul>
+
+      <!-- 주요 프로젝트 1 -->
+      <div class="project-block">
+        <div class="project-name">
+          주요 프로젝트 1. 기부금영수증 간편 발급 서비스
+          <span>2022.12 – 2024.04</span>
+        </div>
+        <ul class="bullet-list">
+          <li>연말정산 시즌마다 CS 상담이 평소 대비 3~6배 폭증하는 반복 병목 발생</li>
+          <li>GA 분석으로 로그인 화면 이탈률 80% 이상 확인 → 사용자 행동 장벽이 로그인 구조 자체에 있음을 특정</li>
+          <li>플랫폼 로그인 전제 조건 완전 제거, 내부 CRM 기반 간편 인증으로 구조 전환</li>
+          <li>법무·개발·마케팅·CS 등 5개 부서와 보안·개인정보보호 리스크를 정책 기준으로 합의 도출</li>
+          <li>모집군 세분화(1년 미만 고객, 이전 문의 고객, 특수 계정 등) 및 알림톡 발송 정책 설계</li>
+        </ul>
+        <div class="result-label">성과</div>
+        <ul class="bullet-list result">
+          <li>CS 상담 9,327건 → 6,081건 (34.8% 감소, 3,246건 절감)</li>
+          <li>자가 발급 완료 14,439건 (서비스 유입 고객의 47.5%)</li>
+          <li>자가 발급 전환 기준 약 1,200시간 운영 리소스 절감 (1건당 5분 처리 추정)</li>
+          <li>수기 처리 → 자가 처리 구조 전환으로 운영 리스크 구조적 완화</li>
+          <li>동일한 간편 인증 구조를 장기회원 리워드 서비스에 확장 적용 → 구조 확장성 검증</li>
+        </ul>
+      </div>
+
+      <!-- 주요 프로젝트 2 -->
+      <div class="project-block">
+        <div class="project-name">
+          주요 프로젝트 2. 마이페이지 운영 기준 수립
+          <span>2024.03 – 2024.05</span>
+        </div>
+        <ul class="bullet-list">
+          <li>서비스 확장으로 한 화면에 11개 기능이 노출되는 구조적 문제 발생</li>
+          <li>정량 데이터 없이 UI 구조·운영 맥락·플랫폼 성숙 단계를 종합해 문제 정의</li>
+          <li>GA·로그 데이터로 사용자 행동 기반 기능 재분류, 콘텐츠 우선순위 기준 수립</li>
+          <li>예산기획·회원관리·마케팅·서비스 등 4개 부서 요구사항 수집 및 충돌 조율</li>
+          <li>상단 노출 기준·신규 기능 추가 프로세스 문서화 → 전사 공통 가이드라인 수립</li>
+        </ul>
+        <div class="result-label">성과</div>
+        <ul class="bullet-list result">
+          <li>전 부서 공통 운영 기준 수립으로 부서 간 요청 충돌 구조적 감소</li>
+          <li>콘텐츠 노출 우선순위 재정의로 핵심 정보 접근성 향상 (내부 평가)</li>
+          <li>운영 판단 속도 개선 및 의사결정 비용 절감</li>
+          <li>후속 리뉴얼 프로젝트의 기준 구조로 활용</li>
+        </ul>
+      </div>
+
+      <!-- 서브 프로젝트 -->
+      <div style="margin-top:20px;">
+        <div style="font-size:12px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">서브 프로젝트</div>
+        <div class="sub-project">
+          <div class="sub-project-name">비로그인 서비스 개발 (2023.10 – 2024.07)</div>
+          <p>참여 장벽 제거를 위해 전사 알림톡 서비스에 비로그인 구조 순차 적용. 특정 콘텐츠에서 추가 정기 결제 10배 이상 증가, 팀 핵심 목표 참여율 88% 달성에 기여.</p>
+        </div>
+        <div class="sub-project">
+          <div class="sub-project-name">Lifecycle 기반 알림 서비스 개선 (2023.07 – 09)</div>
+          <p>사용자 Lifecycle 기준으로 알림 목적·대상·조건·예외 케이스 재정의 → 중복 발송 및 운영 리스크 감소, 협업 효율 개선.</p>
+        </div>
+        <div class="sub-project">
+          <div class="sub-project-name">구독 중단 방어 프로젝트 (2023.03 – 04)</div>
+          <p>중단률 74% 캠페인 분석, 단계별 중단 방어 정책 설계 → 전사 캠페인 설계 필수 요소로 확산.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="company-divider"></div>
+
+    <!-- 미리디 -->
+    <div class="company-block">
+      <div class="company-header">
+        <div class="company-name">미리디</div>
+        <div class="company-period">2025.04 – 2025.06 (3개월)</div>
+      </div>
+      <div class="company-meta">계약직 · 서비스팀 PM · 사원</div>
+      <ul class="bullet-list">
+        <li>B2C SaaS 프레젠테이션 서비스 신규 기능 기획 참여</li>
+        <li>사용자의 실제 진입 맥락과 학습 비용 검증의 중요성을 직접 체감한 경험</li>
+      </ul>
+    </div>
+
+    <div class="company-divider"></div>
+
+    <!-- 웨이메이커 -->
+    <div class="company-block">
+      <div class="company-header">
+        <div class="company-name">웨이메이커</div>
+        <div class="company-period">2021.07 – 2021.11 (5개월)</div>
+      </div>
+      <div class="company-meta">정규직 · 마케팅 사원</div>
+      <ul class="bullet-list">
+        <li>IT 프리랜서 웹 서비스 마케팅 기획 및 광고 집행 PM</li>
+        <li>업계·자사 분석 기반 마케팅 플랜 수립, 구글/SNS 광고 집행 및 성과 리포팅</li>
+        <li>고객사 홈페이지 리뉴얼 기획 참여</li>
+      </ul>
+    </div>
+
+    <div class="company-divider"></div>
+
+    <!-- 사이드 프로젝트 -->
+    <div class="company-block">
+      <div class="company-header">
+        <div class="company-name">사이드 프로젝트</div>
+        <div class="company-period">2025.03 – 진행중</div>
+      </div>
+      <div class="company-meta">도서 앱 서비스 기획·운영 · PM</div>
+      <ul class="bullet-list">
+        <li>기획 → 출시 → 운영 → 개선까지 전 과정 수행, AND 앱 출시 완료</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="card">
+    <div class="card-label">Tools</div>
+    <div class="card-title">사용 툴</div>
+    <div class="divider-red"></div>
+    <div class="tool-row">
+      <span class="tool-label">협업·커뮤니케이션</span>
+      <span class="tool-val">Slack, Outlook</span>
+    </div>
+    <div class="tool-row">
+      <span class="tool-label">문서화</span>
+      <span class="tool-val">Confluence, Notion</span>
+    </div>
+    <div class="tool-row">
+      <span class="tool-label">기획·디자인</span>
+      <span class="tool-val">Figma, PowerPoint</span>
+    </div>
+    <div class="tool-row">
+      <span class="tool-label">데이터 분석</span>
+      <span class="tool-val">Excel, Google Analytics, SQL</span>
+    </div>
+  </div>
+
+  <!-- COVER LETTER -->
+  <div class="card" id="coverletter">
+    <div class="card-label">Cover Letter</div>
+    <div class="card-title">자기소개서</div>
+    <div class="card-sub">챌린저스 Product Manager 지원</div>
+    <div class="divider-red"></div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">지원 동기</div>
+      <p class="cl-body">챌린저스를 처음 만난 건 아침 기상 챌린지 참여자로서였습니다. 매일 아침 앱에 인증 사진을 올려야 한다는 단순한 구조가 생각보다 강력하게 행동을 바꿨습니다. 앱이 사람을 바꾼다기보다, 바꾸고 싶은 사람의 의지를 구조가 뒷받침한다는 것을 직접 체감했습니다.</p>
+      <p class="cl-body">그리고 챌린저스가 습관 형성 앱에서 성과 연동형 커머스 마케팅 솔루션으로 피벗한 것을 알게 됐을 때, 그 전환이 자연스럽게 이해됐습니다.</p>
+      <div class="quote-box">요즘 마케팅의 본질은 맥락이라고 생각합니다. '많은 사람이 썼다'가 아니라 '저 사람이 이렇게 써봤더니 이렇더라'가 소비자를 움직입니다. 챌린저스는 그 맥락을 소비자 개인의 실제 사용 경험으로 만들어 줍니다. 소비자가 직접 써보고 인증하는 과정에서 자신만의 맥락을 만들어내는 것. 저는 이것이 챌린저스가 가진 가장 멋진 강점이라고 생각합니다.</div>
+      <p class="cl-body">저는 PM으로서 비슷한 구조를 설계한 경험이 있습니다. 기부금영수증 프로젝트에서 사용자의 행동 장벽을 데이터로 특정하고 제거했을 때 자가 발급 전환율이 47.5%까지 올라갔고, 비로그인 구조 확산으로 특정 콘텐츠에서 추가 결제가 10배 이상 증가했습니다. 사용자가 행동하기 쉬운 구조를 설계하면 비즈니스 지표가 직접 움직인다는 것을 경험으로 알고 있습니다. 챌린저스에서 소비자가 자신만의 맥락을 만들어가는 경험을 더 정교하게 설계하는 데 기여하고 싶습니다.</p>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">서비스 운영 및 개선 경험</div>
+      <p class="cl-body">가장 대표적인 경험은 기부금영수증 발급 구조 재설계 프로젝트입니다. 연말정산 시즌마다 CS 상담이 평소 대비 3~6배 폭증했고, 매년 CS 인력 증원과 FAQ 보강으로 대응했지만 이듬해에도 동일하게 반복됐습니다. GA 분석을 통해 로그인 화면 이탈률이 80% 이상임을 확인했고, 문제가 안내 부족이 아니라 사용자 행동 장벽 자체에 있음을 정의했습니다.</p>
+      <p class="cl-body">로그인 전제 조건을 완전히 제거하고 간편 인증으로 전환한 결과, CS 상담이 34.8% 감소했고 자가 발급 전환율 47.5%를 달성했습니다. 동일한 구조를 전사 서비스에 확산 적용한 결과, 특정 콘텐츠에서 추가 결제가 10배 이상 증가하고 팀 핵심 목표 참여율 88% 달성에 기여했습니다.</p>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">다양한 이해관계자와의 협업 경험</div>
+      <p class="cl-body">마이페이지 운영 기준 수립 프로젝트에서는 정량 데이터 없이 부서 간 충돌을 해결해야 했습니다. 한 화면에 11개 기능이 노출되는 상황에서, 예산기획·회원관리·마케팅·서비스 부서가 각기 다른 요구를 쏟아냈습니다. GA·로그 데이터로 사용자 행동 기반 기능 재분류를 진행하고, 콘텐츠 노출 기준·신규 기능 추가 프로세스를 문서화해 전 부서가 납득할 수 있는 합의 구조를 만들었습니다.</p>
+      <p class="cl-body">이 과정에서 배운 건, 어떤 콘텐츠를 어떤 사용자에게 어떤 순서로 보여줄 것인가라는 질문에 데이터 기반으로 답하는 것이 이해관계자 조율의 핵심이라는 점입니다. 챌린저스에서 브랜드와 소비자 사이의 맥락을 더 정교하게 설계하는 데 이 경험을 직접 연결하고 싶습니다.</p>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">마치며</div>
+      <p class="cl-body">저는 사용자 행동 데이터로 문제를 정의하고, 행동 장벽을 제거하며, 그 결과를 비즈니스 지표로 연결해왔습니다. 챌린저스의 Product Manager로서 소비자가 브랜드 캠페인에 참여하고, 그 참여가 실제 구매와 비즈니스 성과로 이어지는 구조를 더욱 정교하게 설계하는 데 기여하겠습니다.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    김수진 · 010-4772-6950 · soowlsee@gmail.com
+  </div>
+
+</div>
+
+</body>
+</html>
