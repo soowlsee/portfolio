@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김수진 포트폴리오 — 챌린저스 Product Manager</title>
+<title>김수진 포트폴리오 — 현대벤디스 서비스기획자</title>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #FF4B36;
-    --red-dark: #E03A26;
-    --red-light: #FFF0EE;
-    --red-mid: #FF7A6A;
-    --orange: #FF8C42;
-    --dark: #1A1A1A;
-    --dark-mid: #2D2D2D;
-    --gray: #767676;
-    --gray-light: #F5F5F5;
-    --gray-mid: #E8E8E8;
+    --green: #00A651;
+    --green-dark: #007A3D;
+    --green-light: #E8F7EE;
+    --green-mid: #4DC97A;
+    --green-pale: #F0FAF4;
+    --dark: #1C1C1E;
+    --dark-mid: #2C2C2E;
+    --gray: #6C6C70;
+    --gray-light: #F5F5F7;
+    --gray-mid: #E5E5EA;
     --white: #FFFFFF;
-    --border: #E0E0E0;
+    --border: #D1D1D6;
+    --yellow: #FFD60A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,32 +30,6 @@
     color: var(--dark);
     background: var(--white);
     line-height: 1.6;
-    cursor: none;
-  }
-
-  /* CUSTOM CURSOR */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--red);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease;
-    mix-blend-mode: multiply;
-  }
-
-  .cursor-follower {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--red);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.4s ease, opacity 0.3s;
-    opacity: 0.5;
   }
 
   /* NAV */
@@ -62,25 +37,34 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 56px;
-    height: 56px;
+    height: 54px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .nav-logo {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     color: var(--dark);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .nav-logo span {
-    color: var(--red);
+  .nav-badge {
+    background: var(--green);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
   }
 
   .nav-links {
@@ -90,15 +74,14 @@
   }
 
   .nav-links a {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
     color: var(--gray);
     text-decoration: none;
     transition: color 0.2s;
-    letter-spacing: -0.2px;
   }
 
-  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover { color: var(--green); }
 
   /* COVER */
   #cover {
@@ -106,33 +89,32 @@
     background: var(--dark);
     display: flex;
     align-items: center;
+    padding-top: 54px;
     position: relative;
     overflow: hidden;
-    padding-top: 56px;
   }
 
-  .cover-grid {
+  /* 도트 패턴 */
+  .cover-dots {
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(255,75,54,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,75,54,0.08) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-image: radial-gradient(rgba(0,166,81,0.15) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 
-  .cover-blob {
+  .cover-glow {
     position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(255,75,54,0.25) 0%, transparent 70%);
-    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,166,81,0.2) 0%, transparent 70%);
+    top: -100px; right: -50px;
     border-radius: 50%;
   }
 
-  .cover-blob2 {
+  .cover-glow2 {
     position: absolute;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,140,66,0.15) 0%, transparent 70%);
-    bottom: -80px; left: 100px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(77,201,122,0.1) 0%, transparent 70%);
+    bottom: 50px; left: 200px;
     border-radius: 50%;
   }
 
@@ -144,125 +126,120 @@
     z-index: 1;
   }
 
-  .cover-eyebrow {
+  .cover-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,75,54,0.15);
-    border: 1px solid rgba(255,75,54,0.3);
-    color: var(--red-mid);
+    background: rgba(0,166,81,0.15);
+    border: 1px solid rgba(0,166,81,0.3);
+    color: var(--green-mid);
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 100px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
 
-  .cover-eyebrow::before {
+  .cover-tag::before {
     content: '';
     width: 6px; height: 6px;
-    background: var(--red);
+    background: var(--green);
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: blink 2s infinite;
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 
   .cover-title {
-    font-size: 58px;
+    font-size: 54px;
     font-weight: 900;
     color: var(--white);
     line-height: 1.1;
     letter-spacing: -2px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
-  .cover-title .accent {
-    color: var(--red);
+  .cover-title .hl {
+    color: var(--green);
     position: relative;
+    display: inline-block;
   }
 
-  .cover-title .accent::after {
+  .cover-title .hl::after {
     content: '';
     position: absolute;
-    bottom: 4px; left: 0; right: 0;
+    bottom: 2px; left: 0; right: 0;
     height: 3px;
-    background: var(--red);
-    opacity: 0.4;
+    background: var(--green);
+    opacity: 0.3;
     border-radius: 2px;
   }
 
-  .cover-sub {
-    font-size: 17px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-    max-width: 500px;
+  .cover-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    max-width: 480px;
     margin-bottom: 44px;
     letter-spacing: -0.3px;
   }
 
-  .cover-contacts {
+  .cover-chips {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
   .cover-chip {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.7);
-    font-size: 12.5px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 7px 16px;
     border-radius: 100px;
     letter-spacing: -0.2px;
   }
 
-  .cover-scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 56px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: rgba(255,255,255,0.25);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .cover-scroll-line {
-    width: 40px;
-    height: 1px;
-    background: rgba(255,255,255,0.2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cover-scroll-line::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: var(--red);
-    animation: slide 2s infinite;
-  }
-
-  @keyframes slide {
-    0% { left: -100%; }
-    100% { left: 100%; }
-  }
-
-  /* SECTION WRAPPER */
+  /* SECTION */
   .section-wrap {
     max-width: 860px;
     margin: 0 auto;
     padding: 0 56px;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 1px;
+    transform: rotate(45deg);
+  }
+
+  .section-title {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    line-height: 1.2;
+    margin-bottom: 48px;
+    color: var(--dark);
   }
 
   /* ABOUT */
@@ -271,43 +248,11 @@
     background: var(--white);
   }
 
-  .section-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 16px;
-  }
-
-  .section-tag::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 50%;
-    transform: translateY(-50%);
-    width: 8px; height: 8px;
-    background: var(--red);
-    border-radius: 2px;
-  }
-
-  .section-title {
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: -1.2px;
-    line-height: 1.2;
-    margin-bottom: 48px;
-    color: var(--dark);
-  }
-
-  /* KPI CARDS */
   .kpi-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .kpi-card {
@@ -323,30 +268,24 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--red), var(--orange));
+    background: linear-gradient(90deg, var(--green), var(--green-mid));
   }
 
   .kpi-val {
     font-size: 36px;
     font-weight: 900;
-    color: var(--white);
+    color: var(--green);
     letter-spacing: -1.5px;
     display: block;
-    margin-bottom: 6px;
-  }
-
-  .kpi-val span {
-    color: var(--red);
+    margin-bottom: 4px;
   }
 
   .kpi-label {
     font-size: 12px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.4);
     line-height: 1.5;
-    letter-spacing: -0.2px;
   }
 
-  /* STRENGTH CARDS */
   .strength-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -357,23 +296,23 @@
     border: 1.5px solid var(--gray-mid);
     border-radius: 16px;
     padding: 28px 24px;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color 0.25s, transform 0.25s;
     position: relative;
     overflow: hidden;
+  }
+
+  .strength-card:hover {
+    border-color: var(--green);
+    transform: translateY(-4px);
   }
 
   .strength-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,75,54,0.04) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(0,166,81,0.04) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
-  }
-
-  .strength-card:hover {
-    border-color: var(--red);
-    transform: translateY(-4px);
   }
 
   .strength-card:hover::after { opacity: 1; }
@@ -381,7 +320,7 @@
   .strength-num {
     font-size: 11px;
     font-weight: 800;
-    color: var(--red);
+    color: var(--green);
     letter-spacing: 1px;
     margin-bottom: 12px;
   }
@@ -401,69 +340,64 @@
     line-height: 1.7;
   }
 
-  /* WHY CHALLENGERS */
+  /* WHY */
   #why {
     padding: 100px 0;
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
+    background: var(--green-pale);
   }
 
-  #why .cover-grid { opacity: 0.5; }
-
-  #why .section-tag { color: var(--red-mid); }
-  #why .section-tag::before { background: var(--red-mid); }
-
-  #why .section-title { color: var(--white); }
-
   .why-body {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
+    font-size: 14.5px;
+    color: var(--dark);
     line-height: 1.85;
+    margin-bottom: 18px;
     letter-spacing: -0.2px;
-    margin-bottom: 20px;
   }
 
   .why-quote {
-    border-left: 3px solid var(--red);
+    background: var(--white);
+    border-left: 4px solid var(--green);
+    border-radius: 0 14px 14px 0;
     padding: 20px 24px;
-    background: rgba(255,75,54,0.08);
-    border-radius: 0 12px 12px 0;
     margin: 24px 0;
     font-size: 14px;
-    color: rgba(255,255,255,0.75);
+    color: var(--dark);
     line-height: 1.75;
     font-style: italic;
+    box-shadow: 0 2px 12px rgba(0,166,81,0.08);
   }
 
-  .why-contrib-grid {
+  .why-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-top: 40px;
   }
 
-  .why-contrib-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
     border-radius: 14px;
     padding: 24px 20px;
+    transition: border-color 0.2s;
   }
 
-  .why-contrib-card h4 {
+  .why-card:hover { border-color: var(--green); }
+
+  .why-card h4 {
     font-size: 13px;
-    font-weight: 700;
-    color: var(--red-mid);
+    font-weight: 800;
+    color: var(--green-dark);
     margin-bottom: 8px;
   }
 
-  .why-contrib-card p {
+  .why-card p {
     font-size: 12px;
-    color: rgba(255,255,255,0.45);
+    color: var(--gray);
     line-height: 1.7;
   }
 
-  /* PROJECT SECTION */
+  /* PROJECT */
   .proj-section {
     padding: 100px 0;
   }
@@ -486,24 +420,24 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--red), var(--orange));
+    background: linear-gradient(90deg, var(--green), var(--green-mid));
   }
 
   .proj-header::after {
     content: '';
     position: absolute;
-    width: 300px; height: 300px;
+    width: 280px; height: 280px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,75,54,0.2) 0%, transparent 70%);
-    top: -80px; right: -60px;
+    background: radial-gradient(circle, rgba(0,166,81,0.18) 0%, transparent 70%);
+    top: -60px; right: -40px;
   }
 
   .proj-num {
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.3);
     margin-bottom: 10px;
   }
 
@@ -519,12 +453,12 @@
 
   .proj-summary {
     font-size: 14px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     line-height: 1.6;
     margin-bottom: 24px;
     position: relative;
     z-index: 1;
-    max-width: 560px;
+    max-width: 540px;
   }
 
   .proj-tags {
@@ -536,17 +470,26 @@
   }
 
   .proj-tag {
-    background: rgba(255,75,54,0.2);
-    border: 1px solid rgba(255,75,54,0.3);
-    color: var(--red-mid);
+    background: rgba(0,166,81,0.2);
+    border: 1px solid rgba(0,166,81,0.3);
+    color: var(--green-mid);
     font-size: 11px;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 100px;
-    letter-spacing: 0.2px;
   }
 
-  /* KPI ROW */
+  .info-table { width: 100%; margin-bottom: 24px; }
+  .info-table tr { border-bottom: 1px solid var(--border); }
+  .info-table td { padding: 10px 0; font-size: 13.5px; vertical-align: top; letter-spacing: -0.2px; }
+  .info-table td:first-child {
+    width: 60px;
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* KPI */
   .proj-kpi {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -565,7 +508,7 @@
   .proj-kpi-val {
     font-size: 22px;
     font-weight: 900;
-    color: var(--red);
+    color: var(--green);
     letter-spacing: -0.8px;
     display: block;
     margin-bottom: 4px;
@@ -577,13 +520,11 @@
     line-height: 1.5;
   }
 
-  /* CONTENT BLOCKS */
-  .content-block {
-    margin-bottom: 40px;
-  }
+  /* CONTENT */
+  .content-block { margin-bottom: 40px; }
 
   .block-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--dark);
     margin-bottom: 16px;
@@ -598,7 +539,7 @@
   .block-title::before {
     content: '';
     width: 4px; height: 18px;
-    background: linear-gradient(180deg, var(--red), var(--orange));
+    background: linear-gradient(180deg, var(--green), var(--green-mid));
     border-radius: 2px;
     flex-shrink: 0;
   }
@@ -619,7 +560,7 @@
   }
 
   .bullet-list li {
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--dark);
     line-height: 1.65;
     padding-left: 16px;
@@ -631,18 +572,23 @@
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--red);
+    color: var(--green);
     font-weight: 700;
   }
 
-  .bullet-list.result li {
-    color: var(--red-dark);
-    font-weight: 600;
+  .bullet-list.result li { color: var(--green-dark); font-weight: 600; }
+  .bullet-list.result li::before { color: var(--green); }
+
+  .result-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 10px 0 5px;
   }
 
-  .bullet-list.result li::before { color: var(--red); }
-
-  /* ANALYSIS GRID */
+  /* ANALYSIS CARDS */
   .analysis-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -651,16 +597,16 @@
   }
 
   .analysis-card {
-    background: var(--gray-light);
+    background: var(--green-pale);
     border-radius: 12px;
     padding: 20px;
-    border-left: 3px solid var(--red);
+    border-left: 3px solid var(--green);
   }
 
   .analysis-card h5 {
     font-size: 11px;
     font-weight: 800;
-    color: var(--red);
+    color: var(--green-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 8px;
@@ -672,14 +618,43 @@
     line-height: 1.65;
   }
 
+  /* FLOW */
+  .flow-box {
+    background: var(--gray-light);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    background: var(--white);
+    border: 1.5px solid var(--gray-mid);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.3px;
+  }
+
+  .flow-arrow {
+    color: var(--green);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
   /* QUOTE */
   .quote-box {
-    background: var(--red-light);
-    border-left: 4px solid var(--red);
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
     border-radius: 0 12px 12px 0;
-    padding: 20px 24px;
+    padding: 18px 22px;
     margin: 20px 0;
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--dark);
     line-height: 1.75;
     font-style: italic;
@@ -706,25 +681,66 @@
   }
 
   .data-table td {
-    padding: 10px 16px;
+    padding: 11px 16px;
     border-bottom: 1px solid var(--border);
     color: var(--dark);
     line-height: 1.5;
   }
 
-  .data-table tr:nth-child(even) td { background: var(--gray-light); }
+  .data-table tr:nth-child(even) td { background: var(--green-pale); }
   .data-table tr:last-child td { border-bottom: none; }
 
-  /* INFO TABLE */
-  .info-table { width: 100%; margin-bottom: 24px; }
-  .info-table tr { border-bottom: 1px solid var(--border); }
-  .info-table td { padding: 10px 0; font-size: 13.5px; vertical-align: top; letter-spacing: -0.2px; }
-  .info-table td:first-child {
-    width: 60px;
-    color: var(--red);
-    font-weight: 700;
-    flex-shrink: 0;
+  /* ASIS TOBE */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
   }
+
+  .compare-card {
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .compare-card.asis {
+    background: #FFF5F5;
+    border: 1.5px solid #FFD0D0;
+  }
+
+  .compare-card.tobe {
+    background: var(--green-pale);
+    border: 1.5px solid rgba(0,166,81,0.3);
+  }
+
+  .compare-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .compare-card.asis .compare-label { color: #E03A3A; }
+  .compare-card.tobe .compare-label { color: var(--green-dark); }
+
+  .compare-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .compare-card ul li {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .compare-card.asis ul li::before { content: '✕'; position: absolute; left: 0; color: #E03A3A; font-size: 11px; }
+  .compare-card.tobe ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 11px; font-weight: 700; }
 
   /* CLOSING */
   #closing {
@@ -735,10 +751,10 @@
     overflow: hidden;
   }
 
-  #closing .cover-grid { opacity: 0.3; }
+  #closing .cover-dots { opacity: 0.3; }
 
   #closing h2 {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 900;
     color: var(--white);
     letter-spacing: -1.5px;
@@ -749,14 +765,13 @@
 
   #closing p {
     font-size: 15px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.4);
     margin-bottom: 32px;
     position: relative;
     z-index: 1;
-    letter-spacing: -0.3px;
   }
 
-  .contact-chips {
+  .closing-chips {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -765,36 +780,28 @@
     z-index: 1;
   }
 
-  .contact-chip-dark {
-    background: rgba(255,75,54,0.15);
-    border: 1px solid rgba(255,75,54,0.3);
-    color: var(--red-mid);
+  .closing-chip {
+    background: rgba(0,166,81,0.15);
+    border: 1px solid rgba(0,166,81,0.3);
+    color: var(--green-mid);
     font-size: 13px;
     padding: 10px 22px;
     border-radius: 100px;
     font-weight: 600;
-    letter-spacing: -0.2px;
-  }
-
-  /* FADE IN */
-  .fade-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.65s ease, transform 0.65s ease;
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursor-follower"></div>
-
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">김수진 <span>·</span> Portfolio</div>
+  <div class="nav-logo">
+    김수진
+    <span class="nav-badge">서비스기획자</span>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#why">Why Challengers</a></li>
+    <li><a href="#why">Why 현대벤디스</a></li>
     <li><a href="#proj1">Project 1</a></li>
     <li><a href="#proj2">Project 2</a></li>
   </ul>
@@ -802,108 +809,93 @@
 
 <!-- COVER -->
 <section id="cover">
-  <div class="cover-grid"></div>
-  <div class="cover-blob"></div>
-  <div class="cover-blob2"></div>
+  <div class="cover-dots"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-glow2"></div>
   <div class="cover-inner">
-    <div class="cover-eyebrow">Product Manager</div>
+    <div class="cover-tag">Service Planner</div>
     <h1 class="cover-title">
-      사용자 행동 데이터로<br>
-      문제를 정의하고,<br>
-      <span class="accent">비즈니스 임팩트</span>를<br>
-      만들어온 PM입니다.
+      서비스가 확장될수록<br>
+      복잡해지는 구조를<br>
+      <span class="hl">기준과 우선순위로</span><br>
+      안정화합니다.
     </h1>
-    <p class="cover-sub">기능을 더하는 것이 아니라, 행동 장벽을 제거하고 올바른 구조를 설계해 전환율을 직접 움직여온 서비스 PM 김수진입니다.</p>
-    <div class="cover-contacts">
+    <p class="cover-desc">반복되는 운영 이슈를 빠른 대응이 아닌 구조 전환으로 해결해온 서비스 기획자 김수진입니다.</p>
+    <div class="cover-chips">
       <span class="cover-chip">📞 010-4772-6950</span>
       <span class="cover-chip">✉️ soowlsee@gmail.com</span>
       <span class="cover-chip">💼 PM 경력 27개월</span>
     </div>
-  </div>
-  <div class="cover-scroll-hint">
-    <div class="cover-scroll-line"></div>
-    scroll
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="section-wrap">
-    <div class="fade-in">
-      <div class="section-tag">About Me</div>
-      <h2 class="section-title">사용자가 행동하기 쉬운 구조를<br>설계해 비즈니스 지표를 움직입니다.</h2>
-    </div>
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">운영 과정에서 반복 발생하는 문제를<br>데이터와 구조로 안정화해 왔습니다.</h2>
 
-    <div class="kpi-row fade-in">
+    <div class="kpi-row">
       <div class="kpi-card">
-        <span class="kpi-val"><span>6</span>개</span>
+        <span class="kpi-val">6개</span>
         <span class="kpi-label">신규 서비스 기획 PM<br>(기획~운영 전 과정)</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-val"><span>100</span>명+</span>
+        <span class="kpi-val">100명+</span>
         <span class="kpi-label">다부서 이해관계자<br>협업 경험</span>
       </div>
       <div class="kpi-card">
-        <span class="kpi-val"><span>300</span>개+</span>
+        <span class="kpi-val">300개+</span>
         <span class="kpi-label">서비스 화면·기능<br>정의 및 운영 정책</span>
       </div>
     </div>
 
-    <div class="strength-grid fade-in">
+    <div class="strength-grid">
       <div class="strength-card">
         <div class="strength-num">01</div>
-        <h4>데이터로 행동 장벽을 찾습니다</h4>
-        <p>사용자 행동과 VOC를 단순 요청이 아니라 비즈니스 구조에서 반복되는 신호로 해석합니다. 정량 데이터가 없을 때에도 UI 구조, 운영 맥락, 서비스 단계를 종합해 사용자가 어디서 멈추는지를 판단합니다.</p>
+        <h4>데이터로 문제를 정의합니다</h4>
+        <p>사용자 행동과 VOC를 운영 구조에서 반복되는 신호로 해석합니다. 정량 데이터가 없을 때에도 UI 구조, 운영 맥락, 서비스 단계를 종합해 문제 지점을 판단합니다.</p>
       </div>
       <div class="strength-card">
         <div class="strength-num">02</div>
-        <h4>가설을 세우고 빠르게 검증합니다</h4>
-        <p>가장 영향이 클 것으로 예상되는 지점부터 작고 빠르게 실행합니다. 제한된 리소스 안에서도 실제 운영 환경에서 검증 가능한 방식을 선택합니다. 틀렸다면 빠르게 수정하고, 맞았다면 확장합니다.</p>
+        <h4>구조 전환으로 해결합니다</h4>
+        <p>빠른 대응을 넘어 구조 전환을 설계합니다. 반복된다면 구조를 바꾸고, 일회성이라면 대응 범위를 조정합니다. 단기 대응이 아닌 구조 전환으로 시너지를 도모합니다.</p>
       </div>
       <div class="strength-card">
         <div class="strength-num">03</div>
-        <h4>콘텐츠 우선순위와 기준을 세웁니다</h4>
-        <p>지금 이 사용자에게 가장 먼저 필요한 것을 먼저 보여주는 것이 목표입니다. 전 부서가 납득할 수 있는 노출 기준과 운영 기준을 먼저 정립해 사용자 선택 부담을 줄이고 비즈니스 성과로 연결합니다.</p>
+        <h4>기준과 우선순위를 세웁니다</h4>
+        <p>개별 요청을 나열하기보다, 전 부서가 납득할 수 있는 우선순위와 운영 기준을 먼저 정립합니다. 판단 일관성을 확보하고 운영 복잡도를 낮추는 구조를 만듭니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY CHALLENGERS -->
+<!-- WHY -->
 <section id="why">
-  <div class="cover-grid"></div>
-  <div class="section-wrap" style="position:relative; z-index:1;">
-    <div class="fade-in">
-      <div class="section-tag">Why Challengers</div>
-      <h2 class="section-title">챌린저스를 선택한 이유</h2>
+  <div class="section-wrap">
+    <div class="section-tag">Why 현대벤디스</div>
+    <h2 class="section-title">현대벤디스를 선택한 이유</h2>
+
+    <p class="why-body">식권대장은 단순한 식권 앱이 아닙니다. 현재 식권대장·배달대장·커피대장·매점대장·복지대장·문자대장 등 다양한 서비스로 빠르게 확장하며, 직장인의 일상 전반을 커버하는 원스톱 복지 플랫폼으로 진화하고 있습니다. 저는 이 확장의 시점에 주목했습니다.</p>
+
+    <div class="why-quote">
+      서비스가 빠르게 확장될수록, 기능은 늘어나지만 그것을 운영하는 구조와 기준은 따라가지 못하는 순간이 옵니다. 저는 굿네이버스에서 그 순간을 정확히 경험했습니다. 11개 기능이 하나의 화면에 뒤엉키고, 4개 부서가 서로 다른 요청을 쏟아낼 때, 저는 모두를 납득시킬 수 있는 우선순위 기준을 먼저 만들었습니다. 현대벤디스의 지금 시점이 그 경험이 가장 필요한 때라고 생각합니다.
     </div>
 
-    <div class="fade-in">
-      <p class="why-body">챌린저스를 처음 만난 건 아침 기상 챌린지 참여자로서였습니다. 매일 아침 앱에 인증 사진을 올려야 한다는 단순한 구조가 생각보다 강력하게 행동을 바꿨습니다. 앱이 사람을 바꾼다기보다, 바꾸고 싶은 사람의 의지를 구조가 뒷받침한다는 것을 직접 체감했습니다.</p>
+    <p class="why-body">또한 식권대장이 최근 토스플레이스 단말기 연동, 4대 편의점 전체 제휴, 스타벅스 입점 등 결제 네트워크를 빠르게 확장하고 있는 것이 인상적이었습니다. 서비스 접점이 넓어질수록 사용자 유형도 다양해지고, 그에 맞는 운영 정책 설계가 더욱 중요해집니다. 저는 다양한 사용자 유형에 따라 운영 흐름을 달리 설계한 경험이 있습니다. 이 경험이 직접 연결될 수 있다고 생각합니다.</p>
 
-      <p class="why-body">그리고 챌린저스가 습관 형성 앱에서 성과 연동형 커머스 마케팅 솔루션으로 피벗한 것을 알게 됐을 때, 그 전환이 자연스럽게 이해됐습니다.</p>
-
-      <div class="why-quote">
-        요즘 마케팅의 본질은 맥락이라고 생각합니다. '많은 사람이 썼다'가 아니라 '저 사람이 이렇게 써봤더니 이렇더라'가 소비자를 움직입니다. 챌린저스는 그 맥락을 소비자 개인의 실제 사용 경험으로 만들어 줍니다. 브랜드의 메시지를 일방적으로 전달하는 것이 아니라, 소비자가 직접 써보고 인증하는 과정에서 자신만의 맥락을 만들어내는 것. 저는 이것이 챌린저스가 가진 가장 멋진 강점이라고 생각합니다.
+    <div class="why-cards">
+      <div class="why-card">
+        <h4>⚙️ 백오피스 고도화</h4>
+        <p>현업이 직접 운영할 수 있는 어드민 구조를 기획·배포한 경험</p>
       </div>
-
-      <p class="why-body">저는 PM으로서 비슷한 구조를 설계한 경험이 있습니다. 기부금영수증 프로젝트에서 사용자의 행동 장벽을 데이터로 특정하고 제거했을 때 자가 발급 전환율이 47.5%까지 올라갔고, 비로그인 구조 확산으로 특정 콘텐츠에서 추가 결제가 10배 이상 증가했습니다. 사용자가 행동하기 쉬운 구조를 설계하면 비즈니스 지표가 직접 움직인다는 것을 경험으로 알고 있습니다.</p>
-
-      <p class="why-body">챌린저스에서 저는 소비자가 자신만의 맥락을 만들어가는 경험을 더 정교하게 설계하는 데 기여하고 싶습니다.</p>
-
-      <div class="why-contrib-grid">
-        <div class="why-contrib-card">
-          <h4>🎯 행동 장벽 제거</h4>
-          <p>사용자가 참여하기 쉬운 구조를 데이터로 특정하고 제거해온 경험</p>
-        </div>
-        <div class="why-contrib-card">
-          <h4>📊 전환율 직접 달성</h4>
-          <p>가설 수립 → 실행 → 검증으로 비즈니스 지표를 직접 움직여온 경험</p>
-        </div>
-        <div class="why-contrib-card">
-          <h4>🔄 구조 확산 설계</h4>
-          <p>검증된 구조를 전사 확산까지 연결해 비즈니스 임팩트를 극대화한 경험</p>
-        </div>
+      <div class="why-card">
+        <h4>📋 운영 정책 수립</h4>
+        <p>전 부서가 납득하는 기준을 만들고 가이드라인으로 문서화한 경험</p>
+      </div>
+      <div class="why-card">
+        <h4>🔄 서비스 구조 전환</h4>
+        <p>반복되는 운영 병목을 빠른 대응이 아닌 구조 전환으로 해결한 경험</p>
       </div>
     </div>
   </div>
@@ -912,247 +904,263 @@
 <!-- PROJECT 1 -->
 <section id="proj1" class="proj-section">
   <div class="section-wrap">
-    <div class="fade-in">
-      <div class="proj-header">
-        <div class="proj-num">Project 01</div>
-        <h2 class="proj-title">기부금영수증 간편 발급 서비스</h2>
-        <p class="proj-summary">사용자 이탈 데이터로 행동 장벽을 특정하고, 기능을 전환해 자가 발급 전환율 47.5%를 달성한 프로젝트</p>
-        <div class="proj-tags">
-          <span class="proj-tag">행동 장벽 제거</span>
-          <span class="proj-tag">전환율 달성</span>
-          <span class="proj-tag">비로그인 플로우</span>
-          <span class="proj-tag">데이터 기반</span>
-        </div>
-      </div>
-
-      <table class="info-table">
-        <tr><td>기간</td><td>1차 2022.12 – 2023.02 / 2차 2023.11 – 2024.04</td></tr>
-        <tr><td>역할</td><td>PM 100% — 데이터 분석 및 가설 수립, 기능 기획 및 출시, 관련 부서 협업, 성과 측정</td></tr>
-      </table>
-
-      <div class="proj-kpi">
-        <div class="proj-kpi-card">
-          <span class="proj-kpi-val">34.8%↓</span>
-          <span class="proj-kpi-label">CS 상담 감소</span>
-        </div>
-        <div class="proj-kpi-card">
-          <span class="proj-kpi-val">47.5%</span>
-          <span class="proj-kpi-label">자가 발급 전환율</span>
-        </div>
-        <div class="proj-kpi-card">
-          <span class="proj-kpi-val">~1,200h</span>
-          <span class="proj-kpi-label">운영 리소스 절감<br><small style="font-size:10px;color:#aaa">(추정)</small></span>
-        </div>
-        <div class="proj-kpi-card">
-          <span class="proj-kpi-val">3,246건</span>
-          <span class="proj-kpi-label">절감된 상담 건수</span>
-        </div>
+    <div class="proj-header">
+      <div class="proj-num">Project 01</div>
+      <h2 class="proj-title">기부금영수증 간편 발급 서비스</h2>
+      <p class="proj-summary">반복되는 운영 병목을 구조적으로 제거해 CS 비용과 사용자 이탈을 동시에 줄인 서비스 기획 프로젝트</p>
+      <div class="proj-tags">
+        <span class="proj-tag">VOC 개선</span>
+        <span class="proj-tag">서비스 정책 수립</span>
+        <span class="proj-tag">비로그인 플로우</span>
+        <span class="proj-tag">운영 효율화</span>
+        <span class="proj-tag">다부서 협업</span>
       </div>
     </div>
 
-    <div class="content-block fade-in">
-      <div class="block-title">01 배경 및 문제 정의</div>
-      <p class="body-text">연말정산 시즌마다 CS 상담이 평소 대비 3~6배 폭증했습니다. CS 인력 증원, FAQ 보강 등의 대응을 반복했지만 이듬해에도 동일하게 반복됐습니다. 수요를 흡수하는 방식으로는 구조적 해결이 불가능하다고 판단하고, 사용자 행동 데이터로 원인을 특정하기로 했습니다.</p>
+    <table class="info-table">
+      <tr><td>기간</td><td>1차 2022.12 – 2023.02 / 2차 2023.11 – 2024.04</td></tr>
+      <tr><td>역할</td><td>PM 100% — 기획 ~ 출시 전 과정 총괄, 데이터 기반 분석 및 개선, 관련 부서 협업</td></tr>
+    </table>
 
+    <div class="proj-kpi">
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">34.8%↓</span>
+        <span class="proj-kpi-label">CS 상담 감소</span>
+      </div>
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">47.5%</span>
+        <span class="proj-kpi-label">자가 발급 전환율</span>
+      </div>
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">~1,200h</span>
+        <span class="proj-kpi-label">운영 리소스 절감<br><small style="font-size:10px;color:#aaa">(추정)</small></span>
+      </div>
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">3,246건</span>
+        <span class="proj-kpi-label">절감된 상담 건수</span>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">01 배경 및 문제 정의</div>
+      <p class="body-text">연말정산 시즌마다 CS 상담이 평소 대비 3~6배 폭증했습니다. 매년 CS 인력 증원·FAQ 보강으로 대응했으나 이듬해에도 동일하게 반복됐습니다. 수요를 흡수하는 방식으로는 구조적 해결이 불가능하다고 판단하고, 원인을 데이터로 특정하기로 했습니다.</p>
       <div class="analysis-grid">
         <div class="analysis-card">
           <h5>GA 로그 분석</h5>
-          <p>로그인 화면 이탈률 <strong style="color:var(--red)">80% 이상</strong> 확인. 행동 장벽이 로그인 구조에 있음을 특정.</p>
+          <p>로그인 화면 이탈률 <strong style="color:var(--green-dark)">80% 이상</strong> 확인. 접근 구조 자체가 문제임을 특정.</p>
         </div>
         <div class="analysis-card">
           <h5>VOC 4년치 분석</h5>
-          <p>전체 VOC의 <strong style="color:var(--red)">80%</strong>가 단순 서류 발급 문의. 자가 처리 불가 구조 확인.</p>
+          <p>전체 VOC의 <strong style="color:var(--green-dark)">80%</strong>가 단순 서류 발급 문의. 자가 처리 불가 구조 확인.</p>
         </div>
         <div class="analysis-card">
           <h5>운영 맥락 분석</h5>
-          <p>연말정산 즉시성 vs 계정 보유 전제. <strong style="color:var(--red)">구조와 맥락의 불일치</strong> 발견.</p>
+          <p>연말정산 즉시성 맥락 vs 계정 보유 전제. <strong style="color:var(--green-dark)">구조와 맥락의 불일치</strong> 발견.</p>
         </div>
       </div>
-
-      <div class="quote-box">문제는 안내 부족이 아니라 사용자가 행동하기 어려운 구조 자체에 있었습니다. 연말정산이라는 즉시성이 중요한 맥락에서, 로그인이라는 전제 조건이 사용자의 흐름을 끊고 있었습니다.</div>
+      <div class="quote-box">불편의 원인이 안내 부족이 아니라 로그인 접근 구조 자체에 있었습니다. 연말정산이라는 즉시성이 중요한 상황에서, 플랫폼 계정 보유 여부가 서비스 이용의 전제 조건이 되는 구조는 본질적으로 맞지 않습니다.</div>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
       <div class="block-title">02 가설</div>
-      <p class="body-text">비로그인 간편 발급 구조를 제공하면, 행동 장벽이 사라지고 자가 발급이 증가해 관련 VOC 30% 이상 감소할 것이다.</p>
+      <p class="body-text">비로그인 간편 발급 구조를 제공하면, 로그인 이탈이 사라지고 자가 발급이 증가해 관련 VOC 30% 이상 감소할 것이다.</p>
       <ul class="bullet-list">
         <li>로그인 화면 이탈률 80% → 인증 구조 제거 시 이탈 대부분 해소 예측</li>
         <li>VOC의 80%가 단순 발급 문의 → 자가 처리 가능해지면 CS 인입 직접 감소</li>
-        <li>연말정산 즉시성 맥락에서 계정 보유 전제 구조는 본질적으로 맞지 않음</li>
+        <li>연말정산 맥락상 계정 보유 여부를 전제로 두는 구조는 본질적으로 맞지 않음</li>
       </ul>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
       <div class="block-title">03 실행</div>
-      <p style="font-size:13px; font-weight:700; color:var(--dark); margin-bottom:10px; letter-spacing:-0.3px;">구조 전환: 행동 장벽 제거</p>
-      <ul class="bullet-list" style="margin-bottom:20px;">
-        <li>AS-IS: 회원가입 필수 → 로그인 → 나이스 실명인증</li>
-        <li>TO-BE: 내부 CRM 회원번호 + 이름 기반 간편 확인. 로그인 전제 조건 완전 제거</li>
-      </ul>
+      <p style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.3px;">구조 전환: 로그인 제거</p>
+      <div class="compare-grid">
+        <div class="compare-card asis">
+          <div class="compare-label">AS-IS</div>
+          <ul>
+            <li>온/오프라인 활동 고객</li>
+            <li>플랫폼 회원가입 필수</li>
+            <li>로그인 → 나이스 실명인증</li>
+          </ul>
+        </div>
+        <div class="compare-card tobe">
+          <div class="compare-label">TO-BE</div>
+          <ul>
+            <li>내부 CRM 회원번호 + 이름 기반 간편 확인</li>
+            <li>로그인 전제 조건 완전 제거</li>
+            <li>모집군 세분화 알림톡 발송 정책 설계</li>
+          </ul>
+        </div>
+      </div>
 
-      <p style="font-size:13px; font-weight:700; color:var(--dark); margin-bottom:10px; letter-spacing:-0.3px;">다부서 협업 및 리스크 관리</p>
+      <p style="font-size:13px;font-weight:700;color:var(--dark);margin:16px 0 10px;letter-spacing:-0.3px;">다부서 협업 및 리스크 관리</p>
       <table class="data-table">
-        <thead><tr><th>협업 부서</th><th>주요 내용</th></tr></thead>
+        <thead><tr><th>협업 부서</th><th>주요 협업 내용</th></tr></thead>
         <tbody>
-          <tr><td>법무/CS</td><td>CRM 조건 확인 및 개인정보보호 관련 검수 확인</td></tr>
-          <tr><td>개발</td><td>최소 인증 조건 설정, 서비스 내 보안·정보 히든 처리 확인</td></tr>
-          <tr><td>마케팅</td><td>간편 발급 서비스 알림톡 발송 일정 조율, 내용 검수</td></tr>
-          <tr><td>CS</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
+          <tr><td>법무/CS 부서</td><td>CRM 조건 확인 및 개인정보보호 관련 검수 확인</td></tr>
+          <tr><td>개발부서</td><td>최소 인증 조건 설정, 서비스 내 보안·정보 히든 처리 확인</td></tr>
+          <tr><td>마케팅부서</td><td>간편 발급 서비스 알림톡 발송 일정 조율, 내용 검수</td></tr>
+          <tr><td>CS 부서</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
       <div class="block-title">04 성과</div>
       <ul class="bullet-list result">
         <li>CS 상담 9,327건 → 6,081건 (34.8% 감소, 3,246건 절감)</li>
         <li>자가 발급 완료 14,439건 (서비스 유입 고객의 47.5%)</li>
         <li>자가 발급 전환 기준 약 1,200시간 운영 리소스 절감 (1건당 5분 처리 추정)</li>
-        <li>수기 처리 → 자가 처리 구조 전환으로 운영 리스크 구조적 완화</li>
+        <li>수기 처리 → 자가 처리 구조 전환으로 서비스 확장 시 운영 리스크 구조적 완화</li>
         <li>동일한 간편 인증 구조를 장기회원 리워드 서비스에 확장 적용</li>
       </ul>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
       <div class="block-title">05 회고</div>
-      <div class="quote-box">이 프로젝트를 통해 사용자가 행동하기 쉬운 구조를 설계하면 비즈니스 지표가 직접 움직인다는 것을 확인했습니다. 챌린저스가 소비자의 참여 행동을 실제 구매로 연결하는 구조를 설계하는 것과 같은 맥락입니다. 행동 장벽을 낮추고, 그 행동이 데이터로 쌓이고, 비즈니스 성과로 이어지는 흐름을 PM으로서 직접 만들어본 경험입니다.</div>
+      <div class="quote-box">이 프로젝트를 통해 접근 구조 자체가 UX이자 운영 효율의 핵심임을 확인했습니다. 빠른 대응보다 구조를 바꾸는 것이 반복 병목을 제거하는 유일한 방법이었고, 이후 유사한 구조적 문제에 동일한 접근법을 적용하는 기준이 되었습니다.</div>
     </div>
   </div>
 </section>
 
 <!-- PROJECT 2 -->
-<section id="proj2" class="proj-section" style="background: var(--gray-light);">
+<section id="proj2" class="proj-section" style="background:var(--gray-light);">
   <div class="section-wrap">
-    <div class="fade-in">
-      <div class="proj-header">
-        <div class="proj-num">Project 02</div>
-        <h2 class="proj-title">마이페이지 운영 기준 수립</h2>
-        <p class="proj-summary">사용자 행동 데이터로 우선순위를 재정의해, 필요한 콘텐츠가 필요한 사용자에게 먼저 닿는 구조를 만든 프로젝트</p>
-        <div class="proj-tags">
-          <span class="proj-tag">콘텐츠 우선순위</span>
-          <span class="proj-tag">데이터 기반 설계</span>
-          <span class="proj-tag">운영 정책</span>
-          <span class="proj-tag">플랫폼 고도화</span>
-        </div>
+    <div class="proj-header">
+      <div class="proj-num">Project 02</div>
+      <h2 class="proj-title">웹서비스 자동화 어드민 리뉴얼</h2>
+      <p class="proj-summary">개발 리소스에 의존하던 운영 구조를 어드민 자동화로 전환해, 4개 부서 12명이 직접 운영 가능한 백오피스를 기획·배포한 프로젝트</p>
+      <div class="proj-tags">
+        <span class="proj-tag">백오피스 고도화</span>
+        <span class="proj-tag">운영 자동화</span>
+        <span class="proj-tag">요구사항 수집</span>
+        <span class="proj-tag">정책 문서화</span>
+        <span class="proj-tag">이관 설계</span>
       </div>
-
-      <table class="info-table">
-        <tr><td>기간</td><td>2024.03 – 2024.05</td></tr>
-        <tr><td>역할</td><td>PM 100% — 사용자 행동 데이터 기반 우선순위 설계, 부서별 요구사항 수집 및 협의, 운영 정책 수립</td></tr>
-      </table>
     </div>
 
-    <div class="content-block fade-in">
+    <table class="info-table">
+      <tr><td>기간</td><td>2023.02 – 2023.12 (10개월)</td></tr>
+      <tr><td>역할</td><td>PM 100% — 요구사항 수집, 기능 우선순위 판단, 기획 및 출시, 가이드라인 문서화, 운영 이관</td></tr>
+    </table>
+
+    <div class="proj-kpi" style="grid-template-columns:repeat(3,1fr);">
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">4개 부서</span>
+        <span class="proj-kpi-label">12명 운영 이관 완료</span>
+      </div>
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">월 15h</span>
+        <span class="proj-kpi-label">업무시간 단축</span>
+      </div>
+      <div class="proj-kpi-card">
+        <span class="proj-kpi-val">재문의 0</span>
+        <span class="proj-kpi-label">가이드라인 배포 후<br>담당자 교체 시 재문의 해소</span>
+      </div>
+    </div>
+
+    <div class="content-block">
       <div class="block-title">01 배경 및 문제 정의</div>
-      <p class="body-text">서비스 확장에 따라 마이페이지 내 버튼·배너·CTA가 무분별하게 증가했습니다. 한 화면에 총 11개 기능이 노출되는 상황에서, 각기 다른 팀이 요청한 콘텐츠가 동일한 위계로 나열되고 있었습니다.</p>
+      <p class="body-text">서비스 확장에 따라 앱 내 콘텐츠·기능 조정 요청이 지속적으로 증가했습니다. 기존에는 모든 변경이 직접 코딩 방식이라 개발 리소스와 일정이 반드시 필요했고, 요청이 늘어날수록 개발팀의 병목이 심화됐습니다.</p>
 
-      <div class="analysis-grid">
-        <div class="analysis-card">
-          <h5>UI 구조적 사실</h5>
-          <p>주요 기능과 부가 기능이 동일한 위계로 노출. 사용자 선택 부담이 과도하게 증가한 구조.</p>
-        </div>
-        <div class="analysis-card">
-          <h5>운영 맥락</h5>
-          <p>부서별 CTA 추가 요청 반복. 공통 기준 부재로 운영 가이드도 복잡해짐.</p>
-        </div>
-        <div class="analysis-card">
-          <h5>플랫폼 성숙 단계</h5>
-          <p>기능 중심 초기에서 사용자 목적 중심 확장기로 전환. 노출 기준 수립 필요.</p>
-        </div>
-      </div>
-
-      <div class="quote-box">진짜 문제는 기능 수가 아니라 우선순위의 부재였습니다. 어떤 콘텐츠를 누구에게 먼저 보여줄 것인가에 대한 기준이 없었고, 그 결과 사용자에게 선택 부담이 전가되고 있었습니다.</div>
-    </div>
-
-    <div class="content-block fade-in">
-      <div class="block-title">02 목표</div>
-      <ul class="bullet-list">
-        <li>사용자 행동 데이터 기반으로 콘텐츠 우선순위 재정의</li>
-        <li>전 부서가 납득할 수 있는 노출 기준 수립 → 이후 요청에도 동일 기준 적용</li>
-        <li>리뉴얼 이후에도 다시 복잡해지지 않는 지속 가능한 운영 구조 설계</li>
-      </ul>
-    </div>
-
-    <div class="content-block fade-in">
-      <div class="block-title">03 실행</div>
-      <p style="font-size:13px; font-weight:700; color:var(--dark); margin-bottom:10px; letter-spacing:-0.3px;">부서별 요구사항 수집 및 충돌 조율</p>
-      <table class="data-table" style="margin-bottom:20px;">
-        <thead><tr><th>부서</th><th>주요 요구사항</th></tr></thead>
+      <table class="data-table">
+        <thead><tr><th>문제 구분</th><th>내용</th></tr></thead>
         <tbody>
-          <tr><td>예산기획부서</td><td>최근 구독 해지 급증 이슈를 서비스에서 방어하고 싶음</td></tr>
-          <tr><td>회원관리부서</td><td>기존 상단 노출하던 결제/정산 정보를 유지하고 싶음</td></tr>
-          <tr><td>마케팅부서</td><td>캠페인별 다양한 마케팅 서비스를 만들어서 제공하고 싶음</td></tr>
-          <tr><td>서비스부서</td><td>만들어질 서비스의 효과성을 구체적으로 파악하고 싶음</td></tr>
+          <tr><td>운영 구조 문제</td><td>콘텐츠 변경마다 개발 일정 필요 → 요청 적체 반복</td></tr>
+          <tr><td>요청 주체 분산</td><td>4개 부서가 각각 다른 요청을 개발팀에 직접 전달</td></tr>
+          <tr><td>인수인계 문제</td><td>담당자 교체 시마다 재문의 발생 → 운영 비효율 반복</td></tr>
         </tbody>
       </table>
 
-      <p style="font-size:13px; font-weight:700; color:var(--dark); margin-bottom:10px; letter-spacing:-0.3px;">운영 정책 문서화 → 협의 → 배포</p>
+      <div class="quote-box">수요를 개발로 흡수하는 방식은 한계가 있었습니다. 현업이 직접 운영할 수 있는 구조로 전환하는 것이 근본적인 해결책이라고 판단했습니다.</div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">02 목표</div>
       <ul class="bullet-list">
-        <li>GA·로그 데이터로 사용자 이벤트(클릭, 유입, 행동, 전환) 기준 기능 분석</li>
-        <li>상단 노출 기준, 우선순위 조정 조건, 신규 기능 추가 프로세스 문서화</li>
-        <li>정책 문서 기반 부서 간 합의 구조 형성</li>
-        <li>배포 후 가이드라인 전사 공유 → 이후 요청에도 동일 기준 적용</li>
+        <li>현업이 개발 리소스 없이 직접 콘텐츠·기능을 조정할 수 있는 어드민 구축</li>
+        <li>4개 부서 12명 모두가 납득하고 사용할 수 있는 기능 범위 정의</li>
+        <li>담당자 교체에도 재문의 없이 자립 운영 가능한 가이드라인 수립</li>
       </ul>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
+      <div class="block-title">03 실행</div>
+
+      <p style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.3px;">사전 요구사항 수집 및 기획 범위 판단</p>
+      <p class="body-text">기획 착수 전, 4개 부서 담당자와 소통·협력 회의를 진행했습니다. 단순히 요청을 수집하는 것이 아니라, 각 기능의 실제 활용도를 먼저 검증했습니다.</p>
+
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <h5>반복 사용성 검증</h5>
+          <p>이 기능을 반복적으로 사용할 것인가? 반복 사용 시 기대 효과는 어떻게 되는가?</p>
+        </div>
+        <div class="analysis-card">
+          <h5>구현 가능성 점검</h5>
+          <p>개발·디자인 협의를 통해 실제 구현 시 제약과 비용을 사전에 파악했습니다.</p>
+        </div>
+        <div class="analysis-card">
+          <h5>우선순위 판단 기준</h5>
+          <p>반복 사용성과 기대 효과가 검증된 기능만 우선 구현. 요구를 모두 수용하지 않는 것이 핵심이었습니다.</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px;font-weight:700;color:var(--dark);margin:20px 0 10px;letter-spacing:-0.3px;">어드민 주요 기능 구성</p>
+      <table class="data-table" style="margin-bottom:20px;">
+        <thead><tr><th>기능</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>콘텐츠 노출 제어</td><td>후원아동별·후원국가별·후원상태별 맞춤 콘텐츠 설정 가능</td></tr>
+          <tr><td>소식 알림 관리</td><td>가장 필요한 소식 강조 노출, 우선순위 직접 조정</td></tr>
+          <tr><td>추가 후원 유도</td><td>유저 맞춤형 추가 후원 유도 화면 어드민 설정</td></tr>
+          <tr><td>이관 가이드라인</td><td>담당자 교체 시에도 재문의 없이 운영 가능한 문서 배포</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;letter-spacing:-0.3px;">운영 이관 흐름</p>
+      <div class="flow-box">
+        <span class="flow-step">요구사항 수집</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">기능 범위 판단</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">기획·개발·디자인 협업</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">배포</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">가이드라인 문서화</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">4개 부서 이관</span>
+      </div>
+    </div>
+
+    <div class="content-block">
       <div class="block-title">04 성과</div>
       <ul class="bullet-list result">
-        <li>전 부서 공통 운영 기준 수립으로 부서 간 요청 충돌 구조적 감소</li>
-        <li>콘텐츠 노출 우선순위 재정의로 핵심 정보 접근성 향상 (내부 평가)</li>
-        <li>운영 판단 속도 개선 및 의사결정 비용 절감</li>
-        <li>후속 리뉴얼 프로젝트의 기준 구조로 활용</li>
+        <li>4개 부서 12명 운영 이관 완료 → 개발 리소스 없이 현업 직접 운영 가능</li>
+        <li>월 15시간 업무시간 단축</li>
+        <li>가이드라인 문서 배포로 담당자 교체 시 재문의 문제 구조적 해소</li>
+        <li>유저 맞춤 대시보드 제공으로 사용자 데이터 분석 고도화</li>
       </ul>
     </div>
 
-    <div class="content-block fade-in">
+    <div class="content-block">
       <div class="block-title">05 회고</div>
-      <div class="quote-box">이 프로젝트에서 배운 건 챌린저스가 매일 풀고 있는 문제와 닮아있습니다. 어떤 콘텐츠를 어떤 사용자에게 어떤 순서로 보여줄 것인가. 데이터가 충분하지 않은 상황에서도 사용자 행동 맥락을 종합해 우선순위를 정의하고, 그 기준이 이후 요청에도 지속적으로 적용될 수 있도록 구조화하는 것. 챌린저스에서 브랜드와 소비자 사이의 맥락을 더 정교하게 설계하는 데 이 경험을 직접 연결하고 싶습니다.</div>
+      <div class="quote-box">이 프로젝트에서 가장 어려웠던 건 현업의 요구사항을 어디까지 수용할 것인가를 판단하는 것이었습니다. 모든 요청을 기획에 담으면 개발 비용과 유지보수 복잡도가 높아지고, 너무 줄이면 현업의 실질적인 니즈를 충족하지 못합니다. 반복 사용성과 기대 효과를 기준으로 판단한 이 경험은, 이후 서비스 기획 시 우선순위를 정의하는 핵심 방식이 되었습니다. 현대벤디스의 서비스가 빠르게 확장되는 지금, 이 경험이 직접 연결될 수 있다고 생각합니다.</div>
     </div>
   </div>
 </section>
 
 <!-- CLOSING -->
 <section id="closing">
-  <div class="cover-grid"></div>
+  <div class="cover-dots"></div>
   <div class="section-wrap">
     <h2>감사합니다.</h2>
-    <p>사용자 행동 데이터로 비즈니스 임팩트를 만들어온 PM 김수진입니다.</p>
-    <div class="contact-chips">
-      <span class="contact-chip-dark">📞 010-4772-6950</span>
-      <span class="contact-chip-dark">✉️ soowlsee@gmail.com</span>
+    <p>확장될수록 복잡해지는 서비스를 기준과 우선순위로 안정화하는 기획자 김수진입니다.</p>
+    <div class="closing-chips">
+      <span class="closing-chip">📞 010-4772-6950</span>
+      <span class="closing-chip">✉️ soowlsee@gmail.com</span>
     </div>
   </div>
 </section>
 
-<script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursor-follower');
-  let mx = 0, my = 0, fx = 0, fy = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-  });
-
-  function animateFollower() {
-    fx += (mx - fx - 18) * 0.12;
-    fy += (my - fy - 18) * 0.12;
-    follower.style.transform = `translate(${fx}px, ${fy}px)`;
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
-
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform += ' scale(2)';
-      follower.style.opacity = '0';
-    });
-    el.addEventListener('mouseleave', () => {
-      follower.style.opacity = '0.5';
-    });
-  });
-</script>
 </body>
 </html>
