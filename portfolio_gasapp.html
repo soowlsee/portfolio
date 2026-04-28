@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김수진 포트폴리오 — 에스씨지랩 IT 서비스 기획자(PO)</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #2EBD7E;
+  --green-dark: #1A9463;
+  --green-light: #F0FBF6;
+  --green-mid: #6DD4A8;
+  --dark: #1C1F1E;
+  --gray: #6B7280;
+  --gray-light: #F4F6F5;
+  --gray-mid: #E5E9E7;
+  --white: #FFFFFF;
+  --border: #DDE4E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  color: var(--dark);
+  background: var(--gray-light);
+  line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { font-size: 14px; font-weight: 800; color: var(--dark); letter-spacing: -0.4px; }
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 12.5px; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 48px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(46,189,126,0.18) 0%, transparent 65%);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(46,189,126,0.08) 0%, transparent 70%);
+  bottom: -80px; left: -80px;
+  border-radius: 50%;
+}
+.hero-inner {
+  max-width: 760px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(46,189,126,0.15);
+  border: 1px solid rgba(46,189,126,0.3);
+  color: var(--green-mid);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-title {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--green);
+}
+.hero-desc {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 520px;
+}
+.hero-contacts {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-contact-item {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.3);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(46,189,126,0.6), transparent);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0.3); }
+}
+
+/* PAGE WRAP */
+.page-wrap { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+
+/* SECTION */
+.section {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 52px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+}
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.8px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-mid);
+}
+
+/* ABOUT */
+.about-intro {
+  font-size: 15px;
+  color: #3A4440;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.stat-box {
+  background: var(--gray-light);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.4;
+}
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.strength-card {
+  background: var(--green-light);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(46,189,126,0.2);
+}
+.strength-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.strength-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.strength-desc {
+  font-size: 12px;
+  color: #5A6E66;
+  line-height: 1.6;
+}
+
+/* WHY */
+.why-body {
+  font-size: 14.5px;
+  color: #3A4440;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+.why-highlight {
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 24px 0;
+  border-left: 3px solid var(--green);
+}
+.why-highlight-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.7;
+  font-weight: 500;
+}
+.why-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.why-tag {
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--dark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.why-tag-icon { font-size: 15px; }
+
+/* PROJECT SECTION */
+.proj-section {
+  background: var(--white);
+  border-radius: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.proj-header {
+  background: var(--dark);
+  padding: 44px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.proj-header::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(46,189,126,0.15) 0%, transparent 70%);
+  top: -60px; right: -60px;
+  border-radius: 50%;
+}
+.proj-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-mid);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.proj-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.6px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.proj-subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.proj-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.proj-tag {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.proj-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.proj-meta-item {
+  padding: 16px 24px;
+  border-right: 1px solid var(--border);
+}
+.proj-meta-item:last-child { border-right: none; }
+.proj-meta-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.proj-meta-val {
+  font-size: 13px;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+/* KPI */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.kpi-item {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.kpi-item:last-child { border-right: none; }
+.kpi-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.kpi-label {
+  font-size: 11px;
+  color: var(--gray);
+  line-height: 1.4;
+}
+
+/* PROJECT BODY */
+.proj-body { padding: 44px 52px; }
+
+.proj-step {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray-mid);
+}
+.proj-step:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.proj-step-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.proj-step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  margin-bottom: 16px;
+}
+.proj-step-body {
+  font-size: 14px;
+  color: #3A4440;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.proj-step-body:last-child { margin-bottom: 0; }
+
+/* DATA CARDS */
+.data-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+.data-card {
+  background: var(--gray-light);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.data-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+.data-card-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.data-card-desc {
+  font-size: 11.5px;
+  color: var(--gray);
+  line-height: 1.4;
+}
+
+/* FLOW */
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.flow-item {
+  flex: 1;
+  min-width: 120px;
+}
+.flow-box {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+.flow-box.before {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+.flow-box.after {
+  background: var(--green-light);
+  color: var(--green-dark);
+  border: 1px solid rgba(46,189,126,0.25);
+}
+.flow-arrow {
+  font-size: 18px;
+  color: var(--green);
+  padding: 0 12px;
+  font-weight: 700;
+}
+
+/* COLLAB TABLE */
+.collab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+.collab-table th {
+  background: var(--gray-light);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--border);
+}
+.collab-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-mid);
+  color: #3A4440;
+  line-height: 1.5;
+  vertical-align: top;
+}
+.collab-table tr:last-child td { border-bottom: none; }
+
+/* RESULT BOX */
+.result-box {
+  background: var(--green-light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--green);
+  margin: 16px 0;
+}
+.result-box-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.result-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.result-list li {
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.5;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+.result-list li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 700;
+  font-size: 11px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* RETROSPECT */
+.retro-box {
+  background: var(--gray-light);
+  border-radius: 10px;
+  padding: 18px 20px;
+  font-size: 13.5px;
+  color: #3A4440;
+  line-height: 1.75;
+  border: 1px solid var(--border);
+  margin-top: 16px;
+}
+
+/* PROBLEM TABLE */
+.prob-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+.prob-table th {
+  background: var(--dark);
+  color: rgba(255,255,255,0.7);
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.prob-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-mid);
+  color: #3A4440;
+  line-height: 1.5;
+}
+.prob-table tr:last-child td { border-bottom: none; }
+.prob-table td:first-child { font-weight: 600; color: var(--dark); }
+
+/* ADMIN FLOW */
+.admin-flow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.admin-step {
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark);
+  white-space: nowrap;
+}
+.admin-arrow {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* FOOTER */
+.portfolio-footer {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 48px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-footer::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(46,189,126,0.12) 0%, transparent 70%);
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+.footer-tagline {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.footer-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.footer-contacts {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.footer-contact {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">김수진 <span>·</span> Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why 가스앱</a></li>
+    <li><a href="#proj1">Project 1</a></li>
+    <li><a href="#proj2">Project 2</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">IT 서비스 기획자 (PO) · Portfolio</div>
+    <h1 class="hero-title">
+      반복되는 문제를<br><em>구조로</em> 바꿉니다.
+    </h1>
+    <p class="hero-desc">
+      VOC와 데이터로 문제의 본질을 찾고,<br>
+      빠른 대응이 아닌 구조 전환으로 해결해온<br>
+      서비스 기획자 김수진입니다.
+    </p>
+    <div class="hero-contacts">
+      <span class="hero-contact-item">📞 010-4772-6950</span>
+      <span class="hero-contact-item">✉️ soowlsee@gmail.com</span>
+      <span class="hero-contact-item">💼 PM 경력 27개월</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<div class="page-wrap">
+
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <div class="section-eyebrow">About Me</div>
+    <div class="section-heading">운영 과정의 반복 문제를<br>데이터와 구조로 해결해왔습니다.</div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">6개+</div>
+        <div class="stat-label">서비스 기획 PM<br>(기획~운영 전 과정)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100명+</div>
+        <div class="stat-label">다부서 이해관계자<br>협업 경험</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">300개+</div>
+        <div class="stat-label">서비스 화면·기능<br>정의 및 운영 정책</div>
+      </div>
+    </div>
+
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="strength-num">01</div>
+        <div class="strength-title">데이터로 문제를 정의합니다</div>
+        <div class="strength-desc">사용자 행동과 VOC를 운영 구조의 반복 신호로 해석합니다. 정량 데이터가 없을 때도 UI 구조·운영 맥락·서비스 단계를 종합해 문제 지점을 판단합니다.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">02</div>
+        <div class="strength-title">구조 전환으로 해결합니다</div>
+        <div class="strength-desc">빠른 대응을 넘어 구조를 설계합니다. 반복된다면 구조를 바꾸고, 일회성이라면 대응 범위를 조정합니다. 단기 패치가 아닌 구조 전환으로 시너지를 만듭니다.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">03</div>
+        <div class="strength-title">기준과 우선순위를 세웁니다</div>
+        <div class="strength-desc">개별 요청을 나열하기보다, 전 부서가 납득할 수 있는 우선순위와 운영 기준을 먼저 정립합니다. 판단 일관성을 확보하고 운영 복잡도를 낮춥니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="section" id="why">
+    <div class="section-eyebrow">Why 에스씨지랩</div>
+    <div class="section-heading">가스앱을 선택한 이유</div>
+
+    <p class="why-body">
+      처음 가스앱을 접했을 때 가장 먼저 든 생각은 "이게 왜 진작 없었을까"였습니다. 가스 요금 조회, 납부, 방문 예약까지 앱 하나로 해결된다는 건 너무 당연한 일인데, 도시가스라는 인프라가 오랫동안 오프라인 고지서와 콜센터 중심으로 운영되어 왔다는 사실이 오히려 낯설었습니다.
+    </p>
+    <p class="why-body">
+      가스앱이 흥미로웠던 건 단순한 요금 조회 앱이 아니라는 점입니다. 실시간 에너지 사용 패턴 분석, 전기·가스 통합 관리, 이웃집 사용량 비교, 에코마일리지 연동까지 — 오프라인 인프라 위에 쌓인 데이터를 사용자에게 가치 있는 경험으로 바꾸는 서비스입니다. 전국 913만 가구, 서울 고객 90%가 쓴다는 숫자는 단순한 점유율이 아니라, 이미 사람들의 생활 안에 자리 잡았다는 신호로 읽혔습니다.
+    </p>
+
+    <div class="why-highlight">
+      <p class="why-highlight-text">
+        전국으로 확장이 빨라질수록, 기능을 더하는 속도만큼 그것을 운영하는 구조가 함께 성장해야 합니다.<br>
+        저는 그 두 가지를 함께 만들어온 사람입니다.
+      </p>
+    </div>
+
+    <p class="why-body">
+      14개 도시가스사가 함께하는 지금, 각 파트너사의 정책 차이를 흡수하면서도 사용자가 일관된 경험을 느낄 수 있는 운영 기준과 서비스 정책이 필요한 시점입니다. 가스앱이 더 많은 가구로 확장될수록, 서비스 위에 쌓이는 에너지 사용 데이터는 요금 조회를 넘어 훨씬 큰 가치를 만들 수 있는 자산이 될 것이라는 생각도 했습니다.
+    </p>
+
+    <div class="why-tags">
+      <div class="why-tag"><span class="why-tag-icon">📱</span> VOC 기반 서비스 개선 경험</div>
+      <div class="why-tag"><span class="why-tag-icon">🔓</span> 비로그인 플로우 설계 경험</div>
+      <div class="why-tag"><span class="why-tag-icon">⚙️</span> 어드민·운영 정책 수립 경험</div>
+      <div class="why-tag"><span class="why-tag-icon">🤝</span> 다부서 조율 및 가이드라인 배포</div>
+    </div>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="proj-section" id="proj1">
+    <div class="proj-header">
+      <div class="proj-num">Project 01</div>
+      <div class="proj-title">기부금영수증 간편 발급 서비스</div>
+      <div class="proj-subtitle">반복되는 CS 병목을 비로그인 구조 전환으로 해결해<br>운영 리소스와 사용자 이탈을 동시에 줄인 기획 프로젝트</div>
+      <div class="proj-tags">
+        <span class="proj-tag">VOC 분석</span>
+        <span class="proj-tag">비로그인 플로우</span>
+        <span class="proj-tag">서비스 정책 수립</span>
+        <span class="proj-tag">운영 효율화</span>
+        <span class="proj-tag">다부서 협업</span>
+      </div>
+    </div>
+
+    <div class="proj-meta-row">
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">기간</div>
+        <div class="proj-meta-val">1차 2022.12–2023.02 / 2차 2023.11–2024.04</div>
+      </div>
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">역할</div>
+        <div class="proj-meta-val">PM 100% — 기획~출시 전 과정 총괄, 데이터 분석, 부서 협업</div>
+      </div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi-item">
+        <div class="kpi-num">34.8%↓</div>
+        <div class="kpi-label">CS 상담 감소</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">47.5%</div>
+        <div class="kpi-label">자가 발급 전환율</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">~1,200h</div>
+        <div class="kpi-label">운영 리소스 절감<br><span style="font-size:10px;color:var(--gray)">(추정)</span></div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">3,246건</div>
+        <div class="kpi-label">절감된 상담 건수</div>
+      </div>
+    </div>
+
+    <div class="proj-body">
+
+      <!-- 배경 -->
+      <div class="proj-step">
+        <div class="proj-step-label">01 · 배경 및 문제 정의</div>
+        <div class="proj-step-title">반복되는 병목의 원인은 안내 부족이 아니었습니다</div>
+        <p class="proj-step-body">
+          연말정산 시즌마다 CS 상담이 평소 대비 3~6배 폭증했습니다. 매년 CS 인력 증원과 FAQ 보강으로 대응했지만 이듬해에도 동일하게 반복됐습니다. 수요를 흡수하는 방식으로는 구조적 해결이 불가능하다고 판단하고, 원인을 데이터로 특정하기로 했습니다.
+        </p>
+        <div class="data-cards">
+          <div class="data-card">
+            <div class="data-card-label">GA 로그 분석</div>
+            <div class="data-card-val">80%+</div>
+            <div class="data-card-desc">로그인 화면 이탈률. 접근 구조 자체가 문제임을 특정.</div>
+          </div>
+          <div class="data-card">
+            <div class="data-card-label">VOC 4년치 분석</div>
+            <div class="data-card-val">80%</div>
+            <div class="data-card-desc">전체 VOC 중 단순 서류 발급 문의. 자가 처리 불가 구조 확인.</div>
+          </div>
+          <div class="data-card">
+            <div class="data-card-label">운영 맥락 분석</div>
+            <div class="data-card-val">구조 불일치</div>
+            <div class="data-card-desc">즉시성 중요한 연말정산 맥락 vs 계정 보유 전제 구조.</div>
+          </div>
+        </div>
+        <p class="proj-step-body">
+          특히 서비스 이용자 중 디지털 접근성이 낮은 시니어 회원 비중이 높았는데, 이들에게 로그인은 단순한 불편이 아니라 서비스 진입 자체를 막는 장벽이었습니다. 가스앱 역시 도시가스를 오랫동안 사용해온 중·장년 가구원이 주요 사용자층인 만큼, 접근 구조에 대한 이 감각이 직접 연결될 수 있다고 생각합니다.
+        </p>
+      </div>
+
+      <!-- 가설 -->
+      <div class="proj-step">
+        <div class="proj-step-label">02 · 가설</div>
+        <div class="proj-step-title">비로그인 구조를 제공하면 VOC 30% 이상 감소할 것이다</div>
+        <p class="proj-step-body">
+          로그인 화면 이탈률 80% → 인증 구조 제거 시 이탈 대부분 해소 예측<br>
+          VOC의 80%가 단순 발급 문의 → 자가 처리 가능해지면 CS 인입 직접 감소<br>
+          연말정산 맥락상 계정 보유 여부 전제 구조는 본질적으로 맞지 않음
+        </p>
+      </div>
+
+      <!-- 실행 -->
+      <div class="proj-step">
+        <div class="proj-step-label">03 · 실행</div>
+        <div class="proj-step-title">로그인 제거 → 비로그인 간편 인증 구조 전환</div>
+        <div class="flow-row">
+          <div class="flow-item">
+            <div class="flow-box before">AS-IS<br>플랫폼 회원가입 필수<br>로그인 → 실명인증</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <div class="flow-box after">TO-BE<br>CRM 회원번호 + 이름<br>비로그인 간편 확인</div>
+          </div>
+        </div>
+        <p class="proj-step-body">
+          모집군 세분화(1년 미만 고객, 이전 문의 고객, 특수 계정 등) 및 알림톡 발송 정책 설계. 5개 부서와 보안·개인정보보호 리스크를 정책 기준으로 합의했습니다.
+        </p>
+        <table class="collab-table">
+          <thead>
+            <tr><th>협업 부서</th><th>주요 협업 내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>법무·CS 부서</td><td>CRM 조건 확인 및 개인정보보호 관련 검수</td></tr>
+            <tr><td>개발 부서</td><td>최소 인증 조건 설정, 보안·정보 히든 처리 확인</td></tr>
+            <tr><td>마케팅 부서</td><td>알림톡 발송 일정 조율 및 내용 검수</td></tr>
+            <tr><td>CS 부서</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 성과 -->
+      <div class="proj-step">
+        <div class="proj-step-label">04 · 성과</div>
+        <div class="proj-step-title">구조를 바꾸자 지표가 직접 움직였습니다</div>
+        <div class="result-box">
+          <div class="result-box-label">주요 성과</div>
+          <ul class="result-list">
+            <li>CS 상담 9,327건 → 6,081건 (34.8% 감소, 3,246건 절감)</li>
+            <li>자가 발급 완료 14,439건 (유입 고객의 47.5%)</li>
+            <li>약 1,200시간 운영 리소스 절감 (1건당 5분 추정)</li>
+            <li>동일 구조를 장기회원 리워드 서비스에 확장 적용</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 회고 -->
+      <div class="proj-step">
+        <div class="proj-step-label">05 · 회고</div>
+        <div class="proj-step-title">접근 구조를 낮추는 것이 UX이자 운영 효율의 핵심이었습니다</div>
+        <div class="retro-box">
+          이 프로젝트를 통해 접근 구조 자체가 UX이자 운영 효율의 핵심임을 확인했습니다. 빠른 대응보다 구조를 바꾸는 것이 반복 병목을 제거하는 유일한 방법이었고, 이후 유사한 구조적 문제에 동일한 접근법을 적용하는 기준이 되었습니다. 가스앱처럼 다양한 연령대, 특히 디지털 접근성이 낮은 사용자를 포함하는 서비스에서 이 경험이 직접 연결될 수 있다고 생각합니다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="proj-section" id="proj2">
+    <div class="proj-header">
+      <div class="proj-num">Project 02</div>
+      <div class="proj-title">웹서비스 자동화 어드민 리뉴얼</div>
+      <div class="proj-subtitle">개발 의존 운영 구조를 현업 자립 어드민으로 전환해<br>4개 부서 12명이 직접 운영 가능한 백오피스를 기획·배포한 프로젝트</div>
+      <div class="proj-tags">
+        <span class="proj-tag">백오피스 고도화</span>
+        <span class="proj-tag">운영 자동화</span>
+        <span class="proj-tag">요구사항 수집</span>
+        <span class="proj-tag">정책 문서화</span>
+        <span class="proj-tag">이관 설계</span>
+      </div>
+    </div>
+
+    <div class="proj-meta-row">
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">기간</div>
+        <div class="proj-meta-val">2023.02 – 2023.12 (10개월)</div>
+      </div>
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">역할</div>
+        <div class="proj-meta-val">PM 100% — 요구사항 수집, 우선순위 판단, 기획·배포, 가이드라인 문서화, 운영 이관</div>
+      </div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi-item">
+        <div class="kpi-num">4개 부서</div>
+        <div class="kpi-label">12명 운영 이관 완료</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">월 15h</div>
+        <div class="kpi-label">업무시간 단축</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">재문의 0</div>
+        <div class="kpi-label">가이드라인 배포 후<br>담당자 교체 시</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">0원</div>
+        <div class="kpi-label">이후 운영 변경<br>개발 비용</div>
+      </div>
+    </div>
+
+    <div class="proj-body">
+
+      <!-- 배경 -->
+      <div class="proj-step">
+        <div class="proj-step-label">01 · 배경 및 문제 정의</div>
+        <div class="proj-step-title">모든 변경이 개발 일정을 필요로 하는 구조의 한계</div>
+        <p class="proj-step-body">
+          서비스 확장에 따라 앱 내 콘텐츠·기능 조정 요청이 지속적으로 증가했습니다. 기존에는 모든 변경이 직접 코딩 방식이라 개발 리소스와 일정이 반드시 필요했고, 요청이 늘어날수록 개발팀의 병목이 심화됐습니다.
+        </p>
+        <table class="prob-table">
+          <thead>
+            <tr><th>문제 구분</th><th>내용</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>운영 구조 문제</td><td>콘텐츠 변경마다 개발 일정 필요 → 요청 적체 반복</td></tr>
+            <tr><td>요청 주체 분산</td><td>4개 부서가 각각 다른 요청을 개발팀에 직접 전달</td></tr>
+            <tr><td>인수인계 문제</td><td>담당자 교체 시마다 재문의 발생 → 운영 비효율 반복</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 목표 -->
+      <div class="proj-step">
+        <div class="proj-step-label">02 · 목표</div>
+        <div class="proj-step-title">현업이 개발 없이 직접 운영할 수 있는 구조</div>
+        <p class="proj-step-body">
+          현업이 개발 리소스 없이 직접 콘텐츠·기능을 조정할 수 있는 어드민 구축<br>
+          4개 부서 12명 모두가 납득하고 사용할 수 있는 기능 범위 정의<br>
+          담당자 교체에도 재문의 없이 자립 운영 가능한 가이드라인 수립
+        </p>
+      </div>
+
+      <!-- 실행 -->
+      <div class="proj-step">
+        <div class="proj-step-label">03 · 실행</div>
+        <div class="proj-step-title">요구사항 수집부터 이관까지 전 과정 직접 설계</div>
+        <p class="proj-step-body">
+          기획 착수 전, 4개 부서 담당자와 협력 회의를 진행했습니다. 단순히 요청을 수집하는 것이 아니라, 반복 사용성과 기대 효과를 먼저 검증하고, 개발·디자인 협의를 통해 구현 가능성을 사전 점검했습니다. <strong>요구를 모두 수용하지 않는 것이 핵심이었습니다.</strong>
+        </p>
+        <div class="admin-flow">
+          <div class="admin-step">요구사항 수집</div>
+          <div class="admin-arrow">→</div>
+          <div class="admin-step">기능 범위 판단</div>
+          <div class="admin-arrow">→</div>
+          <div class="admin-step">기획·개발·디자인 협업</div>
+          <div class="admin-arrow">→</div>
+          <div class="admin-step">배포</div>
+          <div class="admin-arrow">→</div>
+          <div class="admin-step">가이드라인 문서화</div>
+          <div class="admin-arrow">→</div>
+          <div class="admin-step">4개 부서 이관</div>
+        </div>
+        <p class="proj-step-body" style="margin-top:16px;">
+          어드민 주요 기능: 맞춤 콘텐츠 노출 제어 / 소식 알림 우선순위 조정 / 유저 맞춤 추가 서비스 유도 화면 설정 / 이관 가이드라인 문서 배포
+        </p>
+      </div>
+
+      <!-- 성과 -->
+      <div class="proj-step">
+        <div class="proj-step-label">04 · 성과</div>
+        <div class="proj-step-title">현업이 직접 운영하는 구조로 완전히 전환됐습니다</div>
+        <div class="result-box">
+          <div class="result-box-label">주요 성과</div>
+          <ul class="result-list">
+            <li>4개 부서 12명 운영 이관 완료 → 개발 없이 현업 직접 운영</li>
+            <li>월 15시간 업무시간 단축</li>
+            <li>가이드라인 배포로 담당자 교체 시 재문의 구조적 해소</li>
+            <li>유저 맞춤 대시보드 제공으로 사용자 데이터 분석 고도화</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 회고 -->
+      <div class="proj-step">
+        <div class="proj-step-label">05 · 회고</div>
+        <div class="proj-step-title">요구를 판단하는 기준이 가장 중요한 기획 역량이었습니다</div>
+        <div class="retro-box">
+          가장 어려웠던 건 현업의 요구사항을 어디까지 수용할 것인가를 판단하는 일이었습니다. 모든 요청을 담으면 개발 비용과 유지보수 복잡도가 높아지고, 너무 줄이면 실질적인 니즈를 충족하지 못합니다. 반복 사용성과 기대 효과를 기준으로 판단한 이 경험은, 이후 서비스 기획 시 우선순위를 정의하는 핵심 방식이 되었습니다. 가스앱의 다양한 파트너사 요구사항을 조율하고 운영 정책을 수립하는 데 이 경험이 직접 연결될 수 있다고 생각합니다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="portfolio-footer">
+    <div class="footer-tagline">확장될수록 중요해지는 일을 함께하고 싶습니다.</div>
+    <div class="footer-desc">반복되는 운영 이슈를 구조로 바꿔온 서비스 기획자 김수진입니다.</div>
+    <div class="footer-contacts">
+      <span class="footer-contact">📞 010-4772-6950</span>
+      <span class="footer-contact">✉️ soowlsee@gmail.com</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
