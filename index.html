@@ -6,1024 +6,716 @@
 <title>김수진 포트폴리오 — 모멘티</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-:root {
-  --black:        #0f0f0e;
-  --gray-900:     #1e1e1c;
-  --gray-700:     #3d3d3a;
-  --gray-500:     #6e6e6a;
-  --gray-400:     #9a9a96;
-  --gray-300:     #c4c4be;
-  --gray-100:     #e6e6e0;
-  --gray-50:      #f2f2ec;
-  --white:        #fafaf7;
-
-  /* 포인트 — 인디고 + 민트 */
-  --accent:       #2855a0;
-  --accent-mid:   #3d6fd4;
-  --accent-light: #eaf0fb;
-  --accent-pale:  #f4f7fd;
-  --teal:         #1a7a6e;
-  --teal-light:   #e4f5f3;
-
-  --font-d: 'DM Sans', sans-serif;
-  --font-b: 'Noto Sans KR', sans-serif;
-  --font-m: 'DM Mono', monospace;
-
-  --pw: 1080px;
-  --ph: 720px;
-  --pad: 64px;
+:root{
+  --black:#0f0f0e;
+  --gray-900:#1e1e1c;
+  --gray-700:#3d3d3a;
+  --gray-600:#525250;
+  --gray-500:#6e6e6a;
+  --gray-400:#9a9a96;
+  --gray-300:#c4c4be;
+  --gray-200:#d8d8d2;
+  --gray-100:#e8e8e2;
+  --gray-50:#f2f2ec;
+  --white:#ffffff;
+  --accent:#2855a0;
+  --accent-mid:#3d6fd4;
+  --accent-light:#eaf0fb;
+  --accent-pale:#f4f7fd;
+  --teal:#1a7a6e;
+  --teal-light:#e4f5f3;
+  --font-d:'DM Sans',sans-serif;
+  --font-b:'Noto Sans KR',sans-serif;
+  --font-m:'DM Mono',monospace;
+  --pw:1920px;
+  --ph:1080px;
+  --gutter:56px;
 }
 
-html { background: #c8c8c4; }
-body {
-  font-family: var(--font-b);
-  color: var(--black);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  gap: 24px;
-  background: #c4c4c0;
-}
+html{background:#a8a8a4;}
+body{font-family:var(--font-b);color:var(--black);display:flex;flex-direction:column;align-items:center;padding:40px 24px;gap:28px;background:#a8a8a4;}
 
-/* ── 페이지 ── */
-.page {
-  width: var(--pw);
-  height: var(--ph);
-  background: var(--white);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 28px rgba(0,0,0,0.13);
-  flex-shrink: 0;
-}
-.page-label {
-  width: var(--pw);
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-m);
-  font-size: 10px;
-  color: var(--gray-500);
-  padding: 0 4px;
-  margin-bottom: -6px;
-}
+/* ── 페이지 컨테이너 ── */
+.page{width:var(--pw);height:var(--ph);background:var(--gray-50);position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 40px rgba(0,0,0,0.18);flex-shrink:0;}
+.page-label{width:var(--pw);display:flex;justify-content:space-between;font-family:var(--font-m);font-size:11px;color:var(--gray-500);padding:0 4px;margin-bottom:-6px;}
 
-/* ── 공통 타이포 ── */
-.label {
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-}
-.label.accent { color: var(--accent-mid); }
-
-/* ── 구분선 ── */
-.rule   { width: 100%; height: 0.5px; background: var(--gray-100); flex-shrink:0; }
-.rule-v { width: 0.5px; background: var(--gray-100); align-self: stretch; flex-shrink:0; }
-
-/* ── 태그 ── */
-.tag {
-  display: inline-flex; align-items: center;
-  font-family: var(--font-m);
-  font-size: 10px;
-  padding: 4px 10px;
-  border: 0.5px solid var(--gray-200);
-  color: var(--gray-600);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-.tag.ac { border-color: var(--accent); color: var(--accent); background: var(--accent-pale); }
-.tag.tl { border-color: var(--teal);   color: var(--teal);   background: var(--teal-light); }
+/* ── 흰 콘텐츠 카드 (페이지 내부) ── */
+.content-card{background:var(--white);margin:28px;flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 
 /* ── 상단 바 ── */
-.top-bar {
-  height: 44px;
-  border-bottom: 0.5px solid var(--gray-100);
-  display: flex;
-  align-items: center;
-  padding: 0 var(--pad);
-  justify-content: space-between;
-  flex-shrink: 0;
-  background: var(--white);
-}
-.proj-badge {
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: var(--accent);
-  color: var(--white);
-  padding: 3px 9px;
-}
+.top-bar{height:52px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;padding:0 40px;justify-content:space-between;flex-shrink:0;background:var(--white);}
+.proj-badge{font-family:var(--font-m);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:var(--white);padding:4px 12px;}
+.page-label-inner{font-family:var(--font-m);font-size:11px;color:var(--gray-400);letter-spacing:0.06em;}
 
-/* ── 페이지 번호 ── */
-.pg {
-  position: absolute;
-  bottom: 28px; right: var(--pad);
-  font-family: var(--font-m);
-  font-size: 10px;
-  color: var(--gray-300);
-  letter-spacing: 0.08em;
-}
+/* ── 섹션 헤더 (세로 막대 스타일) ── */
+.sec-header{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;}
+.sec-bar{width:4px;height:22px;background:var(--accent);flex-shrink:0;align-self:center;}
+.sec-num{font-family:var(--font-m);font-size:12px;color:var(--accent);letter-spacing:0.06em;}
+.sec-title{font-family:var(--font-b);font-size:20px;font-weight:500;color:var(--black);letter-spacing:-0.01em;}
+.sec-bar.tl{background:var(--teal);}
+.sec-num.tl{color:var(--teal);}
+
+/* ── 본문 영역 ── */
+.inner{padding:36px 48px;flex:1;display:flex;flex-direction:column;gap:20px;overflow:hidden;min-height:0;}
+
+/* ── 타이포 ── */
+.mono{font-family:var(--font-m);}
+.label-tag{font-family:var(--font-m);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);}
+.label-tag.ac{color:var(--accent-mid);}
+.label-tag.tl{color:var(--teal);}
+
+/* ── 구분선 ── */
+.rule{width:100%;height:1px;background:var(--gray-100);flex-shrink:0;}
+
+/* ── 인라인 태그 ── */
+.itag{display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;padding:5px 12px;border:1px solid var(--gray-200);color:var(--gray-600);letter-spacing:0.02em;background:var(--gray-50);}
+.itag.ac{border-color:var(--accent);color:var(--accent);background:var(--accent-pale);}
+.itag.tl{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
 
 /* ── 인용 블록 ── */
-.quote {
-  border-left: 2px solid var(--accent-mid);
-  padding: 12px 18px;
-  background: var(--accent-light);
-  font-size: 12px;
-  color: var(--gray-700);
-  line-height: 1.75;
-}
+.quote{border-left:3px solid var(--accent-mid);padding:16px 22px;background:var(--accent-light);font-size:15px;color:var(--gray-700);line-height:1.8;}
+.quote.tl{border-left-color:var(--teal);background:var(--teal-light);}
 
-/* ── 회고 박스 ── */
-.retro {
-  background: var(--gray-50);
-  border-left: 2px solid var(--gray-300);
-  padding: 14px 18px;
-  font-size: 12px;
-  color: var(--gray-600);
-  line-height: 1.8;
-}
+/* ── 배경색 카드 (문제 박스 등) ── */
+.bg-card{padding:18px 22px;background:var(--gray-50);border-top:3px solid var(--gray-300);}
+.bg-card.ac{border-top-color:var(--accent);background:var(--accent-pale);}
+.bg-card.tl{border-top-color:var(--teal);background:var(--teal-light);}
+.bg-card-t{font-family:var(--font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:7px;}
+.bg-card.ac .bg-card-t{color:var(--accent);}
+.bg-card.tl .bg-card-t{color:var(--teal);}
+.bg-card-b{font-size:15px;color:var(--gray-700);line-height:1.65;}
 
-/* ── 문제 박스 ── */
-.prob {
-  padding: 14px 16px;
-  background: var(--gray-50);
-  border-top: 2px solid var(--gray-200);
-}
-.prob.ac { border-top-color: var(--accent); background: var(--accent-pale); }
-.prob-t { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 5px; }
-.prob.ac .prob-t { color: var(--accent); }
-.prob-b { font-size: 12px; color: var(--gray-700); line-height: 1.6; }
-
-/* ── 성과 그리드 ── */
-.outcome-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.oc-item {
-  padding: 16px 0;
-  border-bottom: 0.5px solid var(--gray-100);
-  display: flex; flex-direction: column; gap: 4px;
-}
-.oc-item:nth-child(odd)  { padding-right: 24px; border-right: 0.5px solid var(--gray-100); }
-.oc-item:nth-child(even) { padding-left: 24px; }
-.oc-num  { font-family: var(--font-d); font-size: 22px; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; }
-.oc-desc { font-size: 11px; color: var(--gray-500); line-height: 1.5; }
-
-/* ── AS-IS / TO-BE ── */
-.atb { display: grid; grid-template-columns: 1fr 36px 1fr; align-items: center; gap: 0; }
-.asis-box { padding: 12px 16px; background: var(--gray-50); border: 0.5px solid var(--gray-100); }
-.tobe-box { padding: 12px 16px; background: var(--accent-pale); border: 0.5px solid var(--accent-mid); }
-.at-lbl { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
-.asis-box .at-lbl { color: var(--gray-400); }
-.tobe-box .at-lbl { color: var(--accent); }
-.at-body { font-size: 12px; line-height: 1.6; }
-.asis-box .at-body { color: var(--gray-600); }
-.tobe-box .at-body { color: var(--accent); }
-.arr { display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--gray-300); }
-
-/* ── 이미지 플레이스홀더 ── */
-.img-ph {
-  background: var(--gray-50);
-  border: 0.5px dashed var(--gray-300);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px;
-  color: var(--gray-400);
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  text-align: center;
-  padding: 12px;
-}
-.img-ph.accent-ph { border-color: var(--accent-mid); color: var(--accent); background: var(--accent-pale); }
-.img-cap { font-family: var(--font-m); font-size: 10px; color: var(--gray-400); }
-.img-cap.ac { color: var(--accent); }
+/* ── 체크 리스트 ── */
+.clist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
+.clist li{font-size:15px;color:var(--gray-700);line-height:1.7;padding-left:20px;position:relative;}
+.clist li::before{content:"—";position:absolute;left:0;color:var(--gray-400);font-family:var(--font-m);}
+.clist li.hi{color:var(--black);font-weight:500;}
+.clist li.hi::before{color:var(--accent);}
+.clist li.hi-tl::before{color:var(--teal);}
+.clist li.hi-tl{color:var(--black);font-weight:500;}
 
 /* ── 협업 테이블 ── */
-.ctable { width: 100%; border-collapse: collapse; font-size: 12px; }
-.ctable th {
-  background: var(--gray-900);
-  color: var(--white);
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-align: left;
-  padding: 8px 14px;
-  font-weight: 400;
-}
-.ctable td {
-  padding: 9px 14px;
-  border-bottom: 0.5px solid var(--gray-100);
-  color: var(--gray-700);
-  line-height: 1.5;
-  vertical-align: top;
-}
-.ctable td:first-child {
-  font-family: var(--font-m);
-  font-size: 10px;
-  color: var(--gray-400);
-  white-space: nowrap;
-  width: 110px;
-}
+.ctable{width:100%;border-collapse:collapse;font-size:14px;}
+.ctable th{background:var(--gray-900);color:var(--white);font-family:var(--font-m);font-size:11px;letter-spacing:0.1em;text-align:left;padding:10px 18px;font-weight:400;}
+.ctable td{padding:11px 18px;border-bottom:1px solid var(--gray-100);color:var(--gray-700);line-height:1.55;vertical-align:top;}
+.ctable td:first-child{font-family:var(--font-m);font-size:12px;color:var(--gray-500);white-space:nowrap;width:140px;}
+
+/* ── 이미지 플레이스홀더 ── */
+.img-ph{background:var(--gray-50);border:1px dashed var(--gray-300);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--gray-400);font-family:var(--font-m);font-size:11px;letter-spacing:0.05em;text-align:center;padding:16px;}
+.img-ph.ac-ph{border-color:var(--accent-mid);color:var(--accent);background:var(--accent-pale);}
+.img-cap{font-family:var(--font-m);font-size:12px;color:var(--gray-400);margin-top:4px;}
+.img-cap.ac{color:var(--accent);}
+
+/* ── AS-IS TO-BE ── */
+.atb{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;gap:0;}
+.asis-b{padding:16px 20px;background:var(--gray-50);border:1px solid var(--gray-100);}
+.tobe-b{padding:16px 20px;background:var(--accent-pale);border:1px solid var(--accent-mid);}
+.at-lbl{font-family:var(--font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px;}
+.asis-b .at-lbl{color:var(--gray-400);}
+.tobe-b .at-lbl{color:var(--accent);}
+.at-body{font-size:14px;line-height:1.65;}
+.asis-b .at-body{color:var(--gray-600);}
+.tobe-b .at-body{color:var(--accent);}
+.arr-c{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gray-300);}
+
+/* ── 성과 수치 그리드 ── */
+.oc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.oc-item{padding:16px 0;border-bottom:1px solid var(--gray-100);display:flex;flex-direction:column;gap:5px;}
+.oc-item:nth-child(odd){padding-right:32px;border-right:1px solid var(--gray-100);}
+.oc-item:nth-child(even){padding-left:32px;}
+.oc-num{font-family:var(--font-d);font-size:28px;font-weight:300;color:var(--accent);letter-spacing:-0.02em;}
+.oc-num.tl{color:var(--teal);}
+.oc-desc{font-size:13px;color:var(--gray-500);line-height:1.55;}
 
 /* ── 플로우 스텝 ── */
-.flow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-.fstep {
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 0.04em;
-  color: var(--gray-600);
-  background: var(--gray-50);
-  border: 0.5px solid var(--gray-100);
-  padding: 6px 11px;
-}
-.fstep.on { background: var(--accent-pale); border-color: var(--accent); color: var(--accent); }
-.farr { font-size: 10px; color: var(--gray-300); }
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:5px;}
+.fstep{font-family:var(--font-m);font-size:11px;color:var(--gray-600);background:var(--gray-50);border:1px solid var(--gray-100);padding:8px 14px;}
+.fstep.on{background:var(--accent-pale);border-color:var(--accent);color:var(--accent);}
+.farr{font-size:13px;color:var(--gray-300);}
 
-/* ── 강점 스트립 ── */
-.str-item {
-  padding: 15px 0;
-  border-bottom: 0.5px solid var(--gray-100);
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 14px;
-  align-items: start;
-}
-.str-item:last-child { border-bottom: none; }
-.str-n { font-family: var(--font-m); font-size: 9px; color: var(--accent); padding-top: 2px; }
+/* ── 강점 아이템 ── */
+.str-item{padding:16px 0;border-bottom:1px solid var(--gray-100);display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:start;}
+.str-item:last-child{border-bottom:none;}
+.str-n{font-family:var(--font-m);font-size:11px;color:var(--accent);padding-top:2px;}
 
-/* ── col/row 헬퍼 ── */
-.col { display: flex; flex-direction: column; }
-.row { display: flex; }
-.g4  { gap: 4px; }
-.g8  { gap: 8px; }
-.g12 { gap: 12px; }
-.g16 { gap: 16px; }
-.g20 { gap: 20px; }
-.g24 { gap: 24px; }
-.g28 { gap: 28px; }
+/* ── 헬퍼 ── */
+.col{display:flex;flex-direction:column;}
+.row{display:flex;}
+.g4{gap:4px;} .g8{gap:8px;} .g12{gap:12px;} .g16{gap:16px;} .g20{gap:20px;} .g24{gap:24px;}
+.body-text{font-size:15px;color:var(--gray-600);line-height:1.85;}
+.body-text p{margin-bottom:12px;}
+.body-text p:last-child{margin-bottom:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 
-.body-text { font-size: 12px; color: var(--gray-600); line-height: 1.8; }
-.body-text p { margin-bottom: 10px; }
-.body-text p:last-child { margin-bottom: 0; }
+/* ━━━━━━━━━━━━━━━━━━━
+   P1 표지
+━━━━━━━━━━━━━━━━━━━ */
+#p1{background:var(--gray-900);display:grid;grid-template-columns:1fr 440px;}
+#p1 .p1-left{padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .p1-right{background:var(--accent);padding:64px 52px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .accent-bar{width:36px;height:3px;background:var(--accent-mid);margin-bottom:32px;}
+#p1 .headline{font-family:var(--font-d);font-weight:300;font-size:64px;letter-spacing:-0.03em;line-height:1.12;color:var(--white);}
+#p1 .headline em{color:#7fa8f0;font-style:normal;}
+#p1 .sub{font-size:19px;color:var(--gray-500);line-height:1.8;margin-top:28px;max-width:680px;}
+#p1 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;margin-top:52px;}
+#p1 .ci-lbl{font-family:var(--font-m);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);margin-bottom:4px;}
+#p1 .ci-val{font-size:17px;color:var(--gray-400);}
+#p1 .r-lbl{font-family:var(--font-m);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px;}
+#p1 .r-tags{display:flex;flex-direction:column;gap:10px;}
+#p1 .rtag{font-family:var(--font-m);font-size:14px;color:rgba(255,255,255,0.88);border:1px solid rgba(255,255,255,0.18);padding:15px 18px;letter-spacing:0.02em;}
+#p1 .rtag-n{font-size:12px;color:rgba(255,255,255,0.32);margin-right:12px;}
+#p1 .r-bot{font-family:var(--font-m);font-size:10px;color:rgba(255,255,255,0.22);letter-spacing:0.08em;}
 
-/* ══════════════════════════════
-   P1 — 표지
-══════════════════════════════ */
-#p1 {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-}
-#p1 .left {
-  background: var(--black);
-  padding: var(--pad);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-#p1 .right {
-  background: var(--accent);
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-#p1 .headline {
-  font-family: var(--font-d);
-  font-weight: 300;
-  font-size: 38px;
-  letter-spacing: -0.03em;
-  line-height: 1.18;
-  color: var(--white);
-}
-#p1 .headline em { color: #7fa8f0; font-style: normal; }
-#p1 .sub {
-  font-size: 13px;
-  color: var(--gray-400);
-  line-height: 1.75;
-  margin-top: 20px;
-  max-width: 440px;
-}
-#p1 .accent-bar { width: 28px; height: 2px; background: var(--accent-mid); margin-bottom: 28px; }
-#p1 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-top: 40px; }
-#p1 .ci-label { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-600); margin-bottom: 3px; }
-#p1 .ci-val   { font-size: 12px; color: var(--gray-300); }
-#p1 .right-label { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
-#p1 .right-tags { display: flex; flex-direction: column; gap: 6px; }
-#p1 .rtag {
-  font-family: var(--font-m);
-  font-size: 10px;
-  color: rgba(255,255,255,0.85);
-  border: 0.5px solid rgba(255,255,255,0.2);
-  padding: 7px 12px;
-  letter-spacing: 0.03em;
-}
-#p1 .right-bottom { font-family: var(--font-m); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
+/* ━━━━━━━━━━━━━━━━━━━
+   P2 About Me
+━━━━━━━━━━━━━━━━━━━ */
+#p2-body{display:grid;grid-template-columns:260px 1px 1fr;flex:1;min-height:0;}
+#p2-left{background:var(--accent-pale);padding:36px 30px;display:flex;flex-direction:column;gap:24px;overflow:hidden;}
+#p2-right{display:flex;flex-direction:column;overflow:hidden;}
+.photo-ph{width:84px;height:84px;background:var(--gray-100);border:1px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:10px;color:var(--gray-400);text-align:center;}
+.info-row{display:grid;grid-template-columns:40px 1fr;gap:6px;font-size:13px;align-items:baseline;}
+.info-key{font-family:var(--font-m);font-size:10px;color:var(--gray-400);letter-spacing:0.06em;text-transform:uppercase;}
+.sk-pill{font-family:var(--font-m);font-size:10px;padding:4px 9px;border:1px solid var(--gray-200);color:var(--gray-600);background:var(--white);}
+.career-bar{border-bottom:1px solid var(--gray-100);padding:14px 40px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;}
+.chip{font-family:var(--font-m);font-size:11px;padding:5px 14px;letter-spacing:0.04em;white-space:nowrap;}
+.chip.dk{background:var(--gray-900);color:var(--white);}
+.chip.lt{background:var(--gray-100);color:var(--gray-600);}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--gray-100);flex-shrink:0;}
+.mc{padding:20px 32px;border-right:1px solid var(--gray-100);}
+.mc:last-child{border-right:none;}
+.mc-num{font-family:var(--font-d);font-size:40px;font-weight:300;color:var(--black);letter-spacing:-0.03em;}
+.mc-desc{font-size:12px;color:var(--gray-500);line-height:1.5;margin-top:4px;}
+.str-area{padding:20px 40px;flex:1;overflow:hidden;display:flex;flex-direction:column;}
 
-/* ══════════════════════════════
-   P2 — About Me (인라인 스타일로 이전)
-══════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━
+   P3 자소서
+━━━━━━━━━━━━━━━━━━━ */
+#p3-body{display:grid;grid-template-columns:1fr 1px 1fr;flex:1;overflow:hidden;}
+.cover-col{padding:40px 52px;display:flex;flex-direction:column;gap:22px;overflow:hidden;}
 
-/* ══════════════════════════════
-   P3 — 지원동기 + 강점
-══════════════════════════════ */
-#p3-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.5px 1fr;
-  flex: 1;
-  overflow: hidden;
-}
-.cover-col { padding: 36px var(--pad) 36px 48px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; }
-.cover-col.right { padding: 36px 48px 36px var(--pad); }
+/* ━━━━━━━━━━━━━━━━━━━
+   프로젝트 표지 (P4·P8)
+━━━━━━━━━━━━━━━━━━━ */
+/* 상단 정보 영역 */
+.pc-info{padding:48px var(--gutter) 32px;display:flex;flex-direction:column;gap:18px;border-bottom:1px solid var(--gray-100);background:var(--white);}
+.pc-pnum{font-family:var(--font-m);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.pc-pnum.tl{color:var(--teal);}
+.pc-title{font-family:var(--font-d);font-size:60px;font-weight:300;letter-spacing:-0.03em;line-height:1.08;color:var(--black);}
+.pc-desc{font-size:17px;color:var(--gray-500);line-height:1.75;max-width:1000px;}
+.pc-meta{display:flex;gap:48px;flex-wrap:wrap;}
+.pc-meta-lbl{font-family:var(--font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;}
+.pc-meta-val{font-size:15px;color:var(--gray-700);}
+/* 하단 성과 4칸 */
+.pc-metrics{display:grid;grid-template-columns:repeat(4,1fr);flex:1;min-height:0;background:var(--white);}
+.pc-mc{padding:32px var(--gutter);border-right:1px solid var(--gray-100);display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.pc-mc:last-child{border-right:none;}
+.pc-mc-num{font-family:var(--font-d);font-size:56px;font-weight:300;color:var(--accent);letter-spacing:-0.04em;line-height:1;}
+.pc-mc-num.tl{color:var(--teal);}
+.pc-mc-unit{font-size:22px;color:var(--gray-400);margin-left:3px;}
+.pc-mc-lbl{font-size:16px;color:var(--gray-500);line-height:1.6;}
+.pc-mc-sub{font-family:var(--font-m);font-size:10px;color:var(--gray-300);letter-spacing:0.04em;margin-top:3px;}
+/* 프로젝트 표지 전체 래퍼 */
+.proj-cover{flex:1;display:flex;flex-direction:column;min-height:0;}
 
-/* ══════════════════════════════
-   P4, P8 — 프로젝트 표지
-══════════════════════════════ */
-.proj-cover {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  height: 100%;
-}
-.pcl { /* 좌 — 밝은 배경 */
-  background: var(--white);
-  padding: var(--pad);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  border-right: 0.5px solid var(--gray-100);
-  position: relative;
-}
-.pcl-accent-bg {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 6px;
-  background: var(--accent);
-}
-.pcr { /* 우 — 진한 배경 */
-  background: var(--gray-900);
-  padding: 40px 36px;
-  display: flex; flex-direction: column; justify-content: center; gap: 0;
-}
-/* 우측 성과 카드 */
-.pcr .mc-card {
-  padding: 18px 0;
-  border-bottom: 0.5px solid rgba(255,255,255,0.07);
-  display: flex; flex-direction: column; gap: 5px;
-}
-.pcr .mc-card:last-child { border-bottom: none; }
-.pcr .mc-num  { font-family: var(--font-d); font-size: 26px; font-weight: 300; color: #7fa8f0; letter-spacing: -0.02em; line-height: 1; }
-.pcr .mc-lbl  { font-size: 11px; color: var(--gray-400); line-height: 1.4; }
-.pcr .mc-meta { font-family: var(--font-m); font-size: 9px; color: var(--gray-600); letter-spacing: 0.06em; margin-bottom: 12px; }
+/* ━━━━━━━━━━━━━━━━━━━
+   P11 마무리
+━━━━━━━━━━━━━━━━━━━ */
+#p11{background:var(--gray-900);display:grid;grid-template-columns:1fr 400px;}
+#p11 .el{padding:var(--gutter);display:flex;flex-direction:column;justify-content:space-between;}
+#p11 .er{background:var(--accent);padding:64px 52px;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;}
+#p11 .eh{font-family:var(--font-d);font-size:48px;font-weight:300;letter-spacing:-0.03em;line-height:1.22;color:var(--white);}
+#p11 .ee{color:#7fa8f0;}
+#p11 .ecl{font-family:var(--font-m);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:4px;}
+#p11 .ecv{font-size:15px;color:rgba(255,255,255,0.85);}
+#p11 .ebar{width:32px;height:3px;background:rgba(255,255,255,0.36);margin-bottom:12px;}
 
-/* 프로젝트 표지 좌측 텍스트 */
-.proj-num  { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
-.proj-title { font-family: var(--font-d); font-size: 32px; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2; color: var(--black); }
-.proj-desc  { font-size: 12px; color: var(--gray-500); line-height: 1.75; margin-top: 14px; max-width: 400px; }
-.proj-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
-.proj-meta  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; border-top: 0.5px solid var(--gray-100); padding-top: 20px; }
-.pm-label { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 4px; text-transform: uppercase; }
-.pm-val   { font-size: 12px; color: var(--gray-700); }
-
-/* ══════════════════════════════
-   P11 — 마무리
-══════════════════════════════ */
-#p11 {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-}
-#p11 .left {
-  background: var(--black);
-  padding: var(--pad);
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-#p11 .right {
-  background: var(--accent);
-  padding: 48px 40px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  gap: 8px;
-}
-#p11 .end-head { font-family: var(--font-d); font-size: 30px; font-weight: 300; letter-spacing: -0.03em; line-height: 1.3; color: var(--white); }
-#p11 .end-em { color: #7fa8f0; }
-#p11 .end-sub { font-size: 12px; color: var(--gray-500); line-height: 1.7; margin-top: 12px; }
-#p11 .end-contacts { display: flex; flex-direction: column; gap: 12px; }
-#p11 .ec { display: flex; flex-direction: column; gap: 3px; }
-#p11 .ec-lbl { font-family: var(--font-m); font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); text-transform: uppercase; }
-#p11 .ec-val { font-size: 12px; color: rgba(255,255,255,0.85); }
-#p11 .end-bar { width: 28px; height: 2px; background: rgba(255,255,255,0.5); margin-bottom: 8px; }
-
-@media print {
-  body { background: white; padding: 0; gap: 0; }
-  .page { box-shadow: none; page-break-after: always; }
-  .page-label { display: none; }
-}
+@media print{body{background:white;padding:0;gap:0;}.page{box-shadow:none;page-break-after:always;}.page-label{display:none;}}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P1 표지
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>MOMENTI — 서비스기획/PM 포트폴리오</span><span>P.01</span></div>
 <div class="page" id="p1">
-  <div class="left">
+  <div class="p1-left">
     <div>
       <div class="accent-bar"></div>
-      <h1 class="headline">
-        클라이언트의 요구를<br>
-        기준으로 정리하고,<br>
-        <em>구조로 실현합니다.</em>
-      </h1>
-      <p class="sub">다양한 이해관계자의 요구를 납득 가능한 기준으로 정리하고, 실제 운영 구조로 설계해온 서비스기획/PM 김수진입니다.</p>
+      <h1 class="headline">클라이언트의 요구를<br>기준으로 정리하고,<br><em>구조로 실현합니다.</em></h1>
+      <p class="sub">다양한 이해관계자의 요구를 납득 가능한 기준으로 정리하고,<br>화면설계부터 운영 이관까지 전 과정을 주도해온 서비스기획/PM 김수진입니다.</p>
       <div class="contact-grid">
-        <div><p class="ci-label">name</p><p class="ci-val">김수진</p></div>
-        <div><p class="ci-label">phone</p><p class="ci-val">010-4772-6950</p></div>
-        <div><p class="ci-label">email</p><p class="ci-val">soowlsee@gmail.com</p></div>
-        <div><p class="ci-label">position</p><p class="ci-val">서비스기획 / PM</p></div>
+        <div><p class="ci-lbl">name</p><p class="ci-val">김수진</p></div>
+        <div><p class="ci-lbl">phone</p><p class="ci-val">010-4772-6950</p></div>
+        <div><p class="ci-lbl">email</p><p class="ci-val">soowlsee@gmail.com</p></div>
+        <div><p class="ci-lbl">position</p><p class="ci-val">서비스기획 / PM</p></div>
       </div>
     </div>
-    <div style="font-family:var(--font-m); font-size:10px; color:var(--gray-700); letter-spacing:0.08em;">01 / 11</div>
+    <div style="font-family:var(--font-m);font-size:11px;color:var(--gray-700);letter-spacing:0.08em;">01 / 11</div>
   </div>
-  <div class="right">
+  <div class="p1-right">
     <div>
-      <p class="right-label">core competency</p>
-      <div class="right-tags">
-        <div class="rtag">요구사항 수집 · 기능 범위 판단</div>
-        <div class="rtag">이해관계자 조율</div>
-        <div class="rtag">화면설계 · 스토리보드</div>
-        <div class="rtag">운영 정책 수립</div>
-        <div class="rtag">가이드라인 문서화</div>
-        <div class="rtag">프로젝트 관리 (PM)</div>
+      <p class="r-lbl">core competency</p>
+      <div class="r-tags">
+        <div class="rtag"><span class="rtag-n">01</span>요구사항 수집 · 기능 범위 판단</div>
+        <div class="rtag"><span class="rtag-n">02</span>이해관계자 조율 · 정책 합의</div>
+        <div class="rtag"><span class="rtag-n">03</span>화면설계 · 스토리보드 작성</div>
+        <div class="rtag"><span class="rtag-n">04</span>운영 정책 수립 · 가이드라인 문서화</div>
+        <div class="rtag"><span class="rtag-n">05</span>프로젝트 관리 (PM) · 일정 조율</div>
+        <div class="rtag"><span class="rtag-n">06</span>배포 · 운영 이관 설계</div>
       </div>
     </div>
-    <p class="right-bottom">kim soojin — portfolio 2025</p>
+    <p class="r-bot">kim soojin — portfolio 2025</p>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════════════
-     P2 About Me (확장)
-══════════════════════════════════════ -->
+<!-- ═══════════════════════════════════
+     P2 About Me
+═══════════════════════════════════ -->
 <div class="page-label"><span>ABOUT ME</span><span>P.02</span></div>
-<div class="page" id="p2" style="display:flex; flex-direction:column;">
-  <!-- 상단 바 -->
-  <div class="top-bar" style="flex-shrink:0;">
-    <span class="label">about me</span>
-    <span class="label">kim soojin — portfolio 2025</span>
+<div class="page" id="p2" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar">
+    <span class="label-tag">about me</span>
+    <span class="label-tag">kim soojin — portfolio 2025</span>
   </div>
-  <!-- 본문: 좌 220px | 구분선 | 우 나머지 -->
-  <div style="display:grid; grid-template-columns:220px 1px 1fr; flex:1; min-height:0;">
-
-    <!-- ① 좌측 — 개인정보 + 스킬 -->
-    <div style="background:var(--accent-pale); padding:28px 24px; display:flex; flex-direction:column; gap:20px; overflow:hidden;">
-      <!-- 사진 -->
-      <div style="width:68px; height:68px; background:var(--gray-100); border:0.5px dashed var(--gray-300); display:flex; align-items:center; justify-content:center; font-family:var(--font-m); font-size:8px; color:var(--gray-400); text-align:center; letter-spacing:0.04em;">사진<br>삽입</div>
-      <!-- 이름 -->
-      <div>
-        <p style="font-family:var(--font-d); font-size:18px; font-weight:400; color:var(--black); letter-spacing:-0.01em;">김수진</p>
-        <p style="font-size:11px; color:var(--gray-500); margin-top:2px;">서비스기획 / PM</p>
-      </div>
-      <!-- 구분선 -->
-      <div style="height:0.5px; background:var(--gray-100);"></div>
-      <!-- 기본 정보 -->
-      <div style="display:flex; flex-direction:column; gap:7px;">
-        <p class="label" style="margin-bottom:4px;">info</p>
-        <div style="display:grid; grid-template-columns:40px 1fr; gap:5px; font-size:11px; align-items:baseline;">
-          <span style="font-family:var(--font-m); font-size:9px; color:var(--gray-400); letter-spacing:0.06em; text-transform:uppercase;">birth</span>
-          <span style="color:var(--gray-700);">1996.10.18</span>
-        </div>
-        <div style="display:grid; grid-template-columns:40px 1fr; gap:5px; font-size:11px; align-items:baseline;">
-          <span style="font-family:var(--font-m); font-size:9px; color:var(--gray-400); letter-spacing:0.06em; text-transform:uppercase;">tel</span>
-          <span style="color:var(--gray-700);">010-4772-6950</span>
-        </div>
-        <div style="display:grid; grid-template-columns:40px 1fr; gap:5px; font-size:11px; align-items:baseline;">
-          <span style="font-family:var(--font-m); font-size:9px; color:var(--gray-400); letter-spacing:0.06em; text-transform:uppercase;">mail</span>
-          <span style="color:var(--gray-700); word-break:break-all; font-size:10px;">soowlsee@gmail.com</span>
-        </div>
-        <div style="display:grid; grid-template-columns:40px 1fr; gap:5px; font-size:11px; align-items:baseline;">
-          <span style="font-family:var(--font-m); font-size:9px; color:var(--gray-400); letter-spacing:0.06em; text-transform:uppercase;">exp</span>
-          <span style="color:var(--gray-700);">2년 10개월</span>
-        </div>
-      </div>
-      <!-- 구분선 -->
-      <div style="height:0.5px; background:var(--gray-100);"></div>
-      <!-- 툴 & 스킬 -->
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <p class="label">tools & skills</p>
-        <div style="display:flex; flex-wrap:wrap; gap:4px;">
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Figma</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Notion</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Confluence</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Slack</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Google Analytics</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">SQL</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">Excel</span>
-          <span style="font-family:var(--font-m); font-size:9px; padding:3px 7px; border:0.5px solid var(--gray-200); color:var(--gray-600);">PowerPoint</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 세로 구분선 -->
-    <div style="background:var(--gray-100);"></div>
-
-    <!-- ② 우측 — 경력 요약 + 수치 + 강점 -->
-    <div style="display:flex; flex-direction:column; overflow:hidden;">
-      <!-- 경력 요약 -->
-      <div style="border-bottom:0.5px solid var(--gray-100); padding:12px 36px; display:flex; align-items:center; gap:8px; flex-shrink:0; flex-wrap:wrap;">
-        <span class="label" style="margin-right:4px;">career</span>
-        <span style="font-family:var(--font-m); font-size:9px; padding:3px 10px; background:var(--gray-900); color:var(--white); letter-spacing:0.05em; white-space:nowrap;">굿네이버스 인터내셔날 · PM · 2022.08–2024.08</span>
-        <span style="font-family:var(--font-m); font-size:9px; padding:3px 10px; background:var(--gray-100); color:var(--gray-600); letter-spacing:0.05em; white-space:nowrap;">미리디 · PM · 2025.04–06</span>
-        <span style="font-family:var(--font-m); font-size:9px; padding:3px 10px; background:var(--gray-100); color:var(--gray-600); letter-spacing:0.05em; white-space:nowrap;">도서앱 · 사이드PM · 진행중</span>
-      </div>
-      <!-- 수치 3개 -->
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); border-bottom:0.5px solid var(--gray-100); flex-shrink:0;">
-        <div style="padding:16px 24px; border-right:0.5px solid var(--gray-100);">
-          <p style="font-family:var(--font-d); font-size:26px; font-weight:300; color:var(--black); letter-spacing:-0.03em;">6</p>
-          <p style="font-size:10px; color:var(--gray-500); line-height:1.5; margin-top:3px;">신규 서비스 기획 PM<br>기획~운영 전 과정</p>
-        </div>
-        <div style="padding:16px 24px; border-right:0.5px solid var(--gray-100);">
-          <p style="font-family:var(--font-d); font-size:26px; font-weight:300; color:var(--black); letter-spacing:-0.03em;">100<span style="font-size:14px;">+</span></p>
-          <p style="font-size:10px; color:var(--gray-500); line-height:1.5; margin-top:3px;">다부서 이해관계자<br>협업 경험</p>
-        </div>
-        <div style="padding:16px 24px;">
-          <p style="font-family:var(--font-d); font-size:26px; font-weight:300; color:var(--black); letter-spacing:-0.03em;">300<span style="font-size:14px;">+</span></p>
-          <p style="font-size:10px; color:var(--gray-500); line-height:1.5; margin-top:3px;">서비스 화면·기능 정의<br>및 운영 정책 설계</p>
-        </div>
-      </div>
-      <!-- 강점 3개 -->
-      <div style="padding:16px 36px; flex:1; overflow:hidden; display:flex; flex-direction:column; gap:0;">
-        <p class="label" style="margin-bottom:10px;">core strength</p>
-        <div class="str-item">
-          <span class="str-n">01</span>
+  <div style="margin:0 28px 28px;flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;">
+    <div id="p2-body">
+      <!-- 좌 -->
+      <div id="p2-left">
+        <div class="col g12">
+          <div class="photo-ph">사진<br>삽입</div>
           <div>
-            <p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:3px;">요구사항을 기준으로 거릅니다</p>
-            <p style="font-size:11px; color:var(--gray-500); line-height:1.6;">반복 사용성과 기대 효과를 기준으로 수용 범위를 먼저 판단하고, 그 기준으로 이해관계자와 합의합니다.</p>
+            <p style="font-family:var(--font-d);font-size:24px;font-weight:400;color:var(--black);letter-spacing:-0.01em;">김수진</p>
+            <p style="font-size:13px;color:var(--gray-500);margin-top:3px;">서비스기획 / PM</p>
           </div>
         </div>
-        <div class="str-item">
-          <span class="str-n">02</span>
-          <div>
-            <p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:3px;">클라이언트와 팀 사이의 간극을 메웁니다</p>
-            <p style="font-size:11px; color:var(--gray-500); line-height:1.6;">양쪽이 납득할 기준을 만드는 것이 협업에서 제가 자주 맡는 역할입니다.</p>
+        <div style="height:1px;background:var(--gray-100);"></div>
+        <div class="col g8">
+          <p class="label-tag" style="margin-bottom:3px;">info</p>
+          <div class="info-row"><span class="info-key">birth</span><span style="color:var(--gray-700);">1996.10.18</span></div>
+          <div class="info-row"><span class="info-key">tel</span><span style="color:var(--gray-700);">010-4772-6950</span></div>
+          <div class="info-row"><span class="info-key">mail</span><span style="font-size:12px;color:var(--gray-700);word-break:break-all;">soowlsee@gmail.com</span></div>
+          <div class="info-row"><span class="info-key">exp</span><span style="color:var(--gray-700);">총 2년 10개월</span></div>
+        </div>
+        <div style="height:1px;background:var(--gray-100);"></div>
+        <div class="col g8">
+          <p class="label-tag" style="margin-bottom:3px;">tools & skills</p>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;">
+            <span class="sk-pill">Figma</span><span class="sk-pill">Notion</span><span class="sk-pill">Confluence</span>
+            <span class="sk-pill">Slack</span><span class="sk-pill">Google Analytics</span><span class="sk-pill">SQL</span>
+            <span class="sk-pill">Excel</span><span class="sk-pill">JIRA</span><span class="sk-pill">PowerPoint</span>
           </div>
         </div>
-        <div class="str-item" style="border-bottom:none;">
-          <span class="str-n">03</span>
-          <div>
-            <p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:3px;">결과물이 인계된 후에도 작동하도록 설계합니다</p>
-            <p style="font-size:11px; color:var(--gray-500); line-height:1.6;">담당자가 바뀌어도 재문의 없이 운영되는 구조까지 기획의 범위로 봅니다.</p>
+      </div>
+      <div style="background:var(--gray-100);"></div>
+      <!-- 우 -->
+      <div id="p2-right">
+        <div class="career-bar">
+          <span class="label-tag" style="margin-right:6px;">career</span>
+          <span class="chip dk">굿네이버스 인터내셔날 · 서비스팀 PM · 2022.08–2024.08</span>
+          <span class="chip lt">미리디 · PM · 2025.04–06</span>
+          <span class="chip lt">도서앱 사이드프로젝트 · PM · 2025.03– 진행중</span>
+        </div>
+        <div class="metrics-row">
+          <div class="mc"><p class="mc-num">6</p><p class="mc-desc">신규 서비스 기획 PM<br>기획~운영 전 과정 직접 수행</p></div>
+          <div class="mc"><p class="mc-num">100<span style="font-size:22px;">+</span></p><p class="mc-desc">다부서 이해관계자<br>협업 경험</p></div>
+          <div class="mc"><p class="mc-num">300<span style="font-size:22px;">+</span></p><p class="mc-desc">서비스 화면·기능 정의<br>및 운영 정책 설계</p></div>
+        </div>
+        <div class="str-area">
+          <p class="label-tag" style="margin-bottom:14px;">core strength</p>
+          <div class="str-item">
+            <span class="str-n">01</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">요구사항을 기준으로 거릅니다</p><p style="font-size:13px;color:var(--gray-500);line-height:1.7;">반복 사용성과 기대 효과를 기준으로 수용 범위를 먼저 판단하고, 그 기준으로 이해관계자와 합의합니다.</p></div>
+          </div>
+          <div class="str-item">
+            <span class="str-n">02</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">클라이언트와 팀 사이의 간극을 메웁니다</p><p style="font-size:13px;color:var(--gray-500);line-height:1.7;">클라이언트 요구와 개발·디자인 팀의 제약 사이에서 양쪽이 납득할 기준을 만드는 역할입니다.</p></div>
+          </div>
+          <div class="str-item" style="border-bottom:none;">
+            <span class="str-n">03</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">결과물이 인계된 후에도 작동하도록 설계합니다</p><p style="font-size:13px;color:var(--gray-500);line-height:1.7;">담당자가 바뀌어도 재문의 없이 자립 운영되는 구조까지 기획의 범위로 봅니다.</p></div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-  <span class="pg">02 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P3 지원동기 + 강점
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>COVER LETTER</span><span>P.03</span></div>
-<div class="page" id="p3">
+<div class="page" id="p3" style="display:flex;flex-direction:column;background:var(--gray-50);">
   <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span class="label">cover letter</span>
-      <span class="label" style="color:var(--gray-200);">지원동기 · 나의 강점</span>
-    </div>
+    <div style="display:flex;align-items:center;gap:14px;"><span class="label-tag">cover letter</span><span class="label-tag" style="color:var(--gray-300);">지원동기 · 나의 강점</span></div>
   </div>
-  <div id="p3-grid" style="flex:1; overflow:hidden;">
-    <div class="cover-col">
-      <div class="col g8">
-        <p class="label accent">지원동기</p>
-        <h3 style="font-family:var(--font-d); font-size:16px; font-weight:400; letter-spacing:-0.01em; line-height:1.45; color:var(--black);">복잡한 요구를 기준으로 정리해<br>결과를 만들어온 사람이,<br>다양한 클라이언트와 함께 일하는<br>곳에서 더 빛난다고 생각했습니다.</h3>
-      </div>
-      <div class="body-text">
-        <p>굿네이버스에서 2년간 법무, 개발, 마케팅, CS, 운영 등 5개 부서가 얽힌 프로젝트를 주도하며, 각기 다른 요구를 하나의 기준으로 정리하고 실제 구조를 바꿔온 경험이 있습니다.</p>
-        <p>이해관계자 조율의 핵심은 중재가 아니라 모두가 납득할 수 있는 기준을 먼저 세우는 것임을 반복 경험으로 체득했습니다. 내부 부서든 외부 클라이언트든 이 원리는 다르지 않습니다.</p>
-      </div>
-      <div class="quote">
-        모멘티는 삼성전자, KT, SK 등 각기 다른 목표와 조직 구조를 가진 기업을 클라이언트로 두고 있습니다. 저는 클라이언트의 요구를 단순히 수행하는 것이 아니라, 그 안의 이해관계를 정리하고 실현 가능한 기준으로 구조화하는 역할에서 강점을 발휘해왔습니다.
-      </div>
-    </div>
-    <div class="rule-v"></div>
-    <div class="cover-col right">
-      <div class="col g8">
-        <p class="label accent">나의 강점</p>
-        <h3 style="font-family:var(--font-d); font-size:16px; font-weight:400; letter-spacing:-0.01em; line-height:1.45; color:var(--black);">기준을 먼저 세우고,<br>그 기준으로 복잡한 것을<br>단순하게 만듭니다.</h3>
-      </div>
-      <div class="col g0">
-        <div class="str-item">
-          <span class="str-n">01</span>
-          <div><p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:4px;">판단 기준 우선</p><p style="font-size:11px; color:var(--gray-600); line-height:1.6;">요구사항 수집 전, 반복 사용성과 기대 효과를 기준으로 수용 범위를 먼저 설정합니다. 기준이 있으면 충돌이 줄어듭니다.</p></div>
+  <div style="margin:0 28px 28px;flex:1;display:flex;min-height:0;background:var(--white);">
+    <div id="p3-body" style="flex:1;">
+      <div class="cover-col">
+        <div class="col g10">
+          <p class="label-tag ac">지원동기</p>
+          <h3 style="font-family:var(--font-d);font-size:22px;font-weight:400;letter-spacing:-0.01em;line-height:1.45;color:var(--black);margin-top:6px;">복잡한 요구를 기준으로 정리해 결과를 만들어온 사람이,<br>다양한 클라이언트와 함께 일하는 곳에서 더 빛난다고 생각했습니다.</h3>
         </div>
-        <div class="str-item">
-          <span class="str-n">02</span>
-          <div><p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:4px;">구조적 신호 읽기</p><p style="font-size:11px; color:var(--gray-600); line-height:1.6;">정량 데이터가 없어도 UI 구조, 운영 맥락, 서비스 성숙 단계를 종합해 문제를 정의하고 전 부서가 합의할 기준을 만듭니다.</p></div>
+        <div class="body-text">
+          <p>굿네이버스에서 2년간 법무, 개발, 마케팅, CS, 운영 등 5개 부서가 얽힌 프로젝트를 주도하며, 각기 다른 요구를 하나의 기준으로 정리하고 실제 구조를 바꿔온 경험이 있습니다. 기부금영수증 발급 프로젝트에서는 5개 부서의 보안·법무·운영 리스크를 정책 기준으로 합의하면서 CS 상담을 34.8% 줄였고, 어드민 리뉴얼에서는 4개 부서 12명의 요구를 수용 범위와 기준으로 정리해 개발 없이 자립 운영되는 구조로 전환했습니다.</p>
+          <p>이해관계자 조율의 핵심은 중재가 아니라 모두가 납득할 수 있는 기준을 먼저 세우는 것임을 반복 경험으로 체득했습니다. 내부 부서든 외부 클라이언트든 이 원리는 다르지 않습니다.</p>
         </div>
-        <div class="str-item" style="border-bottom:none;">
-          <span class="str-n">03</span>
-          <div><p style="font-size:12px; font-weight:500; color:var(--black); margin-bottom:4px;">인계 후를 위한 설계</p><p style="font-size:11px; color:var(--gray-600); line-height:1.6;">프로젝트가 클라이언트에게 인계되는 순간을 위한 설계까지 기획의 범위로 보고 일해왔습니다.</p></div>
+        <div class="quote">모멘티는 삼성전자, KT, SK 등 각기 다른 목표와 조직 구조를 가진 기업을 클라이언트로 두고 있습니다. 저는 클라이언트의 요구를 단순히 수행하는 것이 아니라, 그 안의 이해관계를 정리하고 실현 가능한 기준으로 구조화하는 역할에서 강점을 발휘해왔습니다.</div>
+      </div>
+      <div style="background:var(--gray-100);"></div>
+      <div class="cover-col">
+        <div class="col g10">
+          <p class="label-tag ac">나의 강점</p>
+          <h3 style="font-family:var(--font-d);font-size:22px;font-weight:400;letter-spacing:-0.01em;line-height:1.45;color:var(--black);margin-top:6px;">기준을 먼저 세우고,<br>그 기준으로 복잡한 것을 단순하게 만듭니다.</h3>
+        </div>
+        <div class="col" style="gap:0;">
+          <div class="str-item">
+            <span class="str-n">01</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">판단 기준 우선</p><p style="font-size:13px;color:var(--gray-600);line-height:1.7;">요구사항 수집 전, 반복 사용성과 기대 효과를 기준으로 수용 범위를 먼저 설정합니다. 기준이 있으면 충돌이 줄어들고, 협의 속도가 빨라집니다.</p></div>
+          </div>
+          <div class="str-item">
+            <span class="str-n">02</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">구조적 신호 읽기</p><p style="font-size:13px;color:var(--gray-600);line-height:1.7;">정량 데이터가 없어도 UI 구조, 운영 맥락, 서비스 성숙 단계를 종합해 문제를 정의하고 전 부서가 합의할 기준을 만듭니다.</p></div>
+          </div>
+          <div class="str-item" style="border-bottom:none;">
+            <span class="str-n">03</span>
+            <div><p style="font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px;">인계 후를 위한 설계</p><p style="font-size:13px;color:var(--gray-600);line-height:1.7;">프로젝트가 클라이언트에게 인계되는 순간을 위한 설계까지 기획의 범위로 봅니다. 담당자가 바뀌어도 재문의 없이 운영되도록 가이드라인을 함께 납품합니다.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <span class="pg">03 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P4 Project 01 표지
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>PROJECT 01 — COVER</span><span>P.04</span></div>
-<div class="page" id="p4">
-  <div class="proj-cover">
-    <div class="pcl">
-      <div class="pcl-accent-bg"></div>
-      <div class="col g0">
-        <p class="proj-num">project 01</p>
-        <h2 class="proj-title">웹서비스 자동화<br>어드민 리뉴얼</h2>
-        <p class="proj-desc">개발에 의존하던 운영 구조를 현업이 직접 운영하는 어드민으로 전환해, 4개 부서 12명이 개발 없이 자립 운영 가능한 백오피스를 기획·배포한 프로젝트</p>
-        <div class="proj-tags">
-          <span class="tag ac">요구사항 수집</span>
-          <span class="tag ac">기능 범위 판단</span>
-          <span class="tag ac">화면설계</span>
-          <span class="tag ac">배포</span>
-          <span class="tag ac">운영 이관</span>
-          <span class="tag ac">가이드라인 문서화</span>
-        </div>
-        <div class="proj-meta">
-          <div><p class="pm-label">기간</p><p class="pm-val">2023.02 – 2023.09 (8개월)</p></div>
-          <div><p class="pm-label">역할</p><p class="pm-val">PM 100%</p></div>
-        </div>
+<div class="page" id="p4" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div style="height:5px;background:var(--accent);flex-shrink:0;"></div>
+  <div style="margin:0 28px 28px;flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;" class="proj-cover">
+    <div class="pc-info">
+      <div>
+        <p class="pc-pnum">project 01</p>
+        <h2 class="pc-title">웹서비스 자동화 어드민 리뉴얼</h2>
+      </div>
+      <p class="pc-desc">개발에 의존하던 콘텐츠 운영 구조를 현업이 직접 운영하는 어드민으로 전환해,<br>4개 부서 12명이 개발 없이 자립 운영 가능한 백오피스를 기획·설계·배포한 프로젝트</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="itag ac">요구사항 수집</span><span class="itag ac">기능 범위 판단</span><span class="itag ac">화면설계 · 스토리보드</span>
+        <span class="itag ac">배포</span><span class="itag ac">운영 이관</span><span class="itag ac">가이드라인 문서화</span><span class="itag ac">PM 100%</span>
+      </div>
+      <div class="pc-meta">
+        <div><p class="pc-meta-lbl">기간</p><p class="pc-meta-val">2023.02 – 2023.09 (8개월)</p></div>
+        <div><p class="pc-meta-lbl">역할</p><p class="pc-meta-val">PM 100% — 요구사항 수집, 우선순위 판단, 화면설계·기획·배포, 가이드라인 문서화, 운영 이관</p></div>
       </div>
     </div>
-    <div class="pcr">
-      <p class="mc-meta">key results</p>
-      <div class="mc-card">
-        <span class="mc-num">4<span style="font-size:14px; color:var(--gray-500);">개 부서 12명</span></span>
-        <span class="mc-lbl">개발 없이 현업 직접 운영 이관 완료</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">15<span style="font-size:14px; color:var(--gray-500);">h</span> <span style="font-size:14px; color:var(--gray-500);">/ 월</span></span>
-        <span class="mc-lbl">업무시간 단축</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">0<span style="font-size:14px; color:var(--gray-500);">건</span></span>
-        <span class="mc-lbl">가이드라인 배포 후 재문의</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">0<span style="font-size:14px; color:var(--gray-500);">원</span></span>
-        <span class="mc-lbl">이후 운영 변경 비용</span>
-      </div>
+    <div class="pc-metrics">
+      <div class="pc-mc"><p class="pc-mc-num">4<span class="pc-mc-unit">개 부서</span></p><p class="pc-mc-lbl">12명 운영 이관 완료<br>개발 없이 현업 직접 운영</p><p class="pc-mc-sub">key result 01</p></div>
+      <div class="pc-mc"><p class="pc-mc-num">15<span class="pc-mc-unit">h</span></p><p class="pc-mc-lbl">월 업무시간 단축</p><p class="pc-mc-sub">key result 02</p></div>
+      <div class="pc-mc"><p class="pc-mc-num">0<span class="pc-mc-unit">건</span></p><p class="pc-mc-lbl">가이드라인 배포 후<br>담당자 교체 시 재문의</p><p class="pc-mc-sub">key result 03</p></div>
+      <div class="pc-mc"><p class="pc-mc-num">0<span class="pc-mc-unit">원</span></p><p class="pc-mc-lbl">이후 운영 변경 비용</p><p class="pc-mc-sub">key result 04</p></div>
     </div>
   </div>
-  <span class="pg" style="color:var(--gray-600);">04 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
-     P5 Project 01 배경 + 목표
-══════════════════════════════════════ -->
-<div class="page-label"><span>PROJECT 01 — BACKGROUND</span><span>P.05</span></div>
-<div class="page" id="p5">
-  <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="proj-badge">project 01</span>
-      <span class="label">배경 · 목표</span>
-    </div>
-    <span class="label" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span>
-  </div>
-  <div style="padding:36px var(--pad) 36px; flex:1; display:flex; flex-direction:column; gap:24px; overflow:hidden;">
-    <div class="col g8">
-      <p class="label accent">배경</p>
-      <h3 style="font-family:var(--font-d); font-size:20px; font-weight:300; letter-spacing:-0.02em; color:var(--black); line-height:1.3;">모든 변경이 개발 일정을 필요로 하는 구조에서,<br>요청이 늘어날수록 병목도 함께 쌓였습니다.</h3>
-    </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
-      <div class="prob">
-        <p class="prob-t">운영 구조</p>
-        <p class="prob-b">콘텐츠 변경마다 개발 일정 필요 → 요청 적체 반복</p>
+<!-- ═══════════════════════════════════
+     P5 Project 01 브리프 + 접근
+═══════════════════════════════════ -->
+<div class="page-label"><span>PROJECT 01 — BRIEF & APPROACH</span><span>P.05</span></div>
+<div class="page" id="p5" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar"><div style="display:flex;align-items:center;gap:12px;"><span class="proj-badge">project 01</span><span class="label-tag">브리프 · 접근</span></div><span class="label-tag" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span></div>
+  <div class="content-card">
+    <div class="inner">
+      <!-- 01 브리프 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar"></div><span class="sec-num">01</span><span class="sec-title">배경 및 문제 정의</span></div>
+        <p class="body-text" style="margin-bottom:12px;">서비스가 확장되면서 콘텐츠 변경 요청이 지속적으로 증가했습니다. 모든 수정이 개발 일정을 필요로 하는 구조라 요청이 쌓일수록 병목이 심화됐습니다. <strong>수요를 흡수하는 방식이 아니라 구조를 바꾸는 것이 근본 해결책</strong>이라고 판단했습니다.</p>
+        <div class="three-col">
+          <div class="bg-card"><p class="bg-card-t">운영 구조</p><p class="bg-card-b">콘텐츠 변경마다 개발 일정 필요 → 요청 적체 반복</p></div>
+          <div class="bg-card"><p class="bg-card-t">요청 주체 분산</p><p class="bg-card-b">4개 부서가 각각 다른 요청을 전달 → 우선순위 기준 없음</p></div>
+          <div class="bg-card ac"><p class="bg-card-t">인수인계 문제</p><p class="bg-card-b">담당자 교체 시마다 재문의 발생 → 운영 비효율 반복</p></div>
+        </div>
       </div>
-      <div class="prob">
-        <p class="prob-t">요청 주체 분산</p>
-        <p class="prob-b">4개 부서가 각각 다른 요청을 전달 → 기준 없는 우선순위</p>
+      <div class="rule"></div>
+      <!-- 02 접근 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar"></div><span class="sec-num">02</span><span class="sec-title">목표 및 접근</span></div>
+        <ul class="clist">
+          <li class="hi">현업이 개발 리소스 없이 직접 콘텐츠·기능을 조정할 수 있는 어드민 구축</li>
+          <li class="hi">4개 부서 12명 모두가 납득하고 사용할 수 있는 기능 범위 정의</li>
+          <li class="hi">담당자 교체에도 재문의 없이 자립 운영 가능한 가이드라인 수립</li>
+        </ul>
+        <div class="quote">"4개 부서 담당자는 곧 4명의 클라이언트 담당자였습니다. 각기 다른 목표와 우선순위를 가진 이해관계자를 동시에 조율하며, 모두가 납득할 수 있는 기능 범위를 기준으로 확정했습니다. 요구를 모두 수용하지 않는 것이 핵심이었습니다."</div>
       </div>
-      <div class="prob ac">
-        <p class="prob-t">인수인계 문제</p>
-        <p class="prob-b">담당자 교체 시마다 재문의 발생 → 운영 비효율 반복</p>
-      </div>
-    </div>
-    <div class="rule"></div>
-    <div class="col g8">
-      <p class="label accent">목표</p>
-      <p class="body-text" style="margin:0;">현업이 개발 리소스 없이 직접 콘텐츠·기능을 조정할 수 있는 어드민을 구축하고, 4개 부서 12명 모두가 납득하고 사용할 수 있는 기능 범위를 정의합니다. 담당자 교체에도 재문의 없이 자립 운영 가능한 가이드라인을 함께 수립합니다.</p>
-    </div>
-    <div class="quote">
-      "4개 부서 담당자는 곧 4명의 클라이언트 담당자였습니다. 각기 다른 목표와 우선순위를 가진 이해관계자를 동시에 조율하며, 모두가 납득할 수 있는 기능 범위를 기준으로 확정했습니다."
     </div>
   </div>
-  <span class="pg">05 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P6 Project 01 실행
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>PROJECT 01 — EXECUTION</span><span>P.06</span></div>
-<div class="page" id="p6">
-  <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="proj-badge">project 01</span>
-      <span class="label">실행</span>
+<div class="page" id="p6" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar"><div style="display:flex;align-items:center;gap:12px;"><span class="proj-badge">project 01</span><span class="label-tag">실행</span></div><span class="label-tag" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span></div>
+  <div class="content-card">
+    <div class="inner" style="gap:18px;">
+      <!-- 03 실행 -->
+      <div class="col g10">
+        <div class="sec-header"><div class="sec-bar"></div><span class="sec-num">03</span><span class="sec-title">실행 — 요구사항 수집부터 운영 이관까지</span></div>
+        <div class="flow">
+          <span class="fstep">협력 회의 (4개 부서)</span><span class="farr">→</span>
+          <span class="fstep on">요구사항 수집 · 우선순위 판단</span><span class="farr">→</span>
+          <span class="fstep on">화면설계 · 스토리보드</span><span class="farr">→</span>
+          <span class="fstep">개발 · 디자인 협의</span><span class="farr">→</span>
+          <span class="fstep on">배포</span><span class="farr">→</span>
+          <span class="fstep on">가이드라인 문서화</span><span class="farr">→</span>
+          <span class="fstep">부서 이관</span>
+        </div>
+      </div>
+      <!-- 이미지 + 설명 -->
+      <div class="two-col" style="flex:1;gap:24px;">
+        <div class="col g12">
+          <div class="col g8">
+            <p class="label-tag ac" style="margin-bottom:2px;">요구사항 수집 · 기능 범위 판단</p>
+            <ul class="clist">
+              <li>기획 착수 전 4개 부서 담당자와 협력 회의 — 반복 사용성과 기대 효과를 먼저 검증, 요구 수용 범위 확정</li>
+              <li>개발·디자인 협의로 구현 가능성·제약 사전 점검 후 기획 범위 확정</li>
+            </ul>
+          </div>
+          <div class="col g8">
+            <p class="label-tag ac" style="margin-bottom:2px;">화면설계 · 어드민 주요 기능</p>
+            <ul class="clist">
+              <li class="hi">맞춤 콘텐츠 노출 제어 — 유저 세그먼트별 우선순위 조정</li>
+              <li class="hi">소식 알림 우선순위 조정 — 시즌 이벤트 즉시 반영</li>
+              <li class="hi">추가 서비스 유도 화면 설정 — 유저 맞춤 CTA 노출 제어</li>
+              <li class="hi">유저 행동 데이터 저장 — 대시보드 분석 고도화</li>
+            </ul>
+          </div>
+          <div class="col g8">
+            <p class="label-tag ac" style="margin-bottom:2px;">가이드라인 문서화 · 이관</p>
+            <ul class="clist">
+              <li>담당자 교체 시 재문의 없이 자립 운영 가능하도록 가이드라인 전사 배포</li>
+              <li>4개 부서 12명 이관 완료 → 이후 개발 요청 없이 직접 운영</li>
+            </ul>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-rows:1fr 1fr;gap:14px;">
+          <div class="col g6">
+            <p class="label-tag">admin screen</p>
+            <div class="img-ph" style="flex:1;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M7 21h10M12 17v4"/></svg>
+              <span>어드민 스크린샷 삽입 위치</span>
+            </div>
+            <p class="img-cap">→ 권한별 편집 범위 구분 — 부서별 접근 가능 메뉴 분리</p>
+          </div>
+          <div class="col g6">
+            <p class="label-tag">app screen</p>
+            <div class="img-ph" style="flex:1;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+              <span>앱 화면 기획 이미지 삽입 위치</span>
+            </div>
+            <p class="img-cap">→ 유저 맞춤 콘텐츠 노출 우선순위 현업 직접 조정</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <span class="label" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span>
   </div>
-  <div style="padding:28px var(--pad) 32px; flex:1; display:flex; flex-direction:column; gap:18px; overflow:hidden;">
-    <div class="col g8">
-      <p class="label accent">process</p>
-      <div class="flow">
-        <span class="fstep">요구사항 수집</span>
-        <span class="farr">→</span>
-        <span class="fstep on">기능 범위 판단</span>
-        <span class="farr">→</span>
-        <span class="fstep">개발·디자인 협의</span>
-        <span class="farr">→</span>
-        <span class="fstep on">화면설계·배포</span>
-        <span class="farr">→</span>
-        <span class="fstep on">가이드라인 문서화</span>
-        <span class="farr">→</span>
-        <span class="fstep">부서 이관</span>
-      </div>
-    </div>
-    <!-- 이미지 영역 -->
-    <div style="display:grid; grid-template-columns:1fr 0.5px 1fr; gap:0; flex:1;">
-      <div style="padding-right:20px; display:flex; flex-direction:column; gap:10px;">
-        <p class="label">admin screen</p>
-        <div class="img-ph" style="flex:1;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M7 21h10M12 17v4"/></svg>
-          <span>어드민 스크린샷 삽입 위치</span>
-        </div>
-        <div class="col g4">
-          <p class="img-cap">→ 권한별 편집 범위 구분 — 부서별 접근 가능 메뉴 분리 설계</p>
-          <p class="img-cap" style="color:var(--gray-300);">→ 개발 없이 현업이 직접 콘텐츠 변경 가능한 구조</p>
-        </div>
-      </div>
-      <div class="rule-v"></div>
-      <div style="padding-left:20px; display:flex; flex-direction:column; gap:10px;">
-        <p class="label">app screen</p>
-        <div class="img-ph" style="flex:1;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
-          <span>앱 화면 기획 이미지 삽입 위치</span>
-        </div>
-        <div class="col g4">
-          <p class="img-cap">→ 유저 맞춤 콘텐츠 노출 우선순위 현업 직접 조정 가능</p>
-          <p class="img-cap" style="color:var(--gray-300);">→ 소식 알림 순서 변경 — 시즌 이벤트 즉시 반영</p>
-        </div>
-      </div>
-    </div>
-    <!-- 어드민 기능 태그 -->
-    <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-      <p class="label" style="margin-right:4px;">어드민 주요 기능</p>
-      <span class="tag ac">맞춤 콘텐츠 노출 제어</span>
-      <span class="tag ac">소식 알림 우선순위 조정</span>
-      <span class="tag ac">추가 서비스 유도 화면 설정</span>
-      <span class="tag ac">유저 행동 데이터 저장</span>
-    </div>
-  </div>
-  <span class="pg">06 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P7 Project 01 성과 + 회고
-══════════════════════════════════════ -->
-<div class="page-label"><span>PROJECT 01 — RESULTS</span><span>P.07</span></div>
-<div class="page" id="p7">
-  <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="proj-badge">project 01</span>
-      <span class="label">성과 · 회고</span>
-    </div>
-    <span class="label" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span>
-  </div>
-  <div style="padding:36px var(--pad) 36px; flex:1; display:flex; flex-direction:column; gap:24px;">
-    <div class="col g8">
-      <p class="label accent">results</p>
-      <h3 style="font-family:var(--font-d); font-size:20px; font-weight:300; letter-spacing:-0.02em; color:var(--black);">현업이 직접 운영하는 구조로 완전히 전환됐습니다.</h3>
-    </div>
-    <div class="outcome-grid">
-      <div class="oc-item"><span class="oc-num">4개 부서 12명</span><span class="oc-desc">개발 없이 현업 직접 운영 이관 완료</span></div>
-      <div class="oc-item"><span class="oc-num">월 15h</span><span class="oc-desc">업무시간 단축</span></div>
-      <div class="oc-item"><span class="oc-num">재문의 0건</span><span class="oc-desc">가이드라인 배포로 담당자 교체 시 재문의 구조적 해소</span></div>
-      <div class="oc-item"><span class="oc-num">유저 맞춤 대시보드</span><span class="oc-desc">사용자 데이터 분석 고도화 제공</span></div>
-    </div>
-    <div class="rule"></div>
-    <div class="col g8">
-      <p class="label accent">retrospective</p>
-      <div class="retro">
-        가장 어려웠던 것은 현업의 요구사항을 어디까지 수용할 것인가를 판단하는 일이었습니다. 모든 요청을 담으면 개발 비용과 유지보수 복잡도가 높아지고, 너무 줄이면 실질적인 니즈를 충족하지 못합니다. 반복 사용성과 기대 효과를 기준으로 판단한 이 경험은, 클라이언트의 다양한 요구사항을 조율하고 실현 가능한 범위로 확정하는 방식의 기준이 됐습니다.
+═══════════════════════════════════ -->
+<div class="page-label"><span>PROJECT 01 — RESULTS & RETROSPECTIVE</span><span>P.07</span></div>
+<div class="page" id="p7" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar"><div style="display:flex;align-items:center;gap:12px;"><span class="proj-badge">project 01</span><span class="label-tag">성과 · 회고</span></div><span class="label-tag" style="color:var(--gray-300);">웹서비스 자동화 어드민 리뉴얼</span></div>
+  <div class="content-card">
+    <div class="inner">
+      <!-- 04 성과 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar"></div><span class="sec-num">04</span><span class="sec-title">성과</span></div>
+        <div class="oc-grid">
+          <div class="oc-item"><span class="oc-num">4개 부서 12명</span><span class="oc-desc">개발 없이 현업 직접 운영 이관 완료 — 이후 콘텐츠 변경 요청 0건</span></div>
+          <div class="oc-item"><span class="oc-num">월 15h</span><span class="oc-desc">업무시간 단축 — 반복 요청 처리 및 협의 시간 절감</span></div>
+          <div class="oc-item"><span class="oc-num">재문의 0건</span><span class="oc-desc">가이드라인 배포로 담당자 교체 시에도 재문의 발생 없음</span></div>
+          <div class="oc-item"><span class="oc-num">유저 맞춤 대시보드</span><span class="oc-desc">사용자 행동 데이터 분석 고도화 — 현업 의사결정 속도 개선</span></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <!-- 05 회고 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar"></div><span class="sec-num">05</span><span class="sec-title">회고</span></div>
+        <div class="two-col">
+          <div style="background:var(--gray-50);border-left:3px solid var(--gray-300);padding:18px 22px;font-size:15px;color:var(--gray-600);line-height:1.85;">가장 어려웠던 것은 현업의 요구사항을 어디까지 수용할 것인가를 판단하는 일이었습니다. 모든 요청을 담으면 개발 비용과 유지보수 복잡도가 높아지고, 너무 줄이면 실질적인 니즈를 충족하지 못합니다. 반복 사용성과 기대 효과를 기준으로 판단한 이 경험은, 클라이언트의 요구를 조율하고 실현 가능한 범위로 확정하는 방식의 기준이 됐습니다.</div>
+          <div style="background:var(--gray-50);border-left:3px solid var(--gray-300);padding:18px 22px;font-size:15px;color:var(--gray-600);line-height:1.85;">프로젝트가 끝난 후에도 클라이언트가 스스로 운영할 수 있는 구조를 만드는 것이 진짜 완수라는 것을 이 프로젝트에서 확인했습니다. 가이드라인 문서화와 운영 이관 설계까지 기획의 범위로 보는 이 관점은, 이후 모든 프로젝트에서 납품 품질을 높이는 기준이 되었습니다.</div>
+        </div>
       </div>
     </div>
   </div>
-  <span class="pg">07 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P8 Project 02 표지
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>PROJECT 02 — COVER</span><span>P.08</span></div>
-<div class="page" id="p8">
-  <div class="proj-cover">
-    <div class="pcl">
-      <div class="pcl-accent-bg"></div>
-      <div class="col g0">
-        <p class="proj-num">project 02</p>
-        <h2 class="proj-title">기부금영수증<br>간편 발급 서비스</h2>
-        <p class="proj-desc">반복되는 CS 병목의 원인을 접근 구조에서 찾고, 5개 부서의 보안·법무·운영 리스크를 정책 기준으로 합의하며 구조를 전환한 서비스 개선 프로젝트</p>
-        <div class="proj-tags">
-          <span class="tag ac">VOC 분석</span>
-          <span class="tag ac">비로그인 플로우 설계</span>
-          <span class="tag ac">서비스 정책 수립</span>
-          <span class="tag ac">5개 부서 협업</span>
-          <span class="tag ac">운영 효율화</span>
-        </div>
-        <div class="proj-meta">
-          <div><p class="pm-label">기간</p><p class="pm-val">1차 2022.12 – 2023.02<br>2차 2023.11 – 2024.04</p></div>
-          <div><p class="pm-label">역할</p><p class="pm-val">PM 100%</p></div>
-        </div>
+<div class="page" id="p8" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div style="height:5px;background:var(--teal);flex-shrink:0;"></div>
+  <div style="margin:0 28px 28px;flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;" class="proj-cover">
+    <div class="pc-info">
+      <div>
+        <p class="pc-pnum tl">project 02</p>
+        <h2 class="pc-title">기부금영수증 간편 발급 서비스</h2>
+      </div>
+      <p class="pc-desc">반복되는 CS 병목의 원인을 접근 구조에서 찾고, 5개 부서의 보안·법무·운영 리스크를 정책 기준으로 합의하며<br>비로그인 플로우를 설계·배포한 서비스 개선 프로젝트</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="itag tl">VOC 분석</span><span class="itag tl">문제 정의</span><span class="itag tl">비로그인 플로우 설계</span>
+        <span class="itag tl">서비스 정책 수립</span><span class="itag tl">5개 부서 협업</span><span class="itag tl">알림톡 발송 정책</span><span class="itag tl">PM 100%</span>
+      </div>
+      <div class="pc-meta">
+        <div><p class="pc-meta-lbl">기간</p><p class="pc-meta-val">1차 2022.12 – 2023.02 / 2차 2023.11 – 2024.04</p></div>
+        <div><p class="pc-meta-lbl">역할</p><p class="pc-meta-val">PM 100% — 데이터 분석, 가설 수립, 화면설계·기획·배포, 다부서 협업, 정책 수립</p></div>
       </div>
     </div>
-    <div class="pcr">
-      <p class="mc-meta">key results</p>
-      <div class="mc-card">
-        <span class="mc-num">34.8<span style="font-size:14px; color:var(--gray-500);">%↓</span></span>
-        <span class="mc-lbl">CS 상담 감소 (9,327 → 6,081건)</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">47.5<span style="font-size:14px; color:var(--gray-500);">%</span></span>
-        <span class="mc-lbl">자가 발급 전환율 (유입 고객 기준)</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">~1,200<span style="font-size:14px; color:var(--gray-500);">h</span></span>
-        <span class="mc-lbl">운영 리소스 절감 (추정)</span>
-      </div>
-      <div class="mc-card">
-        <span class="mc-num">3,246<span style="font-size:14px; color:var(--gray-500);">건</span></span>
-        <span class="mc-lbl">절감된 상담 건수</span>
-      </div>
+    <div class="pc-metrics">
+      <div class="pc-mc"><p class="pc-mc-num tl">34.8<span class="pc-mc-unit">%↓</span></p><p class="pc-mc-lbl">CS 상담 감소<br>9,327건 → 6,081건</p><p class="pc-mc-sub">key result 01</p></div>
+      <div class="pc-mc"><p class="pc-mc-num tl">47.5<span class="pc-mc-unit">%</span></p><p class="pc-mc-lbl">자가 발급 전환율<br>유입 고객 14,439명 발급 완료</p><p class="pc-mc-sub">key result 02</p></div>
+      <div class="pc-mc"><p class="pc-mc-num tl">~1,200<span class="pc-mc-unit">h</span></p><p class="pc-mc-lbl">운영 리소스 절감<br>(1건당 5분 처리 추정)</p><p class="pc-mc-sub">key result 03</p></div>
+      <div class="pc-mc"><p class="pc-mc-num tl">3,246<span class="pc-mc-unit">건</span></p><p class="pc-mc-lbl">절감된 상담 건수</p><p class="pc-mc-sub">key result 04</p></div>
     </div>
   </div>
-  <span class="pg" style="color:var(--gray-600);">08 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
-     P9 Project 02 배경 + 실행
-══════════════════════════════════════ -->
-<div class="page-label"><span>PROJECT 02 — EXECUTION</span><span>P.09</span></div>
-<div class="page" id="p9">
-  <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="proj-badge">project 02</span>
-      <span class="label">배경 · 실행</span>
-    </div>
-    <span class="label" style="color:var(--gray-300);">기부금영수증 간편 발급 서비스</span>
-  </div>
-  <div style="display:grid; grid-template-columns:1fr 0.5px 1fr; flex:1; overflow:hidden;">
-    <!-- 좌 -->
-    <div class="col" style="padding:28px 36px 28px var(--pad); gap:18px; overflow:hidden;">
-      <div class="col g8">
-        <p class="label accent">문제 정의</p>
-        <h3 style="font-family:var(--font-d); font-size:16px; font-weight:400; letter-spacing:-0.01em; line-height:1.4; color:var(--black);">반복되는 병목의 원인은<br>안내 부족이 아니라,<br>접근 구조 자체에 있었습니다.</h3>
-        <p style="font-size:11px; color:var(--gray-600); line-height:1.7;">연말정산 시즌마다 CS 상담 3~6배 폭증. GA 분석으로 로그인 화면 이탈률 80%+ 확인, VOC 4년치에서 전체 문의의 80%가 단순 서류 발급 요청임을 파악했습니다.</p>
+<!-- ═══════════════════════════════════
+     P9 Project 02 브리프 + 접근
+═══════════════════════════════════ -->
+<div class="page-label"><span>PROJECT 02 — BRIEF & APPROACH</span><span>P.09</span></div>
+<div class="page" id="p9" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar"><div style="display:flex;align-items:center;gap:12px;"><span class="proj-badge" style="background:var(--teal);">project 02</span><span class="label-tag">브리프 · 접근</span></div><span class="label-tag" style="color:var(--gray-300);">기부금영수증 간편 발급 서비스</span></div>
+  <div class="content-card">
+    <div class="inner">
+      <!-- 01 배경 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar tl"></div><span class="sec-num tl">01</span><span class="sec-title">배경 및 문제 정의</span></div>
+        <p class="body-text" style="margin-bottom:12px;">연말정산 시즌(12~1월)마다 전사 VOC 최다 발생. 매년 CS 인력 증원·FAQ 보강으로 대응했으나 이듬해에도 동일하게 반복됐습니다. <strong>수요를 흡수하는 방식으로는 구조적 해결이 불가능하다고 판단</strong>하고, 원인을 데이터로 특정하기로 했습니다.</p>
+        <div class="three-col">
+          <div class="bg-card"><p class="bg-card-t">GA 로그 분석</p><p class="bg-card-b">로그인 화면 이탈률 <strong>80% 이상</strong> 확인.<br>접근 구조 자체가 문제임을 특정.</p></div>
+          <div class="bg-card"><p class="bg-card-t">VOC 4년치 분석</p><p class="bg-card-b">전체 VOC의 <strong>80%</strong>가 단순 서류 발급 문의.<br>자가 처리 불가 구조 확인.</p></div>
+          <div class="bg-card ac"><p class="bg-card-t">핵심 문제 정의</p><p class="bg-card-b">불편의 원인이 안내 부족이 아니라 <strong>로그인 접근 구조</strong> 자체에 있음. 연말정산 즉시성 맥락과 구조의 불일치.</p></div>
+        </div>
+        <div class="quote">불편의 원인이 안내 부족이 아니라 로그인 접근 구조 자체에 있었습니다. 연말정산이라는 즉시성이 중요한 상황에서, 플랫폼 계정 보유 여부가 서비스 이용의 전제 조건이 되는 구조는 본질적으로 맞지 않습니다.</div>
       </div>
-      <div class="atb">
-        <div class="asis-box">
-          <div class="at-lbl">AS-IS</div>
-          <div class="at-body" style="color:var(--gray-600);">회원가입 → 로그인 → 실명인증<br><span style="font-size:10px; color:#c03030; font-family:var(--font-m);">이탈률 80%+</span></div>
-        </div>
-        <div class="arr">→</div>
-        <div class="tobe-box">
-          <div class="at-lbl">TO-BE</div>
-          <div class="at-body">CRM 회원번호 + 이름<br>비로그인 간편 확인</div>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
-        <div class="col g6">
-          <div class="img-ph" style="flex:1; font-size:9px;">AS-IS 화면<br>삽입 위치</div>
-          <p class="img-cap">이탈률 80%+ 확인 지점</p>
-        </div>
-        <div class="col g6">
-          <div class="img-ph accent-ph" style="flex:1; font-size:9px;">TO-BE 화면<br>삽입 위치</div>
-          <p class="img-cap ac">자가 발급 전환율 47.5%</p>
-        </div>
-      </div>
-    </div>
-    <div class="rule-v"></div>
-    <!-- 우 -->
-    <div class="col" style="padding:28px var(--pad) 28px 36px; gap:18px; overflow:hidden;">
-      <div class="col g8">
-        <p class="label accent">5개 부서 협업</p>
-        <h3 style="font-family:var(--font-d); font-size:16px; font-weight:400; letter-spacing:-0.01em; line-height:1.4; color:var(--black);">보안·법무·운영 리스크를<br>정책 기준으로 합의했습니다.</h3>
-      </div>
-      <table class="ctable" style="flex:1;">
-        <thead><tr><th>부서</th><th>주요 협업 내용</th></tr></thead>
-        <tbody>
-          <tr><td>법무 / CS</td><td>CRM 조건 확인 및 개인정보보호 관련 검수</td></tr>
-          <tr><td>개발</td><td>최소 인증 조건 설정, 보안·정보 히든 처리 확인</td></tr>
-          <tr><td>마케팅</td><td>알림톡 발송 일정 조율 및 내용 검수</td></tr>
-          <tr><td>CS</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
-        </tbody>
-      </table>
-      <div class="col g6">
-        <p class="label" style="margin-bottom:4px;">알림톡 발송 정책 — 모집군 세분화</p>
-        <div style="display:flex; flex-wrap:wrap; gap:5px;">
-          <span class="tag tl">1년 미만 고객</span>
-          <span class="tag tl">이전 문의 고객</span>
-          <span class="tag tl">특수 계정 고객</span>
-        </div>
+      <div class="rule"></div>
+      <!-- 02 가설 -->
+      <div class="col g12">
+        <div class="sec-header"><div class="sec-bar tl"></div><span class="sec-num tl">02</span><span class="sec-title">가설</span></div>
+        <p style="font-size:16px;font-weight:500;color:var(--black);margin-bottom:10px;">비로그인 간편 발급 구조를 제공하면, 로그인 이탈이 사라지고 자가 발급이 증가해 관련 VOC 30% 이상 감소할 것이다.</p>
+        <ul class="clist">
+          <li>로그인 화면 이탈률 80% → 인증 구조 제거 시 이탈 대부분 해소 예측</li>
+          <li>VOC의 80%가 단순 발급 문의 → 자가 처리 가능해지면 CS 인입 직접 감소</li>
+          <li>연말정산 맥락상 계정 보유 여부를 전제로 두는 구조는 본질적으로 맞지 않음</li>
+        </ul>
       </div>
     </div>
   </div>
-  <span class="pg">09 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
-     P10 Project 02 성과 + 회고
-══════════════════════════════════════ -->
-<div class="page-label"><span>PROJECT 02 — RESULTS</span><span>P.10</span></div>
-<div class="page" id="p10">
-  <div class="top-bar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="proj-badge">project 02</span>
-      <span class="label">성과 · 회고</span>
-    </div>
-    <span class="label" style="color:var(--gray-300);">기부금영수증 간편 발급 서비스</span>
-  </div>
-  <div style="padding:36px var(--pad) 36px; flex:1; display:flex; flex-direction:column; gap:24px;">
-    <div class="col g8">
-      <p class="label accent">results</p>
-      <h3 style="font-family:var(--font-d); font-size:20px; font-weight:300; letter-spacing:-0.02em; color:var(--black);">구조를 바꾸자 지표가 직접 움직였습니다.</h3>
-    </div>
-    <div class="outcome-grid">
-      <div class="oc-item"><span class="oc-num">34.8%↓</span><span class="oc-desc">CS 상담 감소 — 9,327건 → 6,081건 (3,246건 절감)</span></div>
-      <div class="oc-item"><span class="oc-num">47.5%</span><span class="oc-desc">자가 발급 전환율 — 유입 고객 14,439명 발급 완료</span></div>
-      <div class="oc-item"><span class="oc-num">~1,200h</span><span class="oc-desc">운영 리소스 절감 (1건당 5분 처리 추정)</span></div>
-      <div class="oc-item"><span class="oc-num">구조 확장</span><span class="oc-desc">동일 구조를 장기회원 리워드 서비스에 확장 적용</span></div>
-    </div>
-    <div class="rule"></div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-      <div class="col g8">
-        <p class="label accent">1차 한계 → 2차 개선</p>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <div class="prob"><p class="prob-t">1차 한계</p><p class="prob-b">자가 발급률 목표 미달 / 시니어 회원 신규 문의 발생</p></div>
-          <div class="prob ac"><p class="prob-t">2차 개선</p><p class="prob-b">인증 절차 단축 / 기부금 내역 동일 화면 노출 / 시니어 UI 적용</p></div>
+<!-- ═══════════════════════════════════
+     P10 Project 02 실행 + 성과 + 회고
+═══════════════════════════════════ -->
+<div class="page-label"><span>PROJECT 02 — EXECUTION & RESULTS</span><span>P.10</span></div>
+<div class="page" id="p10" style="display:flex;flex-direction:column;background:var(--gray-50);">
+  <div class="top-bar"><div style="display:flex;align-items:center;gap:12px;"><span class="proj-badge" style="background:var(--teal);">project 02</span><span class="label-tag">실행 · 성과 · 회고</span></div><span class="label-tag" style="color:var(--gray-300);">기부금영수증 간편 발급 서비스</span></div>
+  <div class="content-card">
+    <div class="inner" style="gap:16px;">
+      <!-- 03 실행 -->
+      <div class="col g10">
+        <div class="sec-header"><div class="sec-bar tl"></div><span class="sec-num tl">03</span><span class="sec-title">실행</span></div>
+        <div class="two-col" style="gap:20px;">
+          <div class="col g12">
+            <div class="atb">
+              <div class="asis-b"><div class="at-lbl">AS-IS</div><div class="at-body" style="color:var(--gray-600);">회원가입 → 로그인 → 실명인증<br><span style="font-size:12px;color:#c03030;font-family:var(--font-m);margin-top:5px;display:block;">이탈률 80%+</span></div></div>
+              <div class="arr-c">→</div>
+              <div class="tobe-b" style="border-color:var(--teal);background:var(--teal-light);"><div class="at-lbl" style="color:var(--teal);">TO-BE</div><div class="at-body" style="color:var(--teal);">CRM 회원번호 + 이름<br>비로그인 간편 확인</div></div>
+            </div>
+            <div class="col g8" style="margin-top:10px;">
+              <p class="label-tag tl" style="margin-bottom:2px;">5개 부서 협업 내용</p>
+              <table class="ctable">
+                <thead><tr><th>부서</th><th>주요 협업 내용</th></tr></thead>
+                <tbody>
+                  <tr><td>법무 / CS</td><td>CRM 조건 확인 및 개인정보보호 관련 검수</td></tr>
+                  <tr><td>개발</td><td>최소 인증 조건 설정, 보안·정보 히든 처리 확인</td></tr>
+                  <tr><td>마케팅</td><td>알림톡 발송 일정 조율 및 내용 검수</td></tr>
+                  <tr><td>CS</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="col g6"><p class="label-tag">AS-IS screen</p><div class="img-ph" style="flex:1;min-height:80px;font-size:10px;">AS-IS 화면<br>삽입 위치</div><p class="img-cap">이탈률 80%+ 지점</p></div>
+            <div class="col g6"><p class="label-tag">TO-BE screen</p><div class="img-ph ac-ph" style="flex:1;min-height:80px;font-size:10px;">TO-BE 화면<br>삽입 위치</div><p class="img-cap ac">전환율 47.5%</p></div>
+          </div>
         </div>
       </div>
-      <div class="col g8">
-        <p class="label accent">retrospective</p>
-        <div class="retro" style="flex:1;">
-          접근 구조 자체가 UX이자 운영 효율의 핵심임을 확인했습니다. 배포 후에도 계속 추적하며 개선하는 것이 기획자의 역할임을 체감했습니다.
+      <div class="rule"></div>
+      <!-- 04 성과 -->
+      <div class="col g10">
+        <div class="sec-header"><div class="sec-bar tl"></div><span class="sec-num tl">04</span><span class="sec-title">성과</span></div>
+        <ul class="clist">
+          <li class="hi-tl">CS 상담 9,327건 → 6,081건 (34.8% 감소, 3,246건 절감)</li>
+          <li class="hi-tl">자가 발급 완료 14,439건 (서비스 유입 고객의 47.5%)</li>
+          <li class="hi-tl">자가 발급 전환 기준 약 1,200시간 운영 리소스 절감 (1건당 5분 처리 추정)</li>
+          <li class="hi-tl">동일한 간편 인증 구조를 장기회원 리워드 서비스에 확장 적용 → 구조 확장성 검증</li>
+        </ul>
+      </div>
+      <div class="rule"></div>
+      <!-- 05 회고 -->
+      <div class="col g10">
+        <div class="sec-header"><div class="sec-bar tl"></div><span class="sec-num tl">05</span><span class="sec-title">회고</span></div>
+        <div class="two-col">
+          <div style="background:var(--gray-50);border-left:3px solid var(--teal);padding:16px 20px;font-size:14px;color:var(--gray-600);line-height:1.8;">이 프로젝트를 통해 접근 구조 자체가 UX이자 운영 효율의 핵심임을 확인했습니다. 빠른 대응보다 구조를 바꾸는 것이 반복 병목을 제거하는 가장 효과적인 방법이었습니다.</div>
+          <div class="two-col" style="gap:10px;">
+            <div class="bg-card"><p class="bg-card-t">1차 한계</p><p class="bg-card-b" style="font-size:13px;">자가 발급률 목표 미달 / 시니어 회원 신규 문의 발생</p></div>
+            <div class="bg-card ac"><p class="bg-card-t">2차 개선</p><p class="bg-card-b" style="font-size:13px;">인증 절차 단축 / 기부금 내역 동일 화면 노출 / 시니어 UI 적용</p></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <span class="pg">10 / 11</span>
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ═══════════════════════════════════
      P11 마무리
-══════════════════════════════════════ -->
+═══════════════════════════════════ -->
 <div class="page-label"><span>CLOSING</span><span>P.11</span></div>
 <div class="page" id="p11">
-  <div class="left">
+  <div class="el">
     <div class="col g0">
-      <div style="width:28px; height:2px; background:var(--accent-mid); margin-bottom:28px;"></div>
-      <p style="font-family:var(--font-m); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray-600); margin-bottom:20px;">closing statement</p>
-      <h2 class="end-head">
-        클라이언트의 요구를<br>기준으로 정리하고,<br>
-        <span class="end-em">결과물이 인계된 후에도<br>작동하는 서비스를 설계합니다.</span>
-      </h2>
-      <p class="end-sub">다양한 이해관계자와 함께, 실현 가능한 구조를 만드는 PM 김수진입니다.</p>
+      <div style="width:36px;height:3px;background:var(--accent-mid);margin-bottom:30px;"></div>
+      <p style="font-family:var(--font-m);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-600);margin-bottom:22px;">closing statement</p>
+      <h2 class="eh">클라이언트의 요구를<br>기준으로 정리하고,<br><span class="ee">결과물이 인계된 후에도<br>작동하는 서비스를 설계합니다.</span></h2>
+      <p style="font-size:17px;color:var(--gray-500);line-height:1.8;margin-top:22px;max-width:640px;">다양한 이해관계자와 함께, 실현 가능한 구조를 만드는 PM 김수진입니다.<br>모멘티에서 더 많은 클라이언트와 함께 성장하고 싶습니다.</p>
     </div>
-    <div style="font-family:var(--font-m); font-size:10px; color:var(--gray-700); letter-spacing:0.08em;">11 / 11</div>
+    <div style="font-family:var(--font-m);font-size:11px;color:var(--gray-700);letter-spacing:0.08em;">11 / 11</div>
   </div>
-  <div class="right">
-    <div class="end-bar"></div>
-    <div class="end-contacts">
-      <div class="ec"><span class="ec-lbl">name</span><span class="ec-val">김수진</span></div>
-      <div class="ec"><span class="ec-lbl">phone</span><span class="ec-val">010-4772-6950</span></div>
-      <div class="ec"><span class="ec-lbl">email</span><span class="ec-val">soowlsee@gmail.com</span></div>
-      <div class="ec"><span class="ec-lbl">position</span><span class="ec-val">서비스기획 / PM</span></div>
+  <div class="er">
+    <div class="ebar"></div>
+    <div class="col g16">
+      <div><p class="ecl">name</p><p class="ecv">김수진</p></div>
+      <div><p class="ecl">phone</p><p class="ecv">010-4772-6950</p></div>
+      <div><p class="ecl">email</p><p class="ecv">soowlsee@gmail.com</p></div>
+      <div><p class="ecl">position</p><p class="ecv">서비스기획 / PM</p></div>
     </div>
   </div>
 </div>
