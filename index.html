@@ -3,235 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <title>김수진 포트폴리오 — 페이타랩 Product Manager</title>
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --or:#FF6B00;--or-d:#CC5200;--or-pale:#FFF5EF;--or-mid:rgba(255,107,0,0.12);
-  --dark:#111110;--g800:#1C1C1A;--g600:#4A4A47;--g500:#6B6B68;
-  --g400:#929290;--g300:#C4C4C0;--g200:#E0E0DB;--g100:#F0F0EB;
-  --g50:#F8F8F4;--white:#FFFFFF;
-  --fn:'Pretendard',-apple-system,sans-serif;
+  --or:#FF6B00;--or-d:#CC5200;--or-mid:#FF8C38;
+  --or-light:#FFF0E6;--or-pale:#FFF8F4;
+  --black:#0F0F0E;--g900:#1C1C1A;--g700:#3A3A38;
+  --g600:#525250;--g500:#6E6E6A;--g400:#9A9A96;
+  --g300:#C4C4BE;--g200:#D8D8D2;--g100:#E8E8E2;
+  --g50:#F2F2EC;--white:#FFFFFF;
+  --fd:'DM Sans',sans-serif;
+  --fb:'Pretendard',-apple-system,sans-serif;
   --fm:'DM Mono',monospace;
-  --pw:1920px;--ph:1080px;--pad:100px;
+  --pw:1920px;--ph:1080px;--gut:56px;
 }
-html{background:#111;}
-body{font-family:var(--fn);color:var(--dark);display:flex;flex-direction:column;align-items:center;padding:40px 24px;gap:20px;background:#111;}
+html{background:#8A8A86;}
+body{font-family:var(--fb);color:var(--black);display:flex;flex-direction:column;align-items:center;padding:40px 24px;gap:28px;background:#8A8A86;}
 
 /* ── 페이지 ── */
-.page{width:var(--pw);height:var(--ph);background:var(--white);position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 60px rgba(0,0,0,0.5);flex-shrink:0;}
-.plabel{width:var(--pw);display:flex;justify-content:space-between;font-family:var(--fm);font-size:11px;color:#555;padding:0 6px;margin-bottom:-6px;}
+.page{width:var(--pw);height:var(--ph);background:var(--g50);position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 40px rgba(0,0,0,0.2);flex-shrink:0;}
+.plabel{width:var(--pw);display:flex;justify-content:space-between;font-family:var(--fm);font-size:11px;color:var(--g500);padding:0 4px;margin-bottom:-6px;}
 
-/* ── 상단 바 ── */
-.topbar{height:60px;border-bottom:1px solid var(--g200);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);flex-shrink:0;}
-.tb-l{display:flex;align-items:center;gap:16px;}
-.tb-chip{font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:4px 14px;border-radius:100px;}
-.tb-sub{font-size:13px;color:var(--g400);}
-.tb-r{font-family:var(--fm);font-size:12px;color:var(--g300);}
+/* ── 내부 흰 카드 ── */
+.card{background:var(--white);margin:28px;flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 
-/* ── 콘텐츠 영역 ── */
-.content{flex:1;padding:60px var(--pad);display:flex;flex-direction:column;gap:0;overflow:hidden;min-height:0;}
+/* ── 상단 탑바 ── */
+.topbar{height:52px;border-bottom:1px solid var(--g100);display:flex;align-items:center;padding:0 150px;justify-content:space-between;flex-shrink:0;background:var(--white);}
+.tb-badge{font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:var(--or);color:var(--white);padding:4px 12px;}
+.tb-r{font-family:var(--fm);font-size:11px;color:var(--g400);letter-spacing:0.06em;}
 
-/* ── eyebrow ── */
-.eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:8px;margin-bottom:16px;}
-.eyebrow::before{content:'';width:6px;height:6px;background:var(--or);border-radius:50%;}
+/* ── 섹션 헤더 ── */
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sec-bar{width:4px;height:20px;background:var(--or);flex-shrink:0;}
+.sec-n{font-family:var(--fm);font-size:12px;color:var(--or);letter-spacing:0.06em;}
+.sec-t{font-size:19px;font-weight:600;color:var(--black);letter-spacing:-0.3px;}
 
-/* ── 섹션 타이틀 ── */
-.sec-title{font-size:36px;font-weight:800;letter-spacing:-0.8px;color:var(--dark);line-height:1.2;margin-bottom:40px;}
-.sec-title em{color:var(--or);font-style:normal;}
-.sec-sub{font-size:20px;font-weight:800;letter-spacing:-0.4px;color:var(--dark);line-height:1.3;margin-bottom:24px;}
+/* ── 내지 패딩 ── */
+.inner{padding:36px 150px;flex:1;display:flex;flex-direction:column;gap:20px;overflow:hidden;min-height:0;}
 
-/* ── 본문 텍스트 ── */
-.body-t{font-size:18px;color:var(--g600);line-height:1.85;}
-.body-t strong{color:var(--dark);font-weight:700;}
-.body-t p{margin-bottom:16px;}
-.body-t p:last-child{margin-bottom:0;}
+/* ── 타이포 ── */
+.ltag{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g400);}
+.ltag.or{color:var(--or);}
 
 /* ── 구분선 ── */
-.rule{width:100%;height:1px;background:var(--g100);margin:36px 0;flex-shrink:0;}
+.rule{width:100%;height:1px;background:var(--g100);flex-shrink:0;}
 
 /* ── 배지 ── */
-.badge{display:inline-flex;font-family:var(--fm);font-size:11px;padding:5px 14px;border-radius:100px;border:1px solid var(--g200);color:var(--g500);white-space:nowrap;}
+.badge{display:inline-flex;font-family:var(--fm);font-size:11px;padding:5px 12px;border:1px solid var(--g200);color:var(--g600);background:var(--g50);}
 .badge.or{border-color:var(--or);color:var(--or);background:var(--or-pale);}
-.badges{display:flex;flex-wrap:wrap;gap:8px;}
 
 /* ── 인용 ── */
-.quote{border-left:3px solid var(--or);padding:20px 26px;background:var(--or-pale);font-size:18px;color:var(--g600);line-height:1.85;border-radius:0 8px 8px 0;}
+.quote{border-left:3px solid var(--or);padding:16px 22px;background:var(--or-light);font-size:15px;color:var(--g700);line-height:1.8;}
 
 /* ── 문제 박스 ── */
-.prob-row{display:grid;gap:14px;}
-.pbox{padding:24px 28px;border-radius:12px;background:var(--g50);border-top:3px solid var(--g200);}
+.pbox{padding:18px 22px;background:var(--g50);border-top:3px solid var(--g200);}
 .pbox.hi{border-top-color:var(--or);background:var(--or-pale);}
-.pbox-t{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g400);margin-bottom:10px;}
+.pbox-t{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--g500);margin-bottom:7px;}
 .pbox.hi .pbox-t{color:var(--or);}
-.pbox-b{font-size:17px;color:var(--g600);line-height:1.65;}
-.pbox-b strong{color:var(--dark);}
+.pbox-b{font-size:15px;color:var(--g700);line-height:1.65;}
 
 /* ── 체크리스트 ── */
-.cl{list-style:none;display:flex;flex-direction:column;gap:14px;}
-.cl li{font-size:18px;color:var(--g600);line-height:1.65;padding-left:28px;position:relative;}
-.cl li::before{content:"—";position:absolute;left:0;color:var(--g300);font-family:var(--fm);}
-.cl li.hi{color:var(--dark);font-weight:600;}
-.cl li.hi::before{content:"→";color:var(--or);}
+.cl{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;}
+.cl li{font-size:15px;color:var(--g700);line-height:1.7;padding-left:20px;position:relative;}
+.cl li::before{content:"—";position:absolute;left:0;color:var(--g400);font-family:var(--fm);}
+.cl li.hi{color:var(--black);font-weight:600;}
+.cl li.hi::before{color:var(--or);}
 
 /* ── 플로우 ── */
-.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.fstep{font-family:var(--fm);font-size:12px;color:var(--g500);background:var(--g50);border:1px solid var(--g200);border-radius:8px;padding:10px 18px;}
-.fstep.on{color:var(--or);background:var(--or-pale);border-color:rgba(255,107,0,0.3);}
-.farr{font-size:14px;color:var(--g300);}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:5px;}
+.fstep{font-family:var(--fm);font-size:11px;color:var(--g600);background:var(--g50);border:1px solid var(--g100);padding:8px 14px;}
+.fstep.on{background:var(--or-pale);border-color:var(--or);color:var(--or);}
+.farr{font-size:13px;color:var(--g300);}
 
 /* ── AS-IS TO-BE ── */
-.atb{display:grid;grid-template-columns:1fr 52px 1fr;align-items:center;}
-.asis{padding:24px 28px;border-radius:12px;background:var(--g50);border:1px solid var(--g200);}
-.tobe{padding:24px 28px;border-radius:12px;background:var(--or-pale);border:1px solid rgba(255,107,0,0.25);}
-.at-l{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.atb{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;}
+.asis{padding:16px 20px;background:var(--g50);border:1px solid var(--g100);}
+.tobe{padding:16px 20px;background:var(--or-pale);border:1px solid var(--or);}
+.at-l{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px;}
 .asis .at-l{color:var(--g400);}
 .tobe .at-l{color:var(--or);}
-.at-b{font-size:17px;line-height:1.65;}
+.at-b{font-size:14px;line-height:1.65;}
 .asis .at-b{color:var(--g600);}
-.tobe .at-b{color:var(--or-d);font-weight:600;}
-.arr-m{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--g300);}
+.tobe .at-b{color:var(--or);font-weight:500;}
+.arr-c{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--g300);}
 
-/* ── 성과 카드 ── */
-.oc-row{display:grid;gap:14px;}
-.oc{background:var(--g50);border-radius:12px;padding:28px 32px;border:1px solid var(--g200);}
-.oc-num{font-size:40px;font-weight:800;color:var(--or);letter-spacing:-1px;line-height:1;margin-bottom:8px;}
-.oc-desc{font-size:16px;color:var(--g500);line-height:1.5;}
+/* ── 성과 수치 그리드 ── */
+.oc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.oc-item{padding:16px 0;border-bottom:1px solid var(--g100);display:flex;flex-direction:column;gap:5px;}
+.oc-item:nth-child(odd){padding-right:32px;border-right:1px solid var(--g100);}
+.oc-item:nth-child(even){padding-left:32px;}
+.oc-num{font-family:var(--fd);font-size:28px;font-weight:300;color:var(--or);letter-spacing:-0.02em;}
+.oc-desc{font-size:13px;color:var(--g500);line-height:1.55;}
 
-/* ── 회고 ── */
-.retro{background:var(--g50);border-left:3px solid var(--g200);border-radius:0 8px 8px 0;padding:22px 28px;font-size:17px;color:var(--g600);line-height:1.9;}
+/* ── 강점 아이템 ── */
+.str-item{padding:16px 0;border-bottom:1px solid var(--g100);display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:start;}
+.str-item:last-child{border-bottom:none;}
+.str-n{font-family:var(--fm);font-size:11px;color:var(--or);padding-top:2px;}
 
-/* ── KR 행 ── */
-.kr-row{display:grid;gap:1px;background:var(--g200);border-radius:16px;overflow:hidden;flex-shrink:0;}
-.kr{background:var(--white);padding:32px 40px;display:flex;flex-direction:column;gap:10px;}
-.kr-num{font-size:52px;font-weight:800;color:var(--or);letter-spacing:-1.5px;line-height:1;}
-.kr-unit{font-size:22px;font-weight:300;color:var(--g300);margin-left:3px;}
-.kr-lbl{font-size:17px;color:var(--g500);line-height:1.5;}
-.kr-sub{font-family:var(--fm);font-size:10px;color:var(--g300);letter-spacing:0.08em;text-transform:uppercase;}
+/* ── 회고 박스 ── */
+.retro{background:var(--g50);border-left:3px solid var(--g200);padding:18px 22px;font-size:14px;color:var(--g600);line-height:1.9;}
 
 /* ── 협업 테이블 ── */
-.ctbl{width:100%;border-collapse:collapse;font-size:16px;}
-.ctbl th{background:var(--dark);color:white;font-family:var(--fm);font-size:11px;letter-spacing:0.08em;text-align:left;padding:12px 20px;font-weight:500;}
-.ctbl td{padding:14px 20px;border-bottom:1px solid var(--g100);color:var(--g600);line-height:1.55;vertical-align:top;}
-.ctbl td:first-child{font-family:var(--fm);font-size:11px;color:var(--g400);width:120px;white-space:nowrap;}
+.ctbl{width:100%;border-collapse:collapse;font-size:14px;}
+.ctbl th{background:var(--g900);color:var(--white);font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-align:left;padding:10px 18px;font-weight:400;}
+.ctbl td{padding:11px 18px;border-bottom:1px solid var(--g100);color:var(--g700);line-height:1.55;vertical-align:top;}
+.ctbl td:first-child{font-family:var(--fm);font-size:11px;color:var(--g500);width:120px;white-space:nowrap;}
 
 /* ── 이미지 플홀 ── */
-.iph{background:var(--g50);border:1.5px dashed var(--g200);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;color:var(--g300);text-align:center;padding:20px;}
+.iph{background:var(--g50);border:1px dashed var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;color:var(--g300);text-align:center;padding:16px;}
 
 /* ── 그리드 ── */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 
-/* ── 페이지 번호 ── */
-.pn{position:absolute;bottom:36px;right:var(--pad);font-family:var(--fm);font-size:12px;color:var(--g300);}
+/* ── 수치 섹션 (성과 large) ── */
+.big-num{font-family:var(--fd);font-size:52px;font-weight:300;color:var(--or);letter-spacing:-0.04em;line-height:1;}
+.big-unit{font-size:22px;color:var(--g400);margin-left:2px;}
+.big-desc{font-size:14px;color:var(--g500);line-height:1.5;margin-top:6px;}
 
 /* ━━━━ P1 표지 ━━━━ */
-#p1{background:var(--dark);}
-#p1 .or-bar{height:4px;background:var(--or);flex-shrink:0;}
-#p1 .p1-body{flex:1;padding:72px var(--pad);display:flex;flex-direction:column;justify-content:space-between;}
-#p1 .p1-tag{font-family:var(--fm);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,107,0,0.6);margin-bottom:36px;}
-#p1 .h-thin{font-size:80px;font-weight:300;letter-spacing:-2px;line-height:1.0;color:rgba(255,255,255,0.5);}
-#p1 .h-bold{font-size:80px;font-weight:800;letter-spacing:-2px;line-height:1.0;color:var(--or);margin-bottom:32px;}
-#p1 .p1-sub{font-size:20px;font-weight:400;color:rgba(255,255,255,0.45);line-height:1.8;max-width:860px;}
-#p1 .p1-bot{display:flex;justify-content:space-between;align-items:flex-end;}
-#p1 .contacts{display:flex;gap:0;}
-#p1 .ci{display:flex;flex-direction:column;gap:5px;padding-right:48px;border-right:1px solid rgba(255,255,255,0.08);margin-right:48px;}
-#p1 .ci:last-child{border-right:none;margin-right:0;}
-#p1 .ci-l{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.22);}
-#p1 .ci-v{font-size:16px;color:rgba(255,255,255,0.55);}
-#p1 .chips{display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
-#p1 .chip{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.04em;}
-#p1 .pn{color:rgba(255,255,255,0.15);}
+#p1{background:var(--g900);display:grid;grid-template-columns:1fr 420px;}
+#p1 .pl{padding:64px 72px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .pr{background:var(--or);padding:64px 52px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .or-bar{width:36px;height:3px;background:var(--or-mid);margin-bottom:32px;}
+#p1 .headline{font-family:var(--fd);font-weight:300;font-size:64px;letter-spacing:-0.03em;line-height:1.1;color:var(--white);}
+#p1 .headline em{color:rgba(255,255,255,0.65);font-style:normal;}
+#p1 .sub{font-size:19px;color:var(--g500);line-height:1.8;margin-top:28px;max-width:680px;}
+#p1 .cg{display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;margin-top:52px;}
+#p1 .cl{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g600);margin-bottom:4px;}
+#p1 .cv{font-size:17px;color:var(--g400);}
+#p1 .r-lbl{font-family:var(--fm);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px;}
+#p1 .rtags{display:flex;flex-direction:column;gap:10px;}
+#p1 .rtag{font-family:var(--fm);font-size:13px;color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.2);padding:14px 18px;letter-spacing:0.02em;}
+#p1 .rtag-n{font-size:11px;color:rgba(255,255,255,0.35);margin-right:12px;}
+#p1 .r-bot{font-family:var(--fm);font-size:10px;color:rgba(255,255,255,0.22);letter-spacing:0.08em;}
+#p1 .pn{font-family:var(--fm);font-size:11px;color:var(--g700);letter-spacing:0.08em;}
 
 /* ━━━━ P2 목차 ━━━━ */
-#p2 .p2-body{flex:1;display:grid;grid-template-columns:380px 1px 1fr;min-height:0;}
-#p2 .p2-left{padding:72px var(--pad);display:flex;flex-direction:column;justify-content:space-between;}
-#p2 .p2-right{padding:72px 80px;display:flex;flex-direction:column;justify-content:center;gap:0;}
-#p2 .vr{background:var(--g100);}
-#p2 .toc-big{font-size:60px;font-weight:800;letter-spacing:-2px;color:var(--dark);line-height:1.0;margin-top:14px;}
-#p2 .toc-desc{font-size:18px;font-weight:300;color:var(--g500);line-height:1.8;margin-top:20px;}
-#p2 .toc-item{display:grid;grid-template-columns:56px 1fr;gap:0;padding:24px 0;border-bottom:1px solid var(--g100);}
+#p2{display:flex;flex-direction:column;}
+#p2 .toc-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:340px 1px 1fr;background:var(--white);min-height:0;}
+#p2 .toc-left{padding:52px 48px;display:flex;flex-direction:column;justify-content:space-between;}
+#p2 .toc-right{padding:52px 56px;display:flex;flex-direction:column;gap:0;justify-content:center;}
+#p2 .toc-vr{background:var(--g100);}
+#p2 .toc-big{font-family:var(--fd);font-size:40px;font-weight:500;letter-spacing:-0.03em;line-height:1.15;color:var(--black);margin-top:14px;}
+#p2 .toc-desc{font-size:14px;color:var(--g500);line-height:1.8;margin-top:16px;}
+#p2 .toc-item{display:flex;align-items:flex-start;gap:24px;padding:20px 0;border-bottom:1px solid var(--g100);}
 #p2 .toc-item:last-child{border-bottom:none;}
-#p2 .toc-pg{font-family:var(--fm);font-size:13px;color:var(--g300);padding-top:4px;}
-#p2 .toc-eye{font-family:var(--fm);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:5px;}
-#p2 .toc-name{font-size:22px;font-weight:700;color:var(--dark);letter-spacing:-0.4px;margin-bottom:5px;}
-#p2 .toc-sub{font-size:14px;color:var(--g400);line-height:1.5;}
+#p2 .toc-pg{font-family:var(--fm);font-size:11px;color:var(--g400);min-width:44px;padding-top:3px;letter-spacing:0.06em;}
+#p2 .toc-eye{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--or);margin-bottom:5px;}
+#p2 .toc-name{font-size:18px;font-weight:600;color:var(--black);letter-spacing:-0.2px;margin-bottom:4px;}
+#p2 .toc-sub{font-size:13px;color:var(--g500);}
 #p2 .toc-bdg{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+#p2 .pn{font-family:var(--fm);font-size:11px;color:var(--g300);}
 
 /* ━━━━ P3 About Me ━━━━ */
-#p3 .p3-body{flex:1;display:grid;grid-template-columns:320px 1px 1fr;min-height:0;}
-#p3 .p3-left{padding:60px var(--pad);display:flex;flex-direction:column;gap:0;background:var(--g50);}
-#p3 .p3-right{padding:60px 80px;display:flex;flex-direction:column;gap:0;overflow:hidden;}
-#p3 .vr{background:var(--g200);}
-#p3 .photo-ph{width:88px;height:88px;border-radius:50%;border:1.5px dashed var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;color:var(--g300);text-align:center;margin-bottom:20px;}
-#p3 .pname{font-size:24px;font-weight:800;color:var(--dark);letter-spacing:-0.4px;}
-#p3 .ppos{font-size:15px;color:var(--g500);margin-top:4px;}
-#p3 .pdiv{height:1px;background:var(--g200);margin:20px 0;}
-#p3 .irow{display:grid;grid-template-columns:38px 1fr;gap:4px;font-size:14px;margin-bottom:9px;align-items:baseline;}
-#p3 .ikey{font-family:var(--fm);font-size:9px;color:var(--g300);letter-spacing:0.1em;text-transform:uppercase;}
-#p3 .ival{color:var(--g600);}
-#p3 .sk-lbl{font-family:var(--fm);font-size:9px;color:var(--g300);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;margin-top:20px;}
-#p3 .sk-tags{display:flex;flex-wrap:wrap;gap:5px;}
-#p3 .sk-t{font-family:var(--fm);font-size:10px;color:var(--g500);border:1px solid var(--g200);padding:4px 10px;border-radius:6px;background:var(--white);}
-#p3 .career-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;}
-#p3 .cdot{width:9px;height:9px;border-radius:50%;background:var(--or);flex-shrink:0;margin-top:7px;}
-#p3 .cdot.lt{background:var(--g200);}
-#p3 .ct{font-size:16px;font-weight:700;color:var(--dark);letter-spacing:-0.2px;margin-bottom:3px;}
-#p3 .cs{font-size:13px;color:var(--g400);}
-#p3 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0;}
-#p3 .sbox{background:var(--g50);border-radius:12px;padding:22px 24px;border:1px solid var(--g100);}
-#p3 .snum{font-size:36px;font-weight:800;color:var(--or);letter-spacing:-1px;line-height:1;margin-bottom:7px;}
-#p3 .slbl{font-size:13px;color:var(--g500);line-height:1.4;}
-#p3 .str-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-#p3 .str{background:var(--or-pale);border-radius:12px;padding:22px 24px;border:1px solid rgba(255,107,0,0.1);}
-#p3 .sn{font-family:var(--fm);font-size:10px;color:var(--or);letter-spacing:0.1em;margin-bottom:9px;}
-#p3 .st{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.35;}
-#p3 .sd{font-size:13px;color:var(--g500);line-height:1.65;}
+#p3 .am-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:260px 1px 1fr;background:var(--white);min-height:0;}
+#p3 .am-left{background:var(--or-pale);padding:36px 30px;display:flex;flex-direction:column;gap:22px;overflow:hidden;}
+#p3 .am-right{display:flex;flex-direction:column;overflow:hidden;}
+#p3 .photo-ph{width:80px;height:80px;background:var(--g100);border:1px dashed var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;color:var(--g400);text-align:center;}
+#p3 .irow{display:grid;grid-template-columns:38px 1fr;gap:4px;font-size:13px;align-items:baseline;}
+#p3 .ikey{font-family:var(--fm);font-size:9px;color:var(--g400);letter-spacing:0.08em;text-transform:uppercase;}
+#p3 .sk-pill{font-family:var(--fm);font-size:10px;padding:4px 9px;border:1px solid var(--g200);color:var(--g600);background:var(--white);}
+#p3 .career-bar{border-bottom:1px solid var(--g100);padding:14px 150px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;}
+#p3 .chip-dk{font-family:var(--fm);font-size:11px;padding:5px 14px;letter-spacing:0.04em;background:var(--g900);color:var(--white);}
+#p3 .chip-lt{font-family:var(--fm);font-size:11px;padding:5px 14px;letter-spacing:0.04em;background:var(--g100);color:var(--g600);}
+#p3 .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);flex-shrink:0;}
+#p3 .mc{padding:20px 150px;border-right:1px solid var(--g100);}
+#p3 .mc:last-child{border-right:none;}
+#p3 .mc-num{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--black);letter-spacing:-0.03em;}
+#p3 .mc-desc{font-size:12px;color:var(--g500);line-height:1.5;margin-top:4px;}
+#p3 .str-area{padding:20px 150px;flex:1;overflow:hidden;display:flex;flex-direction:column;}
 
-/* ━━━━ P4 Why 페이타랩 ━━━━ */
-#p4 .p4-body{flex:1;display:grid;grid-template-columns:1fr 1px 1fr;min-height:0;}
-#p4 .p4-col{padding:60px 80px;display:flex;flex-direction:column;gap:0;overflow:hidden;}
-#p4 .vr{background:var(--g100);}
-#p4 .why-head{font-size:28px;font-weight:800;letter-spacing:-0.6px;line-height:1.35;color:var(--dark);margin-bottom:24px;margin-top:12px;}
-#p4 .blank{border:1.5px dashed rgba(255,107,0,0.35);border-radius:12px;padding:22px 26px;background:var(--or-pale);margin-top:20px;}
-#p4 .blank-l{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--or);margin-bottom:9px;}
-#p4 .blank-p{font-size:16px;color:rgba(255,107,0,0.3);line-height:1.75;font-style:italic;}
-#p4 .bring-item{padding:20px 0;border-bottom:1px solid var(--g100);display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:start;}
+/* ━━━━ P4 에세이 ━━━━ */
+#p4 .ess-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:1fr 1px 1fr;background:var(--white);min-height:0;}
+#p4 .ess-col{padding:40px 150px;display:flex;flex-direction:column;gap:22px;overflow:hidden;}
+#p4 .ess-vr{background:var(--g100);}
+#p4 .ess-head{font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--black);line-height:1.35;margin-top:10px;}
+#p4 .blank{border:1px dashed rgba(255,107,0,0.35);padding:18px 22px;background:var(--or-pale);margin-top:16px;}
+#p4 .blank-l{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px;}
+#p4 .blank-p{font-size:14px;color:rgba(255,107,0,0.3);line-height:1.75;font-style:italic;}
+#p4 .bring-item{padding:16px 0;border-bottom:1px solid var(--g100);display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start;}
 #p4 .bring-item:last-child{border-bottom:none;}
 #p4 .bn{font-family:var(--fm);font-size:11px;color:var(--or);padding-top:2px;}
-#p4 .bt-title{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:5px;}
-#p4 .bt-desc{font-size:14px;color:var(--g500);line-height:1.7;}
+#p4 .bt{font-size:14px;font-weight:600;color:var(--black);margin-bottom:5px;}
+#p4 .bd{font-size:13px;color:var(--g500);line-height:1.7;}
 
 /* ━━━━ 프로젝트 표지 ━━━━ */
-.pcov{flex:1;display:flex;flex-direction:column;}
-.pc-head{padding:60px var(--pad) 44px;flex:1;display:flex;flex-direction:column;gap:16px;}
-.pc-acc{height:4px;background:var(--or);flex-shrink:0;}
-.pc-num{font-family:var(--fm);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--or);}
-.pc-title{font-size:68px;font-weight:800;letter-spacing:-2px;line-height:1.0;color:var(--dark);}
-.pc-desc{font-size:18px;font-weight:400;color:var(--g500);line-height:1.7;max-width:1000px;}
-.pc-meta{display:flex;gap:52px;margin-top:8px;}
-.pc-ml{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g300);margin-bottom:5px;}
-.pc-mv{font-size:16px;color:var(--g600);}
-.pc-kr{display:grid;gap:1px;background:var(--g200);flex-shrink:0;}
-.pc-kri{background:var(--white);padding:36px var(--pad);display:flex;flex-direction:column;gap:10px;}
-.pc-num2{font-size:64px;font-weight:800;color:var(--or);letter-spacing:-2px;line-height:1;}
-.pc-unit{font-size:26px;font-weight:300;color:var(--g300);margin-left:3px;}
-.pc-lbl{font-size:17px;color:var(--g500);line-height:1.5;}
-.pc-sub{font-family:var(--fm);font-size:10px;color:var(--g300);letter-spacing:0.08em;text-transform:uppercase;margin-top:3px;}
+.pcov{flex:1;display:flex;flex-direction:column;min-height:0;}
+.pcov-info{padding:48px 150px 32px;display:flex;flex-direction:column;gap:18px;border-bottom:1px solid var(--g100);background:var(--white);}
+.pcov-num{font-family:var(--fm);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:6px;}
+.pcov-title{font-family:var(--fd);font-size:60px;font-weight:300;letter-spacing:-0.03em;line-height:1.08;color:var(--black);}
+.pcov-desc{font-size:17px;color:var(--g500);line-height:1.75;max-width:1100px;}
+.pcov-meta{display:flex;gap:48px;flex-wrap:wrap;}
+.pcov-ml{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:4px;}
+.pcov-mv{font-size:15px;color:var(--g700);}
+.pcov-kr{display:grid;gap:0;background:var(--white);flex:1;min-height:0;}
+.pcov-kri{padding:0 150px;border-right:1px solid var(--g100);display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.pcov-kri:last-child{border-right:none;}
+.pcov-num2{font-family:var(--fd);font-size:56px;font-weight:300;color:var(--or);letter-spacing:-0.04em;line-height:1;}
+.pcov-unit{font-size:22px;color:var(--g400);margin-left:3px;}
+.pcov-lbl{font-size:16px;color:var(--g500);line-height:1.6;}
+.pcov-sub{font-family:var(--fm);font-size:10px;color:var(--g300);letter-spacing:0.04em;margin-top:3px;}
 
-/* ━━━━ P12 마무리 ━━━━ */
-#p12{background:var(--dark);}
-#p12 .or-bar{height:4px;background:var(--or);flex-shrink:0;}
-#p12 .p12-body{flex:1;padding:72px var(--pad);display:flex;flex-direction:column;justify-content:space-between;}
-#p12 .end-big{font-size:72px;font-weight:800;letter-spacing:-2px;line-height:1.1;color:var(--white);}
-#p12 .end-big em{font-style:normal;color:var(--or);}
-#p12 .end-sub{font-size:20px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.8;margin-top:24px;max-width:760px;}
-#p12 .end-bot{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.07);padding-top:32px;flex-wrap:wrap;}
-#p12 .ec{display:flex;flex-direction:column;gap:5px;padding-right:52px;border-right:1px solid rgba(255,255,255,0.07);margin-right:52px;}
-#p12 .ec:last-child{border-right:none;margin-right:0;}
-#p12 .ecl{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
-#p12 .ecv{font-size:17px;color:rgba(255,255,255,0.55);}
-#p12 .pn{color:rgba(255,255,255,0.12);}
+/* ━━━━ P17 마무리 ━━━━ */
+#p17{background:var(--g900);display:grid;grid-template-columns:1fr 400px;}
+#p17 .el{padding:var(--gut);display:flex;flex-direction:column;justify-content:space-between;}
+#p17 .er{background:var(--or);padding:64px 52px;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;}
+#p17 .eh{font-family:var(--fd);font-size:48px;font-weight:300;letter-spacing:-0.03em;line-height:1.22;color:var(--white);}
+#p17 .ee{color:rgba(255,255,255,0.65);}
+#p17 .ecl{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:4px;}
+#p17 .ecv{font-size:15px;color:rgba(255,255,255,0.85);}
+#p17 .ebar{width:32px;height:3px;background:rgba(255,255,255,0.36);margin-bottom:12px;}
+#p17 .pn{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,0.15);}
 
 @media print{body{background:white;padding:0;gap:0;}.page{box-shadow:none;page-break-after:always;}.plabel{display:none;}}
 </style>
@@ -239,318 +223,363 @@ body{font-family:var(--fn);color:var(--dark);display:flex;flex-direction:column;
 <body>
 
 <!-- ═══ P1 표지 ═══ -->
-<div class="plabel"><span>PAYTA LAB — PM Portfolio · 김수진</span><span>01 / 17</span></div>
+<div class="plabel"><span>PAYTA LAB — PM Portfolio · 김수진</span><span>P.01</span></div>
 <div class="page" id="p1">
-  <div class="or-bar"></div>
-  <div class="p1-body">
+  <div class="pl">
     <div>
-      <div class="p1-tag">payta lab · product manager portfolio · 2025</div>
-      <div class="h-thin">VOC와 데이터로 문제의 본질을 찾고,</div>
-      <div class="h-bold">구조 전환으로 해결합니다.</div>
-      <p class="p1-sub">사용자 행동 데이터와 VOC로 진짜 문제를 정의하고,<br>구조를 바꿔 지표를 움직여온 서비스기획/PM 김수진입니다.</p>
-    </div>
-    <div class="p1-bot">
-      <div class="contacts">
-        <div class="ci"><p class="ci-l">name</p><p class="ci-v">김수진</p></div>
-        <div class="ci"><p class="ci-l">phone</p><p class="ci-v">010-4772-6950</p></div>
-        <div class="ci"><p class="ci-l">email</p><p class="ci-v">soowlsee@gmail.com</p></div>
-        <div class="ci"><p class="ci-l">position</p><p class="ci-v">서비스기획 / PM</p></div>
-        <div class="ci"><p class="ci-l">career</p><p class="ci-v">2년 4개월</p></div>
-      </div>
-      <div class="chips">
-        <span class="chip">데이터 기반 문제 정의</span>
-        <span class="chip">가설 수립 · 검증</span>
-        <span class="chip">화면설계 · 스토리보드</span>
-        <span class="chip">스프린트 기획 · AI 도구 활용</span>
+      <div class="or-bar"></div>
+      <h1 class="headline">VOC와 데이터로<br>문제의 본질을 찾고,<br><em>구조 전환으로 해결합니다.</em></h1>
+      <p class="sub">사용자 행동 데이터와 VOC로 진짜 문제를 정의하고,<br>구조를 바꿔 지표를 움직여온 서비스기획/PM 김수진입니다.</p>
+      <div class="cg">
+        <div><p class="cl">name</p><p class="cv">김수진</p></div>
+        <div><p class="cl">phone</p><p class="cv">010-4772-6950</p></div>
+        <div><p class="cl">email</p><p class="cv">soowlsee@gmail.com</p></div>
+        <div><p class="cl">position</p><p class="cv">서비스기획 / PM</p></div>
       </div>
     </div>
+    <div class="pn">01 / 17</div>
   </div>
-  <span class="pn">01 / 17</span>
+  <div class="pr">
+    <div>
+      <p class="r-lbl">core competency</p>
+      <div class="rtags">
+        <div class="rtag"><span class="rtag-n">01</span>데이터 기반 문제 정의 · 가설 수립</div>
+        <div class="rtag"><span class="rtag-n">02</span>VOC 분석 · 구조 전환 설계</div>
+        <div class="rtag"><span class="rtag-n">03</span>화면설계 · 스토리보드 작성</div>
+        <div class="rtag"><span class="rtag-n">04</span>스프린트 기획 · 이해관계자 조율</div>
+        <div class="rtag"><span class="rtag-n">05</span>운영 정책 수립 · 가이드라인 문서화</div>
+        <div class="rtag"><span class="rtag-n">06</span>AI 도구 활용 · 배포 · 운영 이관</div>
+      </div>
+    </div>
+    <p class="r-bot">kim soojin — payta lab portfolio 2025</p>
+  </div>
 </div>
 
 
 <!-- ═══ P2 목차 ═══ -->
-<div class="plabel"><span>CONTENTS</span><span>02 / 17</span></div>
+<div class="plabel"><span>CONTENTS</span><span>P.02</span></div>
 <div class="page" id="p2">
-  <div class="p2-body">
-    <div class="p2-left">
+  <div class="topbar">
+    <span class="ltag or">contents</span>
+    <span class="ltag">kim soojin — payta lab portfolio 2025</span>
+  </div>
+  <div class="toc-wrap">
+    <div class="toc-left">
       <div>
-        <div class="eyebrow">contents</div>
-        <div class="toc-big">포트폴리오<br>목차</div>
+        <p class="ltag or" style="margin-bottom:14px;">contents</p>
+        <h2 class="toc-big">포트폴리오<br>목차</h2>
         <p class="toc-desc">VOC와 데이터로 문제의 본질을 찾고,<br>구조 전환으로 해결해온<br>서비스기획/PM 김수진입니다.</p>
       </div>
-      <span style="font-family:var(--fm);font-size:12px;color:var(--g300);">02 / 17</span>
+      <p class="pn">02 / 17</p>
     </div>
-    <div class="vr"></div>
-    <div class="p2-right">
-      <div class="toc-item"><span class="toc-pg">03</span><div><p class="toc-eye">about me</p><p class="toc-name">김수진 소개</p><p class="toc-sub">경력 · 핵심 수치 · 강점 · 개인정보 · 스킬</p></div></div>
-      <div class="toc-item"><span class="toc-pg">04</span><div><p class="toc-eye">why payta lab</p><p class="toc-name">페이타랩을 선택한 이유</p><p class="toc-sub">지원동기 · 패스오더 사용 경험 · 기여점</p></div></div>
-      <div class="toc-item"><span class="toc-pg">05 – 08</span><div><p class="toc-eye">project 01</p><p class="toc-name">웹서비스 자동화 어드민 리뉴얼</p><p class="toc-sub">4개 부서 운영 이관 완료 · 월 15h 단축 · 재문의 0건</p><div class="toc-bdg" style="margin-top:8px;"><span class="badge or">요구사항 수집</span><span class="badge or">화면설계</span><span class="badge or">운영 이관</span></div></div></div>
-      <div class="toc-item"><span class="toc-pg">09 – 12</span><div><p class="toc-eye">project 02</p><p class="toc-name">기부금영수증 간편 발급 서비스</p><p class="toc-sub">CS 34.8% 감소 · 자가 발급 47.5% · 운영 리소스 ~1,200h 절감</p><div class="toc-bdg" style="margin-top:8px;"><span class="badge or">데이터 분석</span><span class="badge or">가설 검증</span><span class="badge or">비로그인 플로우</span></div></div></div>
-      <div class="toc-item"><span class="toc-pg">13 – 16</span><div>
-        <p class="toc-eye">project 03</p>
-        <p class="toc-name">정기후원 중단 방어 서비스 기획</p>
-        <p class="toc-sub">방어율 최대 27% · 4개 캠페인 확장 · 비즈니스 구조의 교훈</p>
-        <div class="toc-bdg" style="margin-top:8px;">
-          <span class="badge or">중단 방어 설계</span>
-          <span class="badge or">팝업 UX</span>
-          <span class="badge or">서비스 확장</span>
-        </div>
-      </div></div>
-      <div class="toc-item"><span class="toc-pg">17</span><div><p class="toc-eye">closing</p><p class="toc-name">마무리</p></div></div>
+    <div class="toc-vr"></div>
+    <div class="toc-right">
+      <div class="toc-item"><span class="toc-pg">03</span><div><p class="toc-eye">about me</p><p class="toc-name">김수진 소개</p><p class="toc-sub">경력 · 핵심 수치 · 강점 3가지 · 스킬</p></div></div>
+      <div class="toc-item"><span class="toc-pg">04</span><div><p class="toc-eye">why payta lab · essay</p><p class="toc-name">지원동기 · 에세이</p><p class="toc-sub">지원이유 · PM 가치관 · 주도적 경험 · 업무방식</p></div></div>
+      <div class="toc-item"><span class="toc-pg">05 – 08</span><div><p class="toc-eye">project 01</p><p class="toc-name">웹서비스 자동화 어드민 리뉴얼</p><p class="toc-sub">4개 부서 운영 이관 완료 · 월 15h 단축 · 재문의 0건</p><div class="toc-bdg"><span class="badge or">요구사항 수집</span><span class="badge or">화면설계</span><span class="badge or">운영 이관</span></div></div></div>
+      <div class="toc-item"><span class="toc-pg">09 – 12</span><div><p class="toc-eye">project 02</p><p class="toc-name">기부금영수증 간편 발급 서비스</p><p class="toc-sub">CS 34.8% 감소 · 자가 발급 47.5% · 운영 리소스 ~1,200h 절감</p><div class="toc-bdg"><span class="badge or">데이터 분석</span><span class="badge or">가설 검증</span><span class="badge or">비로그인 플로우</span></div></div></div>
+      <div class="toc-item"><span class="toc-pg">13 – 16</span><div><p class="toc-eye">project 03</p><p class="toc-name">유어터닝 캠페인 후원 중단 리스크 관리</p><p class="toc-sub">방어율 최대 27% · 4개 캠페인 확장 · 비즈니스 구조의 교훈</p><div class="toc-bdg"><span class="badge or">중단 방어</span><span class="badge or">팝업 UX</span><span class="badge or">서비스 확장</span></div></div></div>
     </div>
   </div>
 </div>
 
 
 <!-- ═══ P3 About Me ═══ -->
-<div class="plabel"><span>ABOUT ME</span><span>03 / 17</span></div>
+<div class="plabel"><span>ABOUT ME</span><span>P.03</span></div>
 <div class="page" id="p3">
-  <div class="topbar"><div class="tb-l"><span class="eyebrow" style="margin:0;">about me</span></div><span class="tb-r">03 / 17</span></div>
-  <div class="p3-body">
-    <div class="p3-left">
-      <div class="photo-ph">사진<br>삽입</div>
-      <p class="pname">김수진</p><p class="ppos">서비스기획 / PM</p>
-      <div class="pdiv"></div>
-      <div class="irow"><span class="ikey">birth</span><span class="ival">1996.10.18</span></div>
-      <div class="irow"><span class="ikey">tel</span><span class="ival">010-4772-6950</span></div>
-      <div class="irow"><span class="ikey">mail</span><span class="ival" style="font-size:12px;">soowlsee@gmail.com</span></div>
-      <div class="irow"><span class="ikey">exp</span><span class="ival">2년 4개월</span></div>
-      <div class="pdiv"></div>
-      <div class="sk-lbl">tools & skills</div>
-      <div class="sk-tags">
-        <span class="sk-t">Figma</span><span class="sk-t">GA</span><span class="sk-t">SQL</span>
-        <span class="sk-t">Notion</span><span class="sk-t">JIRA</span><span class="sk-t">Confluence</span>
-        <span class="sk-t">Claude</span><span class="sk-t">GPT</span><span class="sk-t">Excel</span>
+  <div class="topbar"><span class="ltag or">about me</span><span class="ltag">kim soojin — payta lab portfolio 2025</span></div>
+  <div class="am-wrap">
+    <div class="am-left">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="photo-ph">사진<br>삽입</div>
+        <div>
+          <p style="font-family:var(--fd);font-size:22px;font-weight:400;color:var(--black);letter-spacing:-0.01em;">김수진</p>
+          <p style="font-size:13px;color:var(--g500);margin-top:3px;">서비스기획 / PM</p>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--g100);"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p class="ltag" style="margin-bottom:3px;">info</p>
+        <div class="irow"><span class="ikey">birth</span><span style="color:var(--g700);">1996.10.18</span></div>
+        <div class="irow"><span class="ikey">tel</span><span style="color:var(--g700);">010-4772-6950</span></div>
+        <div class="irow"><span class="ikey">mail</span><span style="font-size:11px;color:var(--g700);">soowlsee@gmail.com</span></div>
+        <div class="irow"><span class="ikey">exp</span><span style="color:var(--g700);">2년 4개월</span></div>
+      </div>
+      <div style="height:1px;background:var(--g100);"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p class="ltag" style="margin-bottom:3px;">tools & skills</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="sk-pill">Figma</span><span class="sk-pill">GA</span><span class="sk-pill">SQL</span>
+          <span class="sk-pill">Notion</span><span class="sk-pill">JIRA</span><span class="sk-pill">Confluence</span>
+          <span class="sk-pill">Claude</span><span class="sk-pill">GPT</span><span class="sk-pill">Excel</span>
+        </div>
       </div>
     </div>
-    <div class="vr"></div>
-    <div class="p3-right">
-      <div class="career-item"><div class="cdot"></div><div><div class="ct">굿네이버스 인터내셔날 · 서비스팀 PM</div><div class="cs">2022.08 – 2024.08 · 정규직 · 2년 1개월</div></div></div>
-      <div class="career-item"><div class="cdot lt"></div><div><div class="ct">미리디 · PM</div><div class="cs">2025.04 – 06 · 계약직 · 3개월 · 스프린트 기반 기획</div></div></div>
-      <div class="career-item"><div class="cdot lt"></div><div><div class="ct">도서앱 사이드프로젝트 · PM</div><div class="cs">2025.03 – 진행중</div></div></div>
-      <div class="stats">
-        <div class="sbox"><div class="snum">6</div><div class="slbl">신규 서비스 기획 PM<br>기획~운영 전 과정</div></div>
-        <div class="sbox"><div class="snum">100+</div><div class="slbl">다부서 이해관계자<br>협업 경험</div></div>
-        <div class="sbox"><div class="snum">300+</div><div class="slbl">서비스 화면·기능 정의<br>및 운영 정책 설계</div></div>
+    <div style="background:var(--g100);"></div>
+    <div class="am-right">
+      <div class="career-bar">
+        <span class="ltag" style="margin-right:6px;">career</span>
+        <span class="chip-dk">굿네이버스 인터내셔날 · 서비스팀 PM · 2022.08–2024.08</span>
+        <span class="chip-lt">미리디 · PM · 2025.04–06</span>
+        <span class="chip-lt">도서앱 사이드프로젝트 · PM · 2025.03– 진행중</span>
       </div>
-      <div class="str-grid">
-        <div class="str"><div class="sn">01</div><div class="st">다양한 관계자와 업무를 이끄는 의사소통</div><div class="sd">개발·디자인·CS팀은 물론 광고주, 외국 바이어까지 협업. 프로젝트 회고마다 "꼼꼼하다"는 피드백을 받아왔습니다.</div></div>
-        <div class="str"><div class="sn">02</div><div class="st">읽는 사람 중심의 문서 작성</div><div class="sd">왜 필요한지, 어떻게 해결할 것인지 한눈에 이해할 수 있도록 상황에 맞는 툴로 작성합니다.</div></div>
-        <div class="str"><div class="sn">03</div><div class="st">새로운 도메인에 빠르게 적응합니다</div><div class="sd">비영리·SaaS·앱까지 매 경험에서 거의 바로 실무에 투입됐습니다.</div></div>
+      <div class="metrics-row">
+        <div class="mc"><p class="mc-num">6</p><p class="mc-desc">신규 서비스 기획 PM<br>기획~운영 전 과정 직접 수행</p></div>
+        <div class="mc"><p class="mc-num">100+</p><p class="mc-desc">다부서 이해관계자<br>협업 경험</p></div>
+        <div class="mc"><p class="mc-num">300+</p><p class="mc-desc">서비스 화면·기능 정의<br>및 운영 정책 설계</p></div>
+      </div>
+      <div class="str-area">
+        <p class="ltag" style="margin-bottom:14px;">core strength</p>
+        <div class="str-item">
+          <span class="str-n">01</span>
+          <div><p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:6px;">다양한 관계자와 업무를 이끄는 의사소통</p><p style="font-size:13px;color:var(--g500);line-height:1.75;">개발·디자인·마케팅·CS팀은 물론 광고주, 외국 바이어까지 협업을 이끌었습니다. 데일리·위클리 체크리스트로 이슈를 놓치지 않고, 프로젝트 회고마다 "꼼꼼하다"는 피드백을 받아왔습니다.</p></div>
+        </div>
+        <div class="str-item">
+          <span class="str-n">02</span>
+          <div><p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:6px;">읽는 사람 중심의 문서 작성</p><p style="font-size:13px;color:var(--g500);line-height:1.75;">왜 필요한지, 어떻게 해결할 것인지 한눈에 이해할 수 있도록 Figma·Notion·PPT 등 상황에 맞는 툴로 작성합니다.</p></div>
+        </div>
+        <div class="str-item" style="border-bottom:none;">
+          <span class="str-n">03</span>
+          <div><p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:6px;">새로운 도메인에 빠르게 적응합니다</p><p style="font-size:13px;color:var(--g500);line-height:1.75;">비영리·SaaS·앱까지 매 경험에서 거의 바로 실무에 투입됐습니다. 낯선 도메인에서도 서비스 구조를 빠르게 파악해 기준을 세우는 것이 습관입니다.</p></div>
+        </div>
       </div>
     </div>
   </div>
-  <span class="pn">03 / 17</span>
 </div>
 
 
-<!-- ═══ P4 Why 페이타랩 ═══ -->
-<div class="plabel"><span>WHY PAYTA LAB</span><span>04 / 17</span></div>
+<!-- ═══ P4 Why 페이타랩 + 에세이 ═══ -->
+<div class="plabel"><span>WHY PAYTA LAB · ESSAY</span><span>P.04</span></div>
 <div class="page" id="p4">
-  <div class="topbar"><div class="tb-l"><span class="eyebrow" style="margin:0;">why payta lab</span></div><span class="tb-r">04 / 17</span></div>
-  <div class="p4-body">
-    <div class="p4-col">
-      <div class="eyebrow" style="margin-bottom:12px;">지원동기</div>
-      <div class="why-head">"무엇을 만들었나"가 아니라<br>"무엇을 바꿨나"를 핵심으로<br>보는 팀이라고 느꼈습니다.</div>
-      <div class="body-t">
-        <p>인하우스 PM으로 일하며 운영 효율화 프로젝트는 늘 우선순위 협상이 필요했습니다. 가장 필요한 일임을 알면서도 그 가치를 증명하기 어려운 환경이었습니다.</p>
-        <p>페이타랩의 공고와 팀 블로그를 읽으며 <strong>"무엇을 바꿨나"로 평가받는 팀</strong>이라는 것을 느꼈습니다.</p>
+  <div class="topbar"><span class="ltag or">why payta lab · essay</span><span class="ltag">kim soojin — payta lab portfolio 2025</span></div>
+  <div class="ess-wrap">
+    <div class="ess-col">
+      <p class="ltag or">지원동기</p>
+      <h3 class="ess-head">"무엇을 만들었나"가 아니라<br>"무엇을 바꿨나"를 핵심으로<br>보는 팀이라고 느꼈습니다.</h3>
+      <div style="font-size:15px;color:var(--g600);line-height:1.85;">
+        <p style="margin-bottom:12px;">인하우스 PM으로 일하며 운영 효율화 프로젝트는 늘 우선순위 협상이 필요했습니다. 가장 필요한 일임을 알면서도 그 가치를 증명하기 어려운 환경이었습니다.</p>
+        <p>페이타랩의 공고와 팀 블로그를 읽으며 <strong style="color:var(--black);">GA·VOC로 문제를 정의하고 구조를 바꿔 지표를 움직이는 방식</strong>이 제가 해온 일과 정확히 일치함을 느꼈습니다. 내가 성장하고 있음을 느낄 때 가장 열정적으로 일하는 사람으로서, "왜?"라는 질문을 환영하는 팀에서 함께 성장하고 싶습니다.</p>
       </div>
       <div class="blank">
-        <div class="blank-l">패스오더 사용 후 느낀 점</div>
+        <p class="blank-l">패스오더 사용 후 느낀 점</p>
         <p class="blank-p">패스오더를 직접 사용해보고 채울 예정입니다.<br>돌아오신 후 이 자리에 소감 / 개선 아이디어를 추가해주세요.</p>
       </div>
     </div>
-    <div class="vr"></div>
-    <div class="p4-col">
-      <div class="eyebrow" style="margin-bottom:12px;">what i can bring</div>
-      <div class="why-head">데이터 분석부터 구조 설계,<br>운영 이관까지 전 과정을<br>직접 경험했습니다.</div>
-      <div>
-        <div class="bring-item"><span class="bn">01</span><div><div class="bt-title">데이터 기반 문제 정의 → 가설 검증</div><div class="bt-desc">GA·VOC 분석으로 "안내 부족"이 아닌 "접근 구조"가 문제임을 특정했고, 가설 수립 → 비로그인 플로우 전환 → CS 34.8% 감소로 검증했습니다.</div></div></div>
-        <div class="bring-item"><span class="bn">02</span><div><div class="bt-title">화면설계부터 운영 이관까지 전 과정 주도</div><div class="bt-desc">어드민 리뉴얼에서 Figma 화면설계, 개발협의, 배포, 가이드라인 문서화, 부서 이관까지 PM 100%. 담당자 교체 후에도 재문의 0건.</div></div></div>
-        <div class="bring-item"><span class="bn">03</span><div><div class="bt-title">AI 도구로 업무 생산성을 높입니다</div><div class="bt-desc">Claude·GPT를 매일 업무에 활용합니다. SQL 쿼리 작성, 기획서 검토·디벨롭, Figma·Notion 연동 등 실무에 직접 적용 중입니다.</div></div></div>
+    <div class="ess-vr"></div>
+    <div class="ess-col">
+      <p class="ltag or">what i can bring · PM 가치관 · 업무방식</p>
+      <div class="bring-item">
+        <span class="bn">Q2</span>
+        <div><p class="bt">PM으로서 가장 중요한 것은 '끝까지 해결하려는 의지'입니다</p><p class="bd">문제 정의, 데이터 분석, 소통 능력보다 앞서는 것은 가설이 검증되지 않아도 근거를 찾고 설득해 실행하는 힘입니다. 나머지 역량은 그 의지를 실현하기 위한 도구입니다.</p></div>
+      </div>
+      <div class="bring-item">
+        <span class="bn">Q5</span>
+        <div><p class="bt">초반 3개월은 관찰에 집중하겠습니다</p><p class="bd">패스오더 유저·파트너 VOC를 직접 읽고 반복 문제 패턴을 파악하겠습니다. 이후 데이터로 증거를 만들고 팀이 납득할 기준으로 제안하겠습니다. Claude·GPT를 매일 업무에 활용하며 SQL 분석, 기획 검토, 디벨롭에 직접 씁니다.</p></div>
+      </div>
+      <div class="bring-item" style="border-bottom:none;">
+        <span class="bn">01</span>
+        <div><p class="bt">데이터 기반 문제 정의 → 가설 검증</p><p class="bd">GA·VOC 분석으로 "안내 부족"이 아닌 "접근 구조"가 문제임을 특정했고, 가설 수립 → 비로그인 플로우 전환 → CS 34.8% 감소로 검증했습니다.</p></div>
       </div>
     </div>
   </div>
-  <span class="pn">04 / 17</span>
 </div>
 
 
 <!-- ═══ P5 Project 01 표지 ═══ -->
-<div class="plabel"><span>PROJECT 01 — COVER</span><span>05 / 17</span></div>
-<div class="page">
-  <div class="pc-acc"></div>
-  <div class="pcov">
-    <div class="pc-head">
-      <div class="pc-num">project 01</div>
-      <div class="pc-title">웹서비스 자동화<br>어드민 리뉴얼</div>
-      <div class="pc-desc">개발에 의존하던 콘텐츠 운영 구조를 현업이 직접 운영하는 어드민으로 전환해,<br>4개 부서 12명이 개발 없이 자립 운영 가능한 백오피스를 기획·설계·배포한 프로젝트</div>
-      <div class="badges"><span class="badge or">요구사항 수집</span><span class="badge or">기능 범위 판단</span><span class="badge or">화면설계·스토리보드</span><span class="badge or">배포</span><span class="badge or">운영 이관</span><span class="badge or">가이드라인 문서화</span><span class="badge or">PM 100%</span></div>
-      <div class="pc-meta">
-        <div><p class="pc-ml">기간</p><p class="pc-mv">2023.02 – 2023.09 (8개월)</p></div>
-        <div><p class="pc-ml">역할</p><p class="pc-mv">PM 100% — 요구사항 수집, 우선순위 판단, 화면설계·배포, 가이드라인 문서화, 운영 이관</p></div>
+<div class="plabel"><span>PROJECT 01 — COVER</span><span>P.05</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div style="margin:28px 28px 0;background:var(--white);display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;">
+    <div class="pcov">
+      <div class="pcov-info">
+        <div><p class="pcov-num">project 01</p>
+          <h2 class="pcov-title">웹서비스 자동화<br>어드민 리뉴얼</h2>
+        </div>
+        <p class="pcov-desc">개발에 의존하던 콘텐츠 운영 구조를 현업이 직접 운영하는 어드민으로 전환해,<br>4개 부서 12명이 개발 없이 자립 운영 가능한 백오피스를 기획·설계·배포한 프로젝트</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge or">요구사항 수집</span><span class="badge or">기능 범위 판단</span><span class="badge or">화면설계·스토리보드</span><span class="badge or">배포</span><span class="badge or">운영 이관</span><span class="badge or">가이드라인 문서화</span><span class="badge or">PM 100%</span>
+        </div>
+        <div class="pcov-meta">
+          <div><p class="pcov-ml">기간</p><p class="pcov-mv">2023.02 – 2023.09 (8개월)</p></div>
+          <div><p class="pcov-ml">역할</p><p class="pcov-mv">PM 100% — 요구사항 수집, 우선순위 판단, 화면설계·배포, 가이드라인 문서화, 운영 이관</p></div>
+        </div>
+      </div>
+      <div class="pcov-kr" style="grid-template-columns:repeat(3,1fr);display:grid;">
+        <div class="pcov-kri"><p class="pcov-num2">4<span class="pcov-unit">개 부서</span></p><p class="pcov-lbl">12명 운영 이관 완료<br>개발 없이 현업 직접 운영</p><p class="pcov-sub">key result 01</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">15<span class="pcov-unit">h</span></p><p class="pcov-lbl">월 업무시간 단축</p><p class="pcov-sub">key result 02</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">0<span class="pcov-unit">건</span></p><p class="pcov-lbl">가이드라인 배포 후<br>담당자 교체 시 재문의</p><p class="pcov-sub">key result 03</p></div>
       </div>
     </div>
-    <div class="pc-kr" style="grid-template-columns:repeat(3,1fr);">
-      <div class="pc-kri"><div class="pc-num2">4<span class="pc-unit">개 부서</span></div><div class="pc-lbl">12명 운영 이관 완료<br>개발 없이 현업 직접 운영</div><div class="pc-sub">key result 01</div></div>
-      <div class="pc-kri"><div class="pc-num2">15<span class="pc-unit">h</span></div><div class="pc-lbl">월 업무시간 단축</div><div class="pc-sub">key result 02</div></div>
-      <div class="pc-kri"><div class="pc-num2">0<span class="pc-unit">건</span></div><div class="pc-lbl">가이드라인 배포 후<br>담당자 교체 시 재문의</div><div class="pc-sub">key result 03</div></div>
-    </div>
   </div>
-  <span class="pn">05 / 17</span>
+  <div style="height:28px;"></div>
 </div>
 
 
 <!-- ═══ P6 Project 01 배경 ═══ -->
-<div class="plabel"><span>PROJECT 01 — 배경 및 문제 정의</span><span>06 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 01</span><span class="tb-sub">배경 및 문제 정의</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼 · 06 / 17</span></div>
-  <div class="content">
-    <div class="sec-sub">모든 변경이 개발 일정을 필요로 하는 구조에서,<br>요청이 늘어날수록 병목도 함께 쌓였습니다.</div>
-    <div class="prob-row" style="grid-template-columns:1fr 1fr 1fr;flex:1;">
-      <div class="pbox" style="display:flex;flex-direction:column;gap:12px;">
-        <p class="pbox-t">운영 구조</p>
-        <p class="pbox-b" style="font-size:18px;">콘텐츠 변경마다 개발 일정 필요<br>→ 긴급 수정도 협의가 선행되어야 하는 구조</p>
-        <p style="font-size:15px;color:var(--g400);line-height:1.65;margin-top:auto;">4개 부서가 각기 다른 경로로 요청을 넣으면서 공통의 우선순위 기준 없이 요청이 쌓이는 구조가 반복됐습니다.</p>
+<div class="plabel"><span>PROJECT 01 — 배경</span><span>P.06</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 01</span><span class="ltag">배경 및 문제 정의</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">모든 변경이 개발 일정을 필요로 하는 구조에서, 요청이 늘어날수록 병목도 함께 쌓였습니다.</span></div>
+        <div class="g3">
+          <div class="pbox"><p class="pbox-t">운영 구조</p><p class="pbox-b">콘텐츠 변경마다 개발 일정 필요 → 긴급 수정도 협의가 선행되어야 하는 구조</p></div>
+          <div class="pbox"><p class="pbox-t">요청 주체 분산</p><p class="pbox-b">4개 부서가 각기 다른 요청 전달 → 공통 우선순위 기준 없음, 충돌 반복</p></div>
+          <div class="pbox hi"><p class="pbox-t">핵심 문제</p><p class="pbox-b">담당자 교체 시마다 재문의 반복 → 운영 지식 조직 자산화 불가</p></div>
+        </div>
       </div>
-      <div class="pbox" style="display:flex;flex-direction:column;gap:12px;">
-        <p class="pbox-t">요청 주체 분산</p>
-        <p class="pbox-b" style="font-size:18px;">4개 부서가 서로 다른 요청 전달<br>→ 공통 우선순위 기준 없음</p>
-        <p style="font-size:15px;color:var(--g400);line-height:1.65;margin-top:auto;">마케팅·CS·운영·콘텐츠 팀이 각자 다른 담당자에게 요청을 넣어 충돌이 반복됐습니다.</p>
-      </div>
-      <div class="pbox hi" style="display:flex;flex-direction:column;gap:12px;">
-        <p class="pbox-t">핵심 문제</p>
-        <p class="pbox-b" style="font-size:18px;">담당자 교체 시마다 재문의 반복<br>→ 운영 지식 조직 자산화 불가</p>
-        <p style="font-size:15px;color:var(--or-d);line-height:1.65;margin-top:auto;">사람에게 묶인 운영 지식이 조직의 자산이 되지 못하고, 담당자가 바뀔 때마다 같은 질문이 반복됐습니다.</p>
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">목표 — 현업이 개발 없이 직접 운영할 수 있는 어드민 구축</span></div>
+        <ul class="cl">
+          <li class="hi">현업이 개발 리소스 없이 직접 콘텐츠·기능을 조정할 수 있는 어드민 구축</li>
+          <li class="hi">4개 부서 12명 모두가 납득하고 사용할 수 있는 기능 범위 정의</li>
+          <li>담당자 교체에도 재문의 없이 자립 운영 가능한 가이드라인 수립</li>
+        </ul>
+        <div class="quote" style="margin-top:16px;">"4개 부서 담당자는 곧 4명의 클라이언트 담당자였습니다. 각기 다른 목표와 우선순위를 가진 이해관계자를 동시에 조율하며, 모두가 납득할 수 있는 기능 범위를 기준으로 확정했습니다. 요구를 모두 수용하지 않는 것이 핵심이었습니다."</div>
       </div>
     </div>
   </div>
-  <span class="pn">06 / 17</span>
 </div>
 
 
 <!-- ═══ P7 Project 01 실행 ═══ -->
-<div class="plabel"><span>PROJECT 01 — 실행</span><span>07 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 01</span><span class="tb-sub">실행</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼 · 07 / 17</span></div>
-  <div class="content">
-    <div class="flow">
-      <span class="fstep">협력 회의 (4부서)</span><span class="farr">→</span>
-      <span class="fstep on">요구사항 수집·우선순위 판단</span><span class="farr">→</span>
-      <span class="fstep on">화면설계·스토리보드</span><span class="farr">→</span>
-      <span class="fstep">개발·디자인 협의</span><span class="farr">→</span>
-      <span class="fstep on">배포</span><span class="farr">→</span>
-      <span class="fstep on">가이드라인 문서화</span><span class="farr">→</span>
-      <span class="fstep">부서 이관</span>
-    </div>
-    <div class="g2" style="flex:1;gap:48px;align-items:start;">
-      <div style="display:flex;flex-direction:column;gap:20px;">
-        <ul class="cl">
-          <li class="hi">기획 착수 전 4개 부서 협력 회의 — 반복 사용성·기대 효과 기준으로 요구 수용 범위 확정. 요구를 모두 수용하지 않는 것이 핵심이었습니다.</li>
-          <li class="hi">Figma 기반 어드민 화면설계 — 맞춤 콘텐츠 노출 제어, 소식 알림 우선순위 조정, 유저 맞춤 CTA 설정, 유저 행동 데이터 저장</li>
-          <li>개발·디자인 협의로 구현 가능성·제약 사전 점검 후 기획 범위 확정</li>
-          <li>담당자 교체 후에도 자립 운영 가능하도록 가이드라인 전사 배포</li>
-        </ul>
-        <div class="quote">"4개 부서 담당자는 곧 4명의 클라이언트 담당자였습니다. 각기 다른 목표와 우선순위를 가진 이해관계자를 동시에 조율하며, 모두가 납득할 수 있는 기능 범위를 기준으로 확정했습니다."</div>
+<div class="plabel"><span>PROJECT 01 — 실행</span><span>P.07</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 01</span><span class="ltag">실행</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼</span></div>
+    <div class="inner">
+      <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03</span><span class="sec-t">요구사항 수집부터 운영 이관까지</span></div>
+      <div class="flow" style="margin-bottom:16px;">
+        <span class="fstep">협력 회의 (4부서)</span><span class="farr">→</span>
+        <span class="fstep on">요구사항 수집·우선순위 판단</span><span class="farr">→</span>
+        <span class="fstep on">화면설계·스토리보드</span><span class="farr">→</span>
+        <span class="fstep">개발·디자인 협의</span><span class="farr">→</span>
+        <span class="fstep on">배포</span><span class="farr">→</span>
+        <span class="fstep on">가이드라인 문서화</span><span class="farr">→</span>
+        <span class="fstep">부서 이관</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div style="display:flex;flex-direction:column;gap:8px;"><p style="font-family:var(--fm);font-size:10px;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase;">admin screen</p><div class="iph" style="min-height:180px;">어드민 스크린샷 삽입 위치</div></div>
-        <div style="display:flex;flex-direction:column;gap:8px;"><p style="font-family:var(--fm);font-size:10px;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase;">service screen</p><div class="iph" style="min-height:140px;">서비스 화면 삽입 위치</div></div>
+      <div class="g2" style="flex:1;gap:48px;align-items:start;">
+        <ul class="cl">
+          <li class="hi">기획 착수 전 4개 부서 협력 회의 — 반복 사용성·기대 효과 기준으로 요구 수용 범위 확정</li>
+          <li class="hi">Figma 기반 어드민 화면설계 — 맞춤 콘텐츠 노출 제어, 알림 우선순위 조정, 유저 행동 데이터 저장</li>
+          <li>담당자 교체 후에도 자립 운영 가능하도록 가이드라인 전사 배포</li>
+          <li>4개 부서 12명 이관 완료 → 이후 개발 요청 없이 직접 운영</li>
+        </ul>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div><p class="ltag" style="margin-bottom:6px;">admin screen</p><div class="iph" style="min-height:160px;">어드민 스크린샷 삽입 위치</div></div>
+          <div><p class="ltag" style="margin-bottom:6px;">service screen</p><div class="iph" style="min-height:120px;">서비스 화면 삽입 위치</div></div>
+        </div>
       </div>
     </div>
   </div>
-  <span class="pn">07 / 17</span>
 </div>
 
 
 <!-- ═══ P8 Project 01 성과·회고 ═══ -->
-<div class="plabel"><span>PROJECT 01 — 성과 · 회고</span><span>08 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 01</span><span class="tb-sub">성과 · 회고</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼 · 08 / 17</span></div>
-  <div class="content">
-    <div class="sec-sub">현업이 직접 운영하는 구조로 완전히 전환됐습니다.</div>
-    <div class="oc-row" style="grid-template-columns:repeat(4,1fr);margin-bottom:36px;">
-      <div class="oc"><div class="oc-num">4개 부서<br>12명</div><div class="oc-desc">개발 없이 현업 직접 운영<br>이관 완료</div></div>
-      <div class="oc"><div class="oc-num">월 15h</div><div class="oc-desc">업무시간 단축<br>반복 요청·협의 시간 절감</div></div>
-      <div class="oc"><div class="oc-num">재문의 0건</div><div class="oc-desc">담당자 교체 후에도<br>재문의 발생 없음</div></div>
-      <div class="oc"><div class="oc-num">0원</div><div class="oc-desc">이후 운영 변경 비용<br>배포 후 추가 개발 요청 없음</div></div>
-    </div>
-    <div class="rule" style="margin:0 0 28px;"></div>
-    <div class="sec-sub" style="font-size:22px;margin-bottom:20px;">회고 — 설득은 감정이 아니라 근거로 합니다.</div>
-    <div class="g2" style="gap:24px;">
-      <div class="retro"><strong style="color:var(--dark);display:block;margin-bottom:10px;">챌린지 — 개발팀의 반대</strong>어드민이 오랫동안 노후화된 상태였기 때문에, 기능 추가를 처음 제안했을 때 개발팀은 호의적이지 않았습니다. 새로운 리뉴얼 없이 기능만 얹히는 구조에 대한 피로감이 있었기 때문입니다.<br><br>반복적으로 들어오는 요청 데이터를 직접 정리해 "이 기능이 없어서 매번 개발 리소스가 소모되고 있다"는 것을 보여줬습니다. 어드민 고도화가 결국 개발팀의 반복 작업을 줄이는 방향임을 수치로 설득하자, 기능 범위를 함께 확정할 수 있었습니다.</div>
-      <div class="retro"><strong style="color:var(--dark);display:block;margin-bottom:10px;">배운 것 — 근거가 먼저, 주장은 그다음</strong>이해관계자를 움직이는 건 "이게 필요하다"는 주장이 아니라 "이게 없어서 지금 이만큼의 비용이 발생하고 있다"는 데이터였습니다. 기준이 명확할수록 설득이 빠르고, 결과물의 범위도 지킬 수 있었습니다. 이후 모든 기획에서 근거를 먼저 만드는 것이 기본 습관이 됐습니다.</div>
+<div class="plabel"><span>PROJECT 01 — 성과 · 회고</span><span>P.08</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 01</span><span class="ltag">성과 · 회고</span></div><span class="tb-r">웹서비스 자동화 어드민 리뉴얼</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">04</span><span class="sec-t">현업이 직접 운영하는 구조로 완전히 전환됐습니다.</span></div>
+        <div class="oc-grid" style="grid-template-columns:repeat(4,1fr);gap:0;display:grid;">
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num" style="font-size:24px;">4개 부서 12명</p><p class="oc-desc">개발 없이 현업 직접 운영<br>이관 완료</p></div>
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num" style="font-size:24px;">월 15h</p><p class="oc-desc">업무시간 단축<br>반복 요청·협의 시간 절감</p></div>
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num" style="font-size:24px;">재문의 0건</p><p class="oc-desc">담당자 교체 후에도<br>재문의 발생 없음</p></div>
+          <div style="padding:16px 24px;"><p class="oc-num" style="font-size:24px;">0원</p><p class="oc-desc">이후 운영 변경 비용<br>추가 개발 요청 없음</p></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">05</span><span class="sec-t">회고 — 설득은 감정이 아니라 근거로 합니다.</span></div>
+        <div class="g2" style="gap:20px;">
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">챌린지 — 개발팀의 반대</strong>어드민이 오랫동안 노후화된 상태였기 때문에 기능 추가 제안 시 개발팀은 호의적이지 않았습니다. 반복적으로 들어오는 요청 데이터를 직접 정리해 "이 기능이 없어서 매번 개발 리소스가 소모되고 있다"는 것을 보여줬습니다. 어드민 고도화가 결국 개발팀의 반복 작업을 줄이는 방향임을 수치로 설득하자 기능 범위를 함께 확정할 수 있었습니다.</div>
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">배운 것 — 근거가 먼저, 주장은 그다음</strong>이해관계자를 움직이는 건 "이게 필요하다"는 주장이 아니라 "이게 없어서 지금 이만큼의 비용이 발생하고 있다"는 데이터였습니다. 기준이 명확할수록 설득이 빠르고 결과물의 범위도 지킬 수 있었습니다. 이후 모든 기획에서 근거를 먼저 만드는 것이 기본 습관이 됐습니다.</div>
+        </div>
+      </div>
     </div>
   </div>
-  <span class="pn">08 / 17</span>
 </div>
 
 
 <!-- ═══ P9 Project 02 표지 ═══ -->
-<div class="plabel"><span>PROJECT 02 — COVER</span><span>09 / 17</span></div>
-<div class="page">
-  <div class="pc-acc"></div>
-  <div class="pcov">
-    <div class="pc-head">
-      <div class="pc-num">project 02</div>
-      <div class="pc-title">기부금영수증<br>간편 발급 서비스</div>
-      <div class="pc-desc">GA·VOC 분석으로 반복 병목의 원인을 접근 구조에서 찾고,<br>가설 수립 → 비로그인 플로우 설계 → 검증 → 2차 개선 사이클로 해결한 프로젝트</div>
-      <div class="badges"><span class="badge or">VOC 분석</span><span class="badge or">데이터 기반 문제 정의</span><span class="badge or">가설 수립·검증</span><span class="badge or">비로그인 플로우 설계</span><span class="badge or">5개 부서 협업</span><span class="badge or">1차→2차 개선</span><span class="badge or">PM 100%</span></div>
-      <div class="pc-meta">
-        <div><p class="pc-ml">기간</p><p class="pc-mv">1차 2022.12 – 2023.02 / 2차 2023.11 – 2024.04</p></div>
-        <div><p class="pc-ml">역할</p><p class="pc-mv">PM 100% — 데이터 분석, 가설 수립, 화면설계·기획·배포, 다부서 협업, 정책 수립</p></div>
+<div class="plabel"><span>PROJECT 02 — COVER</span><span>P.09</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div style="margin:28px 28px 0;background:var(--white);display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;">
+    <div class="pcov">
+      <div class="pcov-info">
+        <div><p class="pcov-num">project 02</p>
+          <h2 class="pcov-title">기부금영수증<br>간편 발급 서비스</h2>
+        </div>
+        <p class="pcov-desc">GA·VOC 분석으로 반복 병목의 원인을 접근 구조에서 찾고,<br>가설 수립 → 비로그인 플로우 설계 → 검증 → 2차 개선 사이클로 해결한 프로젝트</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge or">VOC 분석</span><span class="badge or">데이터 기반 문제 정의</span><span class="badge or">가설 수립·검증</span><span class="badge or">비로그인 플로우 설계</span><span class="badge or">5개 부서 협업</span><span class="badge or">1차→2차 개선</span><span class="badge or">PM 100%</span>
+        </div>
+        <div class="pcov-meta">
+          <div><p class="pcov-ml">기간</p><p class="pcov-mv">1차 2022.12 – 2023.02 / 2차 2023.11 – 2024.04</p></div>
+          <div><p class="pcov-ml">역할</p><p class="pcov-mv">PM 100% — 데이터 분석, 가설 수립, 화면설계·기획·배포, 다부서 협업, 정책 수립</p></div>
+        </div>
+      </div>
+      <div class="pcov-kr" style="grid-template-columns:repeat(4,1fr);display:grid;">
+        <div class="pcov-kri"><p class="pcov-num2">34.8<span class="pcov-unit">%↓</span></p><p class="pcov-lbl">CS 상담 감소<br>9,327건 → 6,081건</p><p class="pcov-sub">key result 01</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">47.5<span class="pcov-unit">%</span></p><p class="pcov-lbl">자가 발급 전환율<br>유입 고객 14,439명</p><p class="pcov-sub">key result 02</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">~1,200<span class="pcov-unit">h</span></p><p class="pcov-lbl">운영 리소스 절감<br>(1건당 5분 추정)</p><p class="pcov-sub">key result 03</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">3,246<span class="pcov-unit">건</span></p><p class="pcov-lbl">절감된 상담 건수</p><p class="pcov-sub">key result 04</p></div>
       </div>
     </div>
-    <div class="pc-kr" style="grid-template-columns:repeat(4,1fr);">
-      <div class="pc-kri"><div class="pc-num2">34.8<span class="pc-unit">%↓</span></div><div class="pc-lbl">CS 상담 감소<br>9,327건 → 6,081건</div><div class="pc-sub">key result 01</div></div>
-      <div class="pc-kri"><div class="pc-num2">47.5<span class="pc-unit">%</span></div><div class="pc-lbl">자가 발급 전환율<br>유입 고객 14,439명</div><div class="pc-sub">key result 02</div></div>
-      <div class="pc-kri"><div class="pc-num2">~1,200<span class="pc-unit">h</span></div><div class="pc-lbl">운영 리소스 절감<br>(1건당 5분 추정)</div><div class="pc-sub">key result 03</div></div>
-      <div class="pc-kri"><div class="pc-num2">3,246<span class="pc-unit">건</span></div><div class="pc-lbl">절감된 상담 건수</div><div class="pc-sub">key result 04</div></div>
-    </div>
   </div>
-  <span class="pn">09 / 17</span>
+  <div style="height:28px;"></div>
 </div>
 
 
 <!-- ═══ P10 Project 02 배경·가설 ═══ -->
-<div class="plabel"><span>PROJECT 02 — 배경 · 가설</span><span>10 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 02</span><span class="tb-sub">배경 · 가설</span></div><span class="tb-r">기부금영수증 간편 발급 서비스 · 10 / 17</span></div>
-  <div class="content">
-    <div class="sec-sub">매년 반복되는 병목의 원인은 안내 부족이 아니라,<br>접근 구조 자체에 있었습니다.</div>
-    <div class="body-t" style="margin-bottom:28px;"><p>연말정산 시즌(12~1월)마다 CS 상담이 3~6배 폭증하는 문제가 매년 반복됐습니다. 2022년 전체 문의 93,984건 중 이 시즌에 집중됐고, <strong>매년 CS 인력 증원·FAQ 보강으로 대응했지만 이듬해에도 동일하게 반복됐습니다.</strong></p></div>
-    <div class="prob-row" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:32px;">
-      <div class="pbox"><p class="pbox-t">GA 로그 분석</p><p class="pbox-b" style="font-size:18px;">로그인 화면 이탈률 <strong>80%+</strong> 확인<br>접근 구조 자체가 문제임을 특정</p></div>
-      <div class="pbox"><p class="pbox-t">VOC 4년치 분석</p><p class="pbox-b" style="font-size:18px;">전체 VOC의 <strong>80%</strong>가 단순 서류 발급 문의<br>자가 처리 불가 구조 확인</p></div>
-      <div class="pbox hi"><p class="pbox-t">핵심 문제 정의</p><p class="pbox-b" style="font-size:18px;">원인 = 안내 부족 ✕<br><strong>로그인 접근 구조</strong> ✓<br>연말정산 즉시성 맥락과 불일치</p></div>
+<div class="plabel"><span>PROJECT 02 — 배경 · 가설</span><span>P.10</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 02</span><span class="ltag">배경 · 가설</span></div><span class="tb-r">기부금영수증 간편 발급 서비스</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">매년 반복되는 병목의 원인은 안내 부족이 아니라, 접근 구조 자체에 있었습니다.</span></div>
+        <p style="font-size:15px;color:var(--g600);line-height:1.85;margin-bottom:16px;">연말정산 시즌(12~1월)마다 CS 상담이 3~6배 폭증하는 문제가 매년 반복됐습니다. 2022년 전체 문의 93,984건 중 이 시즌에 집중됐고, <strong style="color:var(--black);">매년 CS 인력 증원·FAQ 보강으로 대응했지만 이듬해에도 동일하게 반복됐습니다.</strong></p>
+        <div class="g3">
+          <div class="pbox"><p class="pbox-t">GA 로그 분석</p><p class="pbox-b">로그인 화면 이탈률 <strong>80%+</strong> 확인. 접근 구조 자체가 문제.</p></div>
+          <div class="pbox"><p class="pbox-t">VOC 4년치 분석</p><p class="pbox-b">전체 VOC의 <strong>80%</strong>가 단순 서류 발급 문의. 자가 처리 불가 구조.</p></div>
+          <div class="pbox hi"><p class="pbox-t">핵심 문제 정의</p><p class="pbox-b">원인 = 안내 부족 ✕ / <strong>로그인 접근 구조</strong> ✓ 연말정산 즉시성 맥락과 불일치.</p></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">가설</span></div>
+        <div class="quote" style="font-size:16px;font-weight:600;">비로그인 간편 발급 구조를 제공하면, 로그인 이탈이 사라지고 자가 발급이 증가해 관련 VOC <span style="color:var(--or);">30% 이상 감소</span>할 것이다.</div>
+      </div>
     </div>
-    <div class="quote" style="font-size:20px;font-weight:600;">가설 — 비로그인 간편 발급 구조를 제공하면, 로그인 이탈이 사라지고 자가 발급이 증가해 관련 VOC <em style="font-style:normal;color:var(--or);">30% 이상 감소</em>할 것이다.</div>
   </div>
-  <span class="pn">10 / 17</span>
 </div>
 
 
 <!-- ═══ P11 Project 02 실행 ═══ -->
-<div class="plabel"><span>PROJECT 02 — 실행</span><span>11 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 02</span><span class="tb-sub">실행 — 구조 전환</span></div><span class="tb-r">기부금영수증 간편 발급 서비스 · 11 / 17</span></div>
-  <div class="content">
-    <div class="g2" style="flex:1;gap:52px;align-items:start;">
-      <div style="display:flex;flex-direction:column;gap:24px;">
-        <div class="atb">
-          <div class="asis"><div class="at-l">AS-IS</div><div class="at-b">회원가입 → 로그인 → 실명인증<br><span style="font-size:14px;color:#c03030;margin-top:6px;display:block;">이탈률 80%+</span></div></div>
-          <div class="arr-m">→</div>
-          <div class="tobe"><div class="at-l">TO-BE</div><div class="at-b">CRM 회원번호 + 이름<br>비로그인 간편 확인</div></div>
+<div class="plabel"><span>PROJECT 02 — 실행</span><span>P.11</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 02</span><span class="ltag">실행 — 구조 전환</span></div><span class="tb-r">기부금영수증 간편 발급 서비스</span></div>
+    <div class="inner">
+      <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03</span><span class="sec-t">로그인 전제 조건 완전 제거</span></div>
+      <div class="g2" style="flex:1;gap:40px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="atb">
+            <div class="asis"><div class="at-l">AS-IS</div><div class="at-b">회원가입 → 로그인 → 실명인증<br><span style="font-size:12px;color:#c03030;margin-top:5px;display:block;">이탈률 80%+</span></div></div>
+            <div class="arr-c">→</div>
+            <div class="tobe"><div class="at-l">TO-BE</div><div class="at-b">CRM 회원번호 + 이름<br>비로그인 간편 확인</div></div>
+          </div>
+          <ul class="cl">
+            <li class="hi">비로그인 간편 발급 플로우 화면설계 — 시니어 UI(버튼 크기·볼드체) 적용</li>
+            <li class="hi">5개 부서 보안·개인정보 리스크를 정책 기준으로 합의</li>
+            <li>모집군 세분화 알림톡 발송 정책 — 1년 미만/이전 문의/특수 계정</li>
+            <li>1차 배포 후 사후 분석 → 2차 개선 (인증 단축, 기부금 내역 동일 화면)</li>
+          </ul>
         </div>
-        <ul class="cl">
-          <li class="hi">비로그인 간편 발급 플로우 화면설계 — 시니어 UI(버튼 크기·볼드체) 적용, 기부금 내역 동일 화면 노출</li>
-          <li class="hi">5개 부서 보안·개인정보 리스크를 정책 기준으로 합의 (법무·개발·마케팅·CS·운영)</li>
-          <li>모집군 세분화 알림톡 발송 정책 — 1년 미만 / 이전 문의 / 특수 계정 고객 구분</li>
-          <li>1차 배포 후 사후 분석 → 2차 개선 (인증 절차 단축, 시니어 UI 최적화)</li>
-        </ul>
-      </div>
-      <div>
         <table class="ctbl">
           <thead><tr><th>협업 부서</th><th>주요 협업 내용</th></tr></thead>
           <tbody>
@@ -560,279 +589,201 @@ body{font-family:var(--fn);color:var(--dark);display:flex;flex-direction:column;
             <tr><td>CS</td><td>서비스 가이드 전달, 오류 발생 시 대응 흐름 협의</td></tr>
           </tbody>
         </table>
-        <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
-          <div><p style="font-family:var(--fm);font-size:10px;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">서비스 화면</p><div class="iph" style="min-height:160px;">TO-BE 화면 삽입 위치</div></div>
-        </div>
       </div>
     </div>
   </div>
-  <span class="pn">11 / 17</span>
 </div>
 
 
 <!-- ═══ P12 Project 02 성과·회고 ═══ -->
-<div class="plabel"><span>PROJECT 02 — 성과 · 회고</span><span>12 / 17</span></div>
-<div class="page">
-  <div class="topbar"><div class="tb-l"><span class="tb-chip">project 02</span><span class="tb-sub">성과 · 회고</span></div><span class="tb-r">기부금영수증 간편 발급 서비스 · 12 / 17</span></div>
-  <div class="content">
-    <div class="sec-sub">구조를 바꾸자 지표가 직접 움직였습니다.</div>
-    <div class="oc-row" style="grid-template-columns:repeat(4,1fr);margin-bottom:32px;">
-      <div class="oc"><div class="oc-num">34.8%↓</div><div class="oc-desc">CS 상담 감소<br>9,327건 → 6,081건</div></div>
-      <div class="oc"><div class="oc-num">47.5%</div><div class="oc-desc">자가 발급 전환율<br>14,439명 완료</div></div>
-      <div class="oc"><div class="oc-num">~1,200h</div><div class="oc-desc">운영 리소스 절감<br>1건당 5분 추정</div></div>
-      <div class="oc"><div class="oc-num" style="font-size:28px;">구조 확장</div><div class="oc-desc">장기회원 리워드 서비스에<br>동일 구조 확장 적용</div></div>
-    </div>
-    <div class="rule" style="margin:0 0 28px;"></div>
-    <div class="sec-sub" style="font-size:22px;margin-bottom:20px;">회고 — 가설이 맞아도 예상 못한 문제는 생깁니다.</div>
-    <div class="g2" style="gap:24px;">
-      <div class="retro"><strong style="color:var(--dark);display:block;margin-bottom:10px;">챌린지 — 가설은 성공했지만, 새로운 CS가 생겼습니다</strong>자가 발급 전환율 47.5%, CS 34.8% 감소라는 성과 뒤에 예상치 못한 문제가 있었습니다. 알림톡을 받은 시니어 회원 일부가 서비스 내용을 확인하지 않고 "무슨 문제가 있냐"며 불안감을 표출하며 CS로 전화를 걸었습니다. 기부금영수증 자체에 대한 프로세스 이해 부족이 원인이었고, 온라인 서비스만으로는 해결하기 어려운 디지털 격차의 한계를 실감한 순간이었습니다. 자가 발급을 늘리는 데는 성공했지만, 그로 인해 새로운 유형의 CS가 발생했습니다.</div>
-      <div class="retro"><strong style="color:var(--dark);display:block;margin-bottom:10px;">2차 개선 — 시니어 맥락에서 다시 설계</strong>1차의 한계를 분석한 결과, 알림톡 발송 문구와 UI가 시니어 회원의 맥락을 충분히 고려하지 못했다는 것을 확인했습니다. 2차에서는 인증 절차를 단축하고, 기부금 내역을 동일 화면에 노출해 탐색 뎁스를 줄였으며, 버튼 크기와 볼드체를 적용한 시니어 최적화 UI를 반영했습니다. 성과를 냈어도 멈추지 않고 다음 문제를 찾는 것이 PM의 일임을 이 프로젝트에서 확인했습니다.
-        <div class="g2" style="gap:10px;margin-top:16px;">
-          <div class="pbox"><p class="pbox-t">1차 한계</p><p class="pbox-b" style="font-size:15px;">알림톡 수신 후 불안감 표출하는 시니어 신규 CS 발생 / 프로세스 이해 부족</p></div>
-          <div class="pbox hi"><p class="pbox-t">2차 개선</p><p class="pbox-b" style="font-size:15px;">인증 단축 / 기부금 내역 동일 화면 / 시니어 UI 최적화 / 알림톡 문구 재설계</p></div>
+<div class="plabel"><span>PROJECT 02 — 성과 · 회고</span><span>P.12</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 02</span><span class="ltag">성과 · 회고</span></div><span class="tb-r">기부금영수증 간편 발급 서비스</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">04</span><span class="sec-t">구조를 바꾸자 지표가 직접 움직였습니다.</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num">34.8%↓</p><p class="oc-desc">CS 상담 감소<br>9,327건 → 6,081건</p></div>
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num">47.5%</p><p class="oc-desc">자가 발급 전환율<br>14,439명 완료</p></div>
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num">~1,200h</p><p class="oc-desc">운영 리소스 절감<br>1건당 5분 추정</p></div>
+          <div style="padding:16px 24px;"><p class="oc-num" style="font-size:20px;">구조 확장</p><p class="oc-desc">장기회원 리워드 서비스에<br>동일 구조 확장 적용</p></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">05</span><span class="sec-t">회고 — 가설이 맞아도 예상 못한 문제는 생깁니다.</span></div>
+        <div class="g2" style="gap:20px;">
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">챌린지 — 가설은 성공했지만, 새로운 CS가 생겼습니다</strong>알림톡을 받은 시니어 회원 일부가 서비스 내용을 확인하지 않고 "무슨 문제가 있냐"며 불안감을 표출하며 CS로 전화를 걸었습니다. 기부금영수증 자체에 대한 프로세스 이해 부족이 원인이었고, 온라인 서비스만으로는 해결하기 어려운 디지털 격차의 한계를 실감했습니다.</div>
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">2차 개선 — 시니어 맥락에서 다시 설계</strong>인증 절차를 단축하고, 기부금 내역을 동일 화면에 노출해 탐색 뎁스를 줄였으며, 버튼 크기와 볼드체를 적용한 시니어 최적화 UI를 반영했습니다.
+            <div class="g2" style="gap:10px;margin-top:12px;">
+              <div class="pbox"><p class="pbox-t">1차 한계</p><p class="pbox-b" style="font-size:13px;">알림톡 후 시니어 신규 CS 발생 / 프로세스 이해 부족</p></div>
+              <div class="pbox hi"><p class="pbox-t">2차 개선</p><p class="pbox-b" style="font-size:13px;">인증 단축 / 기부금 내역 동일 화면 / 시니어 UI</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <span class="pn">12 / 17</span>
 </div>
 
 
 <!-- ═══ P13 Project 03 표지 ═══ -->
-<div class="plabel"><span>PROJECT 03 — COVER</span><span>13 / 17</span></div>
-<div class="page">
-  <div class="pc-acc"></div>
-  <div class="pcov">
-    <div class="pc-head" style="padding-bottom:52px;">
-      <div class="pc-num">project 03</div>
-      <div class="pc-title">유어터닝 캠페인<br>후원 중단 리스크 관리</div>
-      <div class="pc-desc">굿즈 수령 직후 중단율이 급증한 캠페인의 구조적 문제를 분석하고,<br>조기 이탈 방지를 위한 운영 기준을 수립한 프로젝트</div>
-      <div class="badges">
-        <span class="badge or">중단 분석</span>
-        <span class="badge or">VOC 분석</span>
-        <span class="badge or">운영 리스크 관리</span>
-        <span class="badge or">내부 합의</span>
-        <span class="badge or">서비스 확장</span>
-        <span class="badge or">PM 100%</span>
+<div class="plabel"><span>PROJECT 03 — COVER</span><span>P.13</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div style="margin:28px 28px 0;background:var(--white);display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;">
+    <div class="pcov">
+      <div class="pcov-info">
+        <div><p class="pcov-num">project 03</p>
+          <h2 class="pcov-title">유어터닝 캠페인<br>후원 중단 리스크 관리</h2>
+        </div>
+        <p class="pcov-desc">굿즈 수령 직후 중단율이 급증한 캠페인의 구조적 문제를 분석하고,<br>조기 이탈 방지를 위한 운영 기준을 수립한 프로젝트</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge or">중단 분석</span><span class="badge or">VOC 분석</span><span class="badge or">운영 리스크 관리</span><span class="badge or">팝업 UX 설계</span><span class="badge or">감액·쉬어가기 정책</span><span class="badge or">서비스 확장</span><span class="badge or">PM 100%</span>
+        </div>
+        <div class="pcov-meta">
+          <div><p class="pcov-ml">기간</p><p class="pcov-mv">2023.03 – 2023.08</p></div>
+          <div><p class="pcov-ml">역할</p><p class="pcov-mv">PM 100% — 기획·출시 전 과정 총괄, 행동 데이터 기반 노출 기준 및 운영 정책 설계, 내부 합의</p></div>
+        </div>
       </div>
-      <div class="pc-meta" style="margin-top:20px;">
-        <div><p class="pc-ml">기간</p><p class="pc-mv">2023.03 – 2023.08</p></div>
-        <div><p class="pc-ml">담당 역할</p><p class="pc-mv">PM 100% — 기획·출시 전 과정 총괄, 시점적 행동 데이터 기반 노출 기준 및 운영 정책 설계, 내부 요구사항 수립 및 협의</p></div>
-        <div><p class="pc-ml">핵심 성과</p><p class="pc-mv">서비스 운영 가이드라인 수립 · 부서 간 요청 중단 감소 및 운영 판단 속도 개선</p></div>
-      </div>
-    </div>
-    <div class="pc-kr" style="grid-template-columns:repeat(3,1fr);">
-      <div class="pc-kri">
-        <div class="pc-num2">최대 27<span class="pc-unit">%</span></div>
-        <div class="pc-lbl">중단 방어율<br>(중단기본 PC 기준)</div>
-        <div class="pc-sub">key result 01</div>
-      </div>
-      <div class="pc-kri">
-        <div class="pc-num2">4<span class="pc-unit">개</span></div>
-        <div class="pc-lbl">캠페인 확장 적용<br>유어터닝→포텐셜·어나더·MCN</div>
-        <div class="pc-sub">key result 02</div>
-      </div>
-      <div class="pc-kri">
-        <div class="pc-num2">5,400<span class="pc-unit">+</span></div>
-        <div class="pc-lbl">유어터닝 팝업 노출<br>중단 의사 회원 대상</div>
-        <div class="pc-sub">key result 03</div>
+      <div class="pcov-kr" style="grid-template-columns:repeat(3,1fr);display:grid;">
+        <div class="pcov-kri"><p class="pcov-num2">최대 27<span class="pcov-unit">%</span></p><p class="pcov-lbl">중단 방어율<br>(중단기본 PC 기준)</p><p class="pcov-sub">key result 01</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">4<span class="pcov-unit">개</span></p><p class="pcov-lbl">캠페인 확장 적용<br>유어터닝→포텐셜·어나더·MCN</p><p class="pcov-sub">key result 02</p></div>
+        <div class="pcov-kri"><p class="pcov-num2">5,400<span class="pcov-unit">+</span></p><p class="pcov-lbl">유어터닝 팝업 노출<br>중단 의사 회원 대상</p><p class="pcov-sub">key result 03</p></div>
       </div>
     </div>
   </div>
-  <span class="pn">13 / 17</span>
+  <div style="height:28px;"></div>
 </div>
 
 
 <!-- ═══ P14 Project 03 배경·가설 ═══ -->
-<div class="plabel"><span>PROJECT 03 — 배경 · 가설</span><span>14 / 17</span></div>
-<div class="page">
-  <div class="topbar">
-    <div class="tb-l"><span class="tb-chip">project 03</span><span class="tb-sub">배경 · 가설</span></div>
-    <span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리 · 14 / 17</span>
-  </div>
-  <div class="content" style="gap:28px;">
-    <div>
-      <p class="sec-num">01 배경 및 문제 정의</p>
-      <p class="sec-sub">굿즈 수령 직후, 정기 구독의 중단들이 폭증했습니다.</p>
-      <p class="body-t" style="margin-bottom:24px;"><p>유어터닝 캠페인은 정기 구독자 유지 시 굿즈 제공을 핵심 가치로 한 캠페인이었습니다. 신규 유입 측면에서는 큰 성과가 있었으나, 주요 내부 지표들은 높은 폭으로 하락하고 있었습니다. 굿즈를 받고 나면 "목적 달성"으로 인식해 후원을 중단하는 패턴이 반복됐고, 중단 요청이 상담센터 전화 인입으로 집중되면서 업무 지연이 심각한 수준까지 됐습니다.</p></p>
-      <div class="g2" style="gap:16px;">
-        <!-- 문제 상황 -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <p style="font-family:var(--fm);font-size:10px;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">문제 상황</p>
-          <div class="pbox">
-            <p class="pbox-t">굿즈 수령 후 중단 패턴</p>
-            <p class="pbox-b">굿즈 수령 후 3개월 이내 중단 회원이 전체의 74% 이상으로 매우 높음. 유어터닝 전체 기준 방어율 PC 27%, 이하 5.4%</p>
+<div class="plabel"><span>PROJECT 03 — 배경 · 가설</span><span>P.14</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 03</span><span class="ltag">배경 · 가설</span></div><span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">굿즈 수령 직후, 정기 구독의 중단율이 폭증했습니다.</span></div>
+        <p style="font-size:15px;color:var(--g600);line-height:1.85;margin-bottom:16px;">유어터닝 캠페인은 정기 구독자 유지 시 굿즈 제공을 핵심 가치로 한 캠페인이었습니다. 신규 유입 측면에서는 큰 성과가 있었으나, 굿즈를 받고 나면 "목적 달성"으로 인식해 후원을 중단하는 패턴이 반복됐고, <strong style="color:var(--black);">중단 요청이 상담센터 전화 인입으로 집중되면서 업무 지연이 심각한 수준까지 됐습니다.</strong></p>
+        <div class="g2" style="gap:14px;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="pbox"><p class="pbox-t">굿즈 수령 후 중단 패턴</p><p class="pbox-b">굿즈 수령 후 3개월 이내 중단 회원이 전체의 74% 이상. 배송 관련 VOC 급증 → 한 달 전체 배송 관련 인입 2배 이상 증가</p></div>
           </div>
-          <div class="pbox">
-            <p class="pbox-t">배송 관련 VOC 급증</p>
-            <p class="pbox-b">배송 관련 VOC 급증 → 한 달 전체 배송 관련 인입 2배 이상 증가. 상담센터 업무 마비 수준</p>
-          </div>
-        </div>
-        <!-- 운영 리스크 -->
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <p style="font-family:var(--fm);font-size:10px;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">운영 리스크</p>
-          <div class="pbox hi">
-            <p class="pbox-t">캠페인 설계 구조의 문제</p>
-            <p class="pbox-b">캠페인 참여 → VOC 폭증 → 내부 운영 리스크 증가</p>
-          </div>
-          <div class="pbox">
-            <p class="pbox-t">구조적 손실</p>
-            <p class="pbox-b">조기 후원 중단으로 LTV 급감 · 배송 및 중단 문의 동시 증가 · 단기 유입형 캠페인 반복 시 장기적으로 손실 구조</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="pbox hi"><p class="pbox-t">캠페인 설계 구조의 문제</p><p class="pbox-b">캠페인 참여 → VOC 폭증 → 내부 운영 리스크 증가. 조기 후원 중단으로 LTV 급감, 단기 유입형 캠페인 반복 시 장기적으로 손실 구조</p></div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="rule" style="margin:0;"></div>
-    <div>
-      <p class="sec-num">02 가설 수립</p>
-      <div class="quote" style="font-size:19px;font-weight:600;">시점에 맞는 정보 제공과 후원 의미 전달이 강화되면,<br>조기 중단과 VOC가 완화될 것이다.</div>
-      <ul class="cl" style="margin-top:20px;">
-        <li>후원자가 느끼는 불확실성과 정보 부재가 VOC의 핵심 원인이라고 판단했습니다.</li>
-        <li>추가로, 시점에 맞는 후원에 대한 감정 기반 서비스를 제공한다면 중단율이 일정 수준은 낮아질 것이라고 예측했습니다.</li>
-      </ul>
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">가설</span></div>
+        <div class="quote" style="font-size:16px;font-weight:600;">시점에 맞는 정보 제공과 후원 의미 전달이 강화되면, 조기 중단과 VOC가 완화될 것이다.</div>
+        <ul class="cl" style="margin-top:14px;">
+          <li>후원자가 느끼는 불확실성과 정보 부재가 VOC의 핵심 원인이라고 판단했습니다.</li>
+          <li>시점에 맞는 후원에 대한 감정 기반 서비스를 제공한다면 중단율이 일정 수준 낮아질 것이라고 예측했습니다.</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <span class="pn">14 / 17</span>
 </div>
 
 
 <!-- ═══ P15 Project 03 실행 ═══ -->
-<div class="plabel"><span>PROJECT 03 — 실행</span><span>17 / 17</span></div>
-<div class="page">
-  <div class="topbar">
-    <div class="tb-l"><span class="tb-chip">project 03</span><span class="tb-sub">실행</span></div>
-    <span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리 · 17 / 17</span>
-  </div>
-  <div class="content" style="gap:24px;">
-    <div class="g2" style="gap:48px;flex:1;">
-      <!-- 좌: 시점 기반 커뮤니케이션 -->
-      <div style="display:flex;flex-direction:column;gap:18px;">
-        <div>
-          <p class="sec-num">03-1 시점 기반 커뮤니케이션 설계</p>
-          <p class="sec-sub" style="font-size:19px;margin-bottom:16px;">굿즈 수령 전·후 시점별 서비스 제공</p>
-          <div style="background:var(--g50);border-radius:10px;border:1px solid var(--g200);overflow:hidden;margin-bottom:16px;">
-            <div style="background:var(--dark);padding:10px 18px;display:grid;grid-template-columns:100px 1fr;gap:0;">
-              <p style="font-family:var(--fm);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;">시점</p>
-              <p style="font-family:var(--fm);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;">주요 요구사항</p>
-            </div>
-            <div style="display:grid;grid-template-columns:100px 1fr;gap:0;border-bottom:1px solid var(--g100);padding:12px 18px;">
-              <p style="font-size:13px;color:var(--or);font-weight:600;">긴급 착수</p>
-              <p style="font-size:13px;color:var(--g600);">도착 전 알림 서비스 제공 이외 별도 서비스 기획</p>
-            </div>
-            <div style="display:grid;grid-template-columns:100px 1fr;gap:0;border-bottom:1px solid var(--g100);padding:12px 18px;">
-              <p style="font-size:13px;color:var(--g600);font-weight:600;">안내 발송</p>
-              <p style="font-size:13px;color:var(--g600);">발송 완료 시 알림 서비스 및 사업 기대 효과 안내 (3개 항목)</p>
-            </div>
-            <div style="display:grid;grid-template-columns:100px 1fr;gap:0;border-bottom:1px solid var(--g100);padding:12px 18px;">
-              <p style="font-size:13px;color:var(--g600);font-weight:600;">수령 완료</p>
-              <p style="font-size:13px;color:var(--g600);">활동의 의미 되짚기 및 재후원 유도 안내 (캠페인 3개 이상)</p>
-            </div>
-            <div style="display:grid;grid-template-columns:100px 1fr;gap:0;padding:12px 18px;">
-              <p style="font-size:13px;color:var(--g600);font-weight:600;">수령 배송</p>
-              <p style="font-size:13px;color:var(--g600);">택배사 연동 배송 현황 리포트 및 수령 당일 안내(2)</p>
-            </div>
+<div class="plabel"><span>PROJECT 03 — 실행</span><span>P.15</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 03</span><span class="ltag">실행</span></div><span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리</span></div>
+    <div class="inner">
+      <div class="g2" style="flex:1;gap:48px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03-1</span><span class="sec-t">시점 기반 커뮤니케이션 설계</span></div>
+            <table class="ctbl" style="margin-bottom:16px;">
+              <thead><tr><th style="width:90px;">시점</th><th>주요 내용</th></tr></thead>
+              <tbody>
+                <tr><td>긴급 착수</td><td>도착 전 알림 서비스 제공 이외 별도 서비스 기획</td></tr>
+                <tr><td>안내 발송</td><td>발송 완료 시 알림 및 사업 기대 효과 안내 (3개 항목)</td></tr>
+                <tr><td>수령 완료</td><td>활동의 의미 되짚기 및 재후원 유도 안내</td></tr>
+                <tr><td>수령 배송</td><td>택배사 연동 배송 현황 리포트 및 수령 당일 안내</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
-      <!-- 우: 중단 방어 정책 -->
-      <div style="display:flex;flex-direction:column;gap:18px;">
-        <div>
-          <p class="sec-num">03-2 중단 방어 정책 수립</p>
-          <p class="sec-sub" style="font-size:19px;margin-bottom:16px;">중단 버튼을 누른 순간, 3가지 선택지 제시</p>
-          <ul class="cl" style="margin-bottom:18px;">
-            <li class="hi">전략 1 — 원클릭 감액: 페이지 이동 없이 해당 화면에서 즉시 후원금 감액. 클릭 한 번으로 완료</li>
-            <li class="hi">전략 2 — 쉬어가기: 최대 3개월 청구막음 기능. 완전 중단이 아닌 일시 중지 선택지 제공</li>
-            <li class="hi">전략 3 — 임팩트 리마인드: 후원으로 변화된 사업 내용을 팝업으로 전달. 감정적 연결 강화</li>
-            <li>방어율 인정 → 유어터닝에서 포텐셜·어나더·MCN 4개 캠페인으로 확장 적용</li>
-          </ul>
-          <!-- 방어율 수치 -->
-          <div style="background:var(--g50);border-radius:10px;padding:18px 20px;border:1px solid var(--g200);">
-            <p style="font-family:var(--fm);font-size:10px;color:var(--or);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">캠페인별 방어율 (후원사업변경 %)</p>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-              <div style="text-align:center;"><p style="font-size:24px;font-weight:800;color:var(--or);letter-spacing:-0.5px;">12%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">유어터닝<br>모바일</p></div>
-              <div style="text-align:center;"><p style="font-size:24px;font-weight:800;color:var(--or);letter-spacing:-0.5px;">19.4%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">광선생<br>비비지</p></div>
-              <div style="text-align:center;"><p style="font-size:24px;font-weight:800;color:var(--or);letter-spacing:-0.5px;">25.7%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">광선생<br>한승우</p></div>
-              <div style="text-align:center;"><p style="font-size:24px;font-weight:800;color:var(--or);letter-spacing:-0.5px;">27.3%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">중단기본<br>PC</p></div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03-2</span><span class="sec-t">중단 방어 정책 — 3가지 전략</span></div>
+            <ul class="cl" style="margin-bottom:18px;">
+              <li class="hi">전략 1 — 원클릭 감액: 페이지 이동 없이 해당 화면에서 즉시 감액. 클릭 한 번으로 완료</li>
+              <li class="hi">전략 2 — 쉬어가기: 최대 3개월 청구막음. 완전 중단이 아닌 일시 중지 선택지</li>
+              <li class="hi">전략 3 — 임팩트 리마인드: 후원으로 변화된 사업 내용 팝업. 감정적 연결 강화</li>
+              <li>방어율 인정 → 유어터닝에서 포텐셜·어나더·MCN 4개 캠페인으로 확장</li>
+            </ul>
+            <div style="background:var(--g50);border:1px solid var(--g100);padding:16px 20px;">
+              <p class="ltag or" style="margin-bottom:12px;">캠페인별 방어율</p>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+                <div style="text-align:center;"><p style="font-family:var(--fd);font-size:26px;font-weight:300;color:var(--or);">12%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">유어터닝<br>모바일</p></div>
+                <div style="text-align:center;"><p style="font-family:var(--fd);font-size:26px;font-weight:300;color:var(--or);">19.4%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">광선생<br>비비지</p></div>
+                <div style="text-align:center;"><p style="font-family:var(--fd);font-size:26px;font-weight:300;color:var(--or);">25.7%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">광선생<br>한승우</p></div>
+                <div style="text-align:center;"><p style="font-family:var(--fd);font-size:26px;font-weight:300;color:var(--or);">27.3%</p><p style="font-size:11px;color:var(--g500);margin-top:3px;">중단기본<br>PC</p></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <span class="pn">17 / 17</span>
 </div>
 
 
 <!-- ═══ P16 Project 03 결과·회고 ═══ -->
-<div class="plabel"><span>PROJECT 03 — 결과 · 회고</span><span>16 / 17</span></div>
-<div class="page">
-  <div class="topbar">
-    <div class="tb-l"><span class="tb-chip">project 03</span><span class="tb-sub">결과 · 회고</span></div>
-    <span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리 · 16 / 17</span>
-  </div>
-  <div class="content" style="gap:28px;">
-    <!-- 결과 -->
-    <div>
-      <p class="sec-num">04 결과</p>
-      <p class="sec-sub" style="font-size:20px;margin-bottom:20px;">중단 방어 서비스 도입 후, VOC 감소 추세 확인</p>
-      <div class="oc-row" style="grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:0;">
-        <div class="oc">
-          <div class="oc-num">최대 27.3%</div>
-          <div class="oc-desc">중단 방어율 달성<br>(중단기본 PC 기준)</div>
-        </div>
-        <div class="oc">
-          <div class="oc-num">4개 확장</div>
-          <div class="oc-desc">유어터닝 → 포텐셜 · 어나더 · MCN<br>방어율 인정 후 캠페인 확장 적용</div>
-        </div>
-        <div class="oc">
-          <div class="oc-num">정책 수립</div>
-          <div class="oc-desc">중단 정책에 대한 전사 기획·감정 기반 서비스 기준 확립<br>이후 캠페인 설계 가이드라인으로 확산</div>
+<div class="plabel"><span>PROJECT 03 — 결과 · 회고</span><span>P.16</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="card">
+    <div class="topbar"><div style="display:flex;align-items:center;gap:12px;"><span class="tb-badge">project 03</span><span class="ltag">결과 · 회고</span></div><span class="tb-r">유어터닝 캠페인 후원 중단 리스크 관리</span></div>
+    <div class="inner">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">04</span><span class="sec-t">중단 방어 서비스 도입 후, VOC 감소 추세 확인</span></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num">최대 27.3%</p><p class="oc-desc">중단 방어율 달성<br>(중단기본 PC 기준)</p></div>
+          <div style="padding:16px 24px;border-right:1px solid var(--g100);"><p class="oc-num">4개 확장</p><p class="oc-desc">유어터닝→포텐셜·어나더·MCN<br>방어율 인정 후 캠페인 확장 적용</p></div>
+          <div style="padding:16px 24px;"><p class="oc-num" style="font-size:20px;">정책 수립</p><p class="oc-desc">중단 정책 전사 기획·감정 기반<br>서비스 기준 확립, 가이드라인 확산</p></div>
         </div>
       </div>
-    </div>
-    <div class="rule" style="margin:0;"></div>
-    <!-- 회고 -->
-    <div>
-      <p class="sec-num">05 회고</p>
-      <p class="sec-sub" style="font-size:20px;margin-bottom:20px;">서비스보다 비즈니스 구조를 먼저 봐야 한다는 것을 배웠습니다.</p>
-      <div class="g2" style="gap:20px;">
-        <div class="retro">
-          <strong style="color:var(--dark);display:block;margin-bottom:10px;">챌린지 — 중단 버튼 히든 처리라는 사업적 결정</strong>
-          서비스와 비즈니스 사이의 관점을 고려한 정책 합의의 과정을 통해, 운영 연결 가능성이 '기존에서 시작되는 정렬을 폴링 수 있었습니다'. 지표가 개선되지 않고 있는 외부요인(신규 유입이나 후원 목적) 후원 목적과 정책적 결정의 관점에서 분석했습니다. 이를 통해 구성원들을 설득하고 현재 비즈니스에서 정말 필요한 관점으로 유도할 수 있었습니다.<br><br>
-          중단 방어 서비스가 효과를 내고 확장되던 중, 중단 인입 자체가 감당할 수 없는 수준으로 커지면서 사업적으로 중단 버튼 자체를 숨기는 결정이 내려졌습니다. UX 관점에서 쉽게 동의할 수 없었지만, 비즈니스 구조가 흔들리는 상황에서 어쩔 수 없는 선택이었습니다.
-        </div>
-        <div class="retro">
-          <strong style="color:var(--dark);display:block;margin-bottom:10px;">배운 것 — 서비스 레벨 방어의 한계</strong>
-          이 프로젝트에서 가장 크게 배운 것은, 서비스 레벨의 방어보다 비즈니스 구조 자체를 먼저 점검해야 한다는 것입니다. 굿즈 사업의 구조적 문제가 서비스 기획으로 해결될 수 있는 범위를 넘어섰습니다.<br><br>
-          방어율이 인정받아 4개 캠페인으로 확장까지 됐지만, 근본 원인이 해소되지 않은 상태에서 서비스는 임시방편에 그칠 수 있다는 것을 이 경험이 알려줬습니다. 앞으로는 서비스 기획에 앞서 비즈니스 구조 자체의 지속 가능성을 먼저 검토하는 것이 PM의 역할임을 확인했습니다.
+      <div class="rule"></div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">05</span><span class="sec-t">회고 — 서비스보다 비즈니스 구조를 먼저 봐야 한다는 것을 배웠습니다.</span></div>
+        <div class="g2" style="gap:20px;">
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">챌린지 — 중단 버튼 히든 처리라는 사업적 결정</strong>중단 방어 서비스가 효과를 내고 확장되던 중, 중단 인입 자체가 감당할 수 없는 수준으로 커지면서 사업적으로 중단 버튼 자체를 숨기는 결정이 내려졌습니다. UX 관점에서 쉽게 동의할 수 없었지만, 비즈니스 구조가 흔들리는 상황에서 어쩔 수 없는 선택이었습니다.</div>
+          <div class="retro"><strong style="color:var(--black);display:block;margin-bottom:8px;">배운 것 — 서비스 레벨 방어의 한계</strong>서비스 레벨의 방어보다 비즈니스 구조 자체를 먼저 점검해야 한다는 것입니다. 굿즈 사업의 구조적 문제가 서비스 기획으로 해결될 수 있는 범위를 넘어섰습니다. 방어율이 인정받아 확장까지 됐지만, 근본 원인이 해소되지 않은 상태에서 서비스는 임시방편에 그칠 수 있다는 것을 확인했습니다.</div>
         </div>
       </div>
     </div>
   </div>
-  <span class="pn">16 / 17</span>
 </div>
 
 
-<!-- ═══ P15 마무리 ═══ -->
-<div class="plabel"><span>CLOSING</span><span>17 / 17</span></div>
-<div class="page" id="p12">
-  <div class="or-bar"></div>
-  <div class="p12-body">
+<!-- ═══ P17 마무리 ═══ -->
+<div class="plabel"><span>CLOSING</span><span>P.17</span></div>
+<div class="page" id="p17">
+  <div class="el">
     <div>
-      <div class="eyebrow" style="color:rgba(255,107,0,0.5);margin-bottom:28px;">closing statement</div>
-      <div class="end-big">VOC와 데이터로<br>문제의 본질을 찾고,</div>
-      <div class="end-big"><em>구조를 바꿔 지표를 움직입니다.</em></div>
-      <p class="end-sub">데이터로 진짜 문제를 정의하고, 구조로 해결해온 PM 김수진입니다.<br>페이타랩에서 800만 유저의 일상을 더 나은 방향으로 바꾸고 싶습니다.</p>
+      <div style="width:36px;height:3px;background:var(--or);margin-bottom:32px;"></div>
+      <h2 class="eh">VOC와 데이터로<br>문제의 본질을 찾고,<br><span class="ee">구조를 바꿔<br>지표를 움직입니다.</span></h2>
+      <p style="font-size:18px;color:var(--g500);line-height:1.8;margin-top:24px;max-width:680px;">데이터로 진짜 문제를 정의하고, 구조로 해결해온 PM 김수진입니다.<br>페이타랩에서 800만 유저의 일상을 더 나은 방향으로 바꾸고 싶습니다.</p>
     </div>
-    <div class="end-bot">
-      <div class="ec"><p class="ecl">name</p><p class="ecv">김수진</p></div>
-      <div class="ec"><p class="ecl">phone</p><p class="ecv">010-4772-6950</p></div>
-      <div class="ec"><p class="ecl">email</p><p class="ecv">soowlsee@gmail.com</p></div>
-      <div class="ec"><p class="ecl">position</p><p class="ecv">서비스기획 / PM</p></div>
-      <div class="ec"><p class="ecl">career</p><p class="ecv">2년 4개월</p></div>
+    <p class="pn">17 / 17</p>
+  </div>
+  <div class="er">
+    <div class="ebar"></div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div><p class="ecl">name</p><p class="ecv">김수진</p></div>
+      <div><p class="ecl">phone</p><p class="ecv">010-4772-6950</p></div>
+      <div><p class="ecl">email</p><p class="ecv">soowlsee@gmail.com</p></div>
+      <div><p class="ecl">position</p><p class="ecv">서비스기획 / PM</p></div>
+      <div><p class="ecl">career</p><p class="ecv">2년 4개월</p></div>
     </div>
   </div>
-  <span class="pn">17 / 17</span>
 </div>
 
 </body>
