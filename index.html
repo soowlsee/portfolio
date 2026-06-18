@@ -2,462 +2,588 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KBO 앱 서비스 방향 제안 · 김수진</title>
+<title>김수진 포트폴리오 — KBO 미디어사업 앱 서비스 기획</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#0A2240; --deep:#1B4079; --blue:#2E5C9E; --bluelt:#7FA8E0;
-    --white:#fff; --off:#F5F6F8; --line:#E2E6EC; --gray:#6B7280; --graylt:#9AA3AF;
-    --red:#C8102E; --ink:#10192B;
-    --mono:'JetBrains Mono',monospace; --sans:'Pretendard',-apple-system,sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:var(--sans);color:var(--ink);background:#3a4250;-webkit-font-smoothing:antialiased}
-  html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-  .deck{width:100%}
-  .slide{position:relative;width:100vw;height:56.25vw;max-height:100vh;max-width:177.78vh;margin:0 auto;background:var(--white);overflow:hidden;display:flex;flex-direction:column;scroll-snap-align:start}
-  .pad{padding:4.6% 6.4%;flex:1;display:flex;flex-direction:column}
-  .shead{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.6%}
-  .stag{display:flex;align-items:center;gap:1.6%;font-family:var(--mono);font-size:.95vw;letter-spacing:.16em;color:var(--blue);text-transform:uppercase}
-  .stag .chip{background:var(--navy);color:#fff;padding:.4em .8em;border-radius:4px;font-size:.85vw;letter-spacing:.12em}
-  .spage{font-family:var(--mono);font-size:.85vw;color:var(--graylt);letter-spacing:.1em}
-  h2{font-size:2.4vw;font-weight:700;line-height:1.25;letter-spacing:-.02em;color:var(--navy)}
-  .lead{font-size:1.12vw;color:var(--gray);line-height:1.6;margin-top:1.1%}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --nv:#00063F;--nv-d:#000420;--nv-mid:#1B2566;
+  --nv-light:#EAEBF2;--nv-pale:#F4F5FA;
+  --black:#0F0F12;--g900:#1A1C24;--g700:#3A3C44;
+  --g600:#52545C;--g500:#6E7078;--g400:#9A9CA4;
+  --g300:#C4C6CE;--g200:#D8DAE0;--g100:#E8E9EE;
+  --g50:#F2F3F6;--white:#FFFFFF;
+  --fd:'DM Sans',sans-serif;
+  --fb:'Pretendard',-apple-system,sans-serif;
+  --fm:'DM Mono',monospace;
+  --pw:1920px;--ph:1080px;--gut:56px;
+}
+html{background:#8A8A8E;}
+body{font-family:var(--fb);color:var(--black);display:flex;flex-direction:column;align-items:center;padding:40px 24px;gap:28px;background:#8A8A8E;}
 
-  /* cover */
-  .cover{background:var(--navy);color:#fff;padding:0}
-  .cover::after{content:"";position:absolute;top:0;right:0;width:34%;height:100%;background:linear-gradient(160deg,var(--deep),var(--blue));opacity:.9}
-  .cover .inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:5.2% 6.4%}
-  .cv-top{font-family:var(--mono);font-size:1vw;letter-spacing:.16em;color:#9DB6DC}
-  .cv-mid h1{font-size:4.2vw;font-weight:800;line-height:1.18;letter-spacing:-.03em}
-  .cv-mid h1 .hl{color:var(--bluelt)}
-  .cv-sub{font-size:1.35vw;color:#C3D0E6;margin-top:2%;line-height:1.6;max-width:42vw}
-  .cv-foot{display:flex;gap:4vw;font-size:1vw;position:relative;z-index:3}
-  .cv-foot .l{font-family:var(--mono);font-size:.78vw;letter-spacing:.14em;color:#7F93B5;margin-bottom:.4em}
-  .cv-foot .v{color:#EAF0F8}
-  .cc{position:absolute;top:50%;right:5%;transform:translateY(-50%);z-index:3;width:24vw}
-  .cc .t{font-family:var(--mono);font-size:.82vw;letter-spacing:.16em;color:#BCD0EC;margin-bottom:1vw}
-  .cc .i{border:1px solid rgba(255,255,255,.28);border-radius:6px;padding:.8vw 1.1vw;margin-bottom:.6vw;font-size:.98vw;color:#EAF0F8;display:flex;gap:.9vw;align-items:center}
-  .cc .i .n{font-family:var(--mono);font-size:.82vw;color:#8FB0DE}
+.page{width:var(--pw);height:var(--ph);background:var(--g50);position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 40px rgba(0,0,0,0.2);flex-shrink:0;}
+.plabel{width:var(--pw);display:flex;justify-content:space-between;font-family:var(--fm);font-size:11px;color:var(--g500);padding:0 4px;margin-bottom:-6px;}
 
-  /* TOC */
-  .toc-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 4vw;align-content:center}
-  .toc-item{display:grid;grid-template-columns:auto 1fr;gap:1.4vw;align-items:baseline;padding:1.1vw 0;border-bottom:1px solid var(--line)}
-  .toc-item .tn{font-family:var(--mono);font-size:1.1vw;color:var(--blue);font-weight:700}
-  .toc-item .tt{font-size:1.35vw;color:var(--navy);font-weight:600}
-  .toc-item .td{font-size:.92vw;color:var(--graylt);display:block;margin-top:.2em}
+.topbar{height:52px;border-bottom:1px solid var(--g100);display:flex;align-items:center;padding:0 150px;justify-content:space-between;flex-shrink:0;background:var(--white);}
+.ltag{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--g400);}
+.ltag.nv{color:var(--nv);}
+.rule{width:100%;height:1px;background:var(--g100);flex-shrink:0;}
 
-  /* about */
-  .about-row{flex:1;display:grid;grid-template-columns:.85fr 1.15fr;gap:3vw;align-items:center}
-  .about-card{background:var(--navy);color:#fff;border-radius:14px;padding:2.4vw;height:100%;display:flex;flex-direction:column;justify-content:center}
-  .about-card .nm{font-size:2.2vw;font-weight:800}
-  .about-card .role{font-size:1.1vw;color:var(--bluelt);margin-top:.3em;margin-bottom:1.6vw}
-  .about-card .meta{font-size:.95vw;color:#C3D0E6;line-height:2}
-  .about-card .meta b{color:#fff;font-weight:500}
-  .about-main h3{font-size:1.5vw;color:var(--navy);line-height:1.5;margin-bottom:1.4vw;font-weight:700}
-  .about-main p{font-size:1.05vw;color:var(--gray);line-height:1.75;margin-bottom:1.2vw}
-  .skill-tags{display:flex;flex-wrap:wrap;gap:.6vw;margin-top:.6vw}
-  .skill-tags span{font-size:.9vw;border:1px solid var(--line);border-radius:5px;padding:.4vw .9vw;color:var(--deep);font-family:var(--mono)}
+.badge{display:inline-flex;font-family:var(--fm);font-size:11px;padding:5px 12px;border:1px solid var(--g200);color:var(--g600);background:var(--g50);}
+.badge.nv{border-color:var(--nv);color:var(--nv);background:var(--nv-pale);}
 
-  /* make-experience */
-  .exp-lead{font-size:1.12vw;color:var(--gray);line-height:1.7;margin-bottom:2.4%;max-width:62vw}
-  .exp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1vw;flex:1;align-content:start}
-  .exp-col{border-top:2px solid var(--blue);padding-top:1vw}
-  .exp-col h4{font-size:1.05vw;color:var(--navy);font-weight:700;margin-bottom:.8vw}
-  .exp-col ul{list-style:none}
-  .exp-col li{font-size:.9vw;color:var(--ink);line-height:1.5;padding:.35vw 0;position:relative;padding-left:.9vw}
-  .exp-col li::before{content:"·";position:absolute;left:0;color:var(--blue)}
-  .exp2-row{flex:1;display:grid;grid-template-columns:1fr 1.1fr;gap:3vw;align-items:center}
-  .exp2-points .ep{padding:1.3vw 0;border-bottom:1px solid var(--line)}
-  .exp2-points .ep h4{font-size:1.25vw;color:var(--navy);margin-bottom:.3em}
-  .exp2-points .ep p{font-size:1vw;color:var(--gray);line-height:1.6}
+.quote{border-left:3px solid var(--nv);padding:16px 22px;background:var(--nv-light);font-size:15px;color:var(--g700);line-height:1.8;}
+.pbox{padding:18px 22px;background:var(--g50);border-top:3px solid var(--g200);}
+.pbox.hi{border-top-color:var(--nv);background:var(--nv-pale);}
+.pbox-t{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--g500);margin-bottom:7px;}
+.pbox.hi .pbox-t{color:var(--nv);}
+.pbox-b{font-size:15px;color:var(--g700);line-height:1.65;}
+.cl{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;}
+.cl li{font-size:15px;color:var(--g700);line-height:1.7;padding-left:20px;position:relative;}
+.cl li::before{content:"—";position:absolute;left:0;color:var(--g400);font-family:var(--fm);}
+.cl li.hi{color:var(--black);font-weight:600;}
+.cl li.hi::before{color:var(--nv);}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:5px;}
+.fstep{font-family:var(--fm);font-size:11px;color:var(--g600);background:var(--g50);border:1px solid var(--g100);padding:8px 14px;}
+.fstep.on{background:var(--nv-pale);border-color:var(--nv);color:var(--nv);}
+.farr{font-size:13px;color:var(--g300);}
+.atb{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;}
+.asis{padding:16px 20px;background:var(--g50);border:1px solid var(--g100);}
+.tobe{padding:16px 20px;background:var(--nv-pale);border:1px solid var(--nv);}
+.at-l{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px;}
+.asis .at-l{color:var(--g400);}
+.tobe .at-l{color:var(--nv);}
+.at-b{font-size:14px;line-height:1.65;}
+.asis .at-b{color:var(--g600);}
+.tobe .at-b{color:var(--nv);font-weight:500;}
+.arr-c{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--g300);}
+.str-item{padding:16px 0;border-bottom:1px solid var(--g100);display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:start;}
+.str-item:last-child{border-bottom:none;}
+.str-n{font-family:var(--fm);font-size:11px;color:var(--nv);padding-top:2px;}
+.retro{background:var(--g50);border-left:3px solid var(--g200);padding:18px 22px;font-size:14px;color:var(--g600);line-height:1.9;}
+.ctbl{width:100%;border-collapse:collapse;font-size:14px;}
+.ctbl th{background:var(--g900);color:var(--white);font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-align:left;padding:10px 18px;font-weight:400;}
+.ctbl td{padding:11px 18px;border-bottom:1px solid var(--g100);color:var(--g700);line-height:1.55;vertical-align:top;}
+.ctbl td:first-child{font-family:var(--fm);font-size:11px;color:var(--g500);width:130px;white-space:nowrap;}
+.iph{background:var(--g50);border:1px dashed var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;color:var(--g300);text-align:center;padding:16px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sec-bar{width:4px;height:20px;background:var(--nv);flex-shrink:0;}
+.sec-n{font-family:var(--fm);font-size:12px;color:var(--nv);letter-spacing:0.06em;}
+.sec-t{font-size:19px;font-weight:600;color:var(--black);letter-spacing:-0.3px;}
+.inner{padding:36px 150px;flex:1;display:flex;flex-direction:column;gap:20px;overflow:hidden;min-height:0;}
+.big-num{font-family:var(--fd);font-size:52px;font-weight:300;color:var(--nv);letter-spacing:-0.04em;line-height:1;}
+.big-desc{font-size:14px;color:var(--g500);line-height:1.5;margin-top:6px;}
 
-  /* project */
-  .pj-tagrow{display:flex;gap:.6vw;flex-wrap:wrap;margin:1vw 0 2vw}
-  .pj-tagrow span{font-size:.85vw;font-family:var(--mono);border:1px solid var(--line);border-radius:5px;padding:.4vw .9vw;color:var(--deep)}
-  .pj-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3vw}
-  .pj-block h4{font-family:var(--mono);font-size:.85vw;letter-spacing:.1em;color:var(--navy);text-transform:uppercase;margin-bottom:1vw;padding-bottom:.5vw;border-bottom:2px solid var(--navy);display:inline-block}
-  .pj-bg-txt{font-size:1.05vw;color:var(--ink);line-height:1.8}
-  .pj-do li{list-style:none;font-size:1vw;color:var(--ink);line-height:1.55;padding:.55vw 0 .55vw 1.1vw;position:relative}
-  .pj-do li::before{content:"";position:absolute;left:0;top:1.1vw;width:.4vw;height:.4vw;border-radius:50%;background:var(--blue)}
-  /* project screen page */
-  .pj2-row{flex:1;display:grid;grid-template-columns:1.25fr 1fr;gap:3vw;align-items:center}
-  .img-ph{border:1px dashed var(--line);border-radius:12px;background:var(--off);height:100%;min-height:60%;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--graylt);font-family:var(--mono);font-size:.92vw;letter-spacing:.04em;padding:2vw;line-height:1.6}
-  .pj2-side .scr-desc{font-size:1.05vw;color:var(--ink);line-height:1.7;margin-bottom:1.8vw}
-  .pj2-side .scr-list li{list-style:none;font-size:1vw;color:var(--gray);line-height:1.5;padding:.45vw 0 .45vw 1.1vw;position:relative}
-  .pj2-side .scr-list li::before{content:"\2013";position:absolute;left:0;color:var(--blue)}
-  .kpi-row{display:flex;gap:2.4vw;margin-top:2vw;padding-top:1.6vw;border-top:1px solid var(--line)}
-  .kpi .big{font-size:2.1vw;font-weight:800;color:var(--navy);letter-spacing:-.02em}
-  .kpi .big .u{font-size:1vw;color:var(--gray);font-weight:600;margin-left:.15em}
-  .kpi .dl{font-size:.88vw;color:var(--gray);margin-top:.2em}
+/* P1 cover */
+#p1{background:var(--nv);display:grid;grid-template-columns:1fr 440px;}
+#p1 .pl{padding:64px 72px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .pr{background:linear-gradient(165deg,var(--nv-mid),#0A1150);padding:64px 52px;display:flex;flex-direction:column;justify-content:space-between;}
+#p1 .or-bar{width:36px;height:3px;background:#6E7BD6;margin-bottom:32px;}
+#p1 .headline{font-family:var(--fb);font-weight:700;font-size:62px;letter-spacing:-0.03em;line-height:1.18;color:var(--white);}
+#p1 .headline em{color:#7F8DE0;font-style:normal;}
+#p1 .sub{font-size:19px;color:rgba(255,255,255,0.6);line-height:1.8;margin-top:28px;max-width:680px;}
+#p1 .cg{display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;margin-top:52px;}
+#p1 .cl{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+#p1 .cv{font-size:17px;color:rgba(255,255,255,0.82);}
+#p1 .r-lbl{font-family:var(--fm);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;}
+#p1 .rtags{display:flex;flex-direction:column;gap:10px;}
+#p1 .rtag{font-family:var(--fb);font-size:13px;color:rgba(255,255,255,0.92);border:1px solid rgba(255,255,255,0.2);padding:14px 18px;letter-spacing:0.01em;}
+#p1 .rtag-n{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,0.4);margin-right:12px;}
+#p1 .r-bot{font-family:var(--fm);font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;}
+#p1 .pn{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.08em;}
 
-  /* clusters / map / direction (재사용) */
-  .cluster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1vw;flex:1;align-content:start}
-  .cluster{border:1px solid var(--line);border-radius:10px;padding:1.4vw 1.3vw;display:flex;flex-direction:column}
-  .cluster .ct{font-family:var(--mono);font-size:.78vw;color:var(--blue);letter-spacing:.1em;margin-bottom:.9vw}
-  .cluster h4{font-size:1.25vw;color:var(--navy);font-weight:700;margin-bottom:.3em;line-height:1.3}
-  .cluster .app{font-size:.9vw;color:var(--graylt);margin-bottom:1vw}
-  .cluster .r{font-size:.92vw;padding:.65vw 0;border-top:1px solid var(--line);margin-top:auto}
-  .cluster .r .rl{font-size:.76vw;font-family:var(--mono);color:var(--graylt);letter-spacing:.05em;display:block;margin-bottom:.2em}
-  .cluster .r .rv{color:var(--ink)}
-  .insight{margin-top:1.5vw;padding:1.6vw 2vw;border-radius:10px;background:linear-gradient(100deg,var(--deep),var(--blue));color:#fff;font-size:1.4vw;font-weight:600;line-height:1.6}
-  .insight b{color:#BBD2F0}
+/* P2 toc */
+#p2{display:flex;flex-direction:column;}
+#p2 .toc-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:340px 1px 1fr;background:var(--white);min-height:0;}
+#p2 .toc-left{padding:52px 48px;display:flex;flex-direction:column;justify-content:space-between;}
+#p2 .toc-right{padding:52px 56px;display:flex;flex-direction:column;justify-content:center;}
+#p2 .toc-vr{background:var(--g100);}
+#p2 .toc-big{font-family:var(--fb);font-size:40px;font-weight:700;letter-spacing:-0.03em;line-height:1.15;color:var(--black);margin-top:14px;}
+#p2 .toc-desc{font-size:14px;color:var(--g500);line-height:1.8;margin-top:16px;}
+#p2 .toc-item{display:flex;align-items:flex-start;gap:24px;padding:22px 0;border-bottom:1px solid var(--g100);}
+#p2 .toc-item:last-child{border-bottom:none;}
+#p2 .toc-pg{font-family:var(--fm);font-size:11px;color:var(--g400);min-width:54px;padding-top:3px;letter-spacing:0.06em;}
+#p2 .toc-eye{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--nv);margin-bottom:5px;}
+#p2 .toc-name{font-size:18px;font-weight:600;color:var(--black);letter-spacing:-0.2px;margin-bottom:4px;}
+#p2 .toc-sub{font-size:13px;color:var(--g500);}
+#p2 .toc-bdg{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+#p2 .pn{font-family:var(--fm);font-size:11px;color:var(--g300);}
 
-  .map-row{flex:1;display:grid;grid-template-columns:1.05fr 1fr;gap:3vw;align-items:center}
-  .pmap{position:relative;width:100%;aspect-ratio:1/.82;margin:auto}
-  .pmap-grid{position:absolute;inset:0;border:1px solid var(--line);border-radius:8px;background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat,linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat,#fff}
-  .ax-x{position:absolute;bottom:-1.9vw;width:100%;display:flex;justify-content:space-between;font-size:.9vw;color:var(--gray);font-weight:600}
-  .ax-y{position:absolute;left:-.7vw;top:0;height:100%;display:flex;flex-direction:column;justify-content:space-between}
-  .ax-y span{writing-mode:vertical-rl;transform:translateX(-100%);font-size:.9vw;color:var(--gray);font-weight:600}
-  .dot{position:absolute;transform:translate(-50%,-50%);text-align:center}
-  .dot .pt{width:.7vw;height:.7vw;border-radius:50%;background:var(--gray);margin:0 auto .5vw}
-  .dot .lb{font-size:.86vw;color:var(--ink);font-weight:600;white-space:nowrap}
-  .dot .lb small{display:block;color:var(--graylt);font-weight:400;font-size:.76vw}
-  .dot.empty{width:11vw;height:6.8vw;border:2px dashed var(--red);border-radius:10px;background:rgba(200,16,46,.05);display:flex;align-items:center;justify-content:center}
-  .dot.empty .k{color:var(--red);font-weight:800;font-size:1.25vw;line-height:1.3}
-  .dot.empty .k small{display:block;font-size:.76vw;font-weight:500;opacity:.8;margin-top:.3em}
-  .find h4{font-size:1.25vw;color:var(--navy);margin-bottom:.6em}
-  .find p{font-size:1vw;color:var(--gray);line-height:1.65;margin-bottom:1.3vw}
-  .find p b{color:var(--ink)}
-  .reasons{margin-top:.5vw;padding:1.2vw 1.5vw;border-left:3px solid var(--deep);background:var(--off);border-radius:0 8px 8px 0}
-  .reasons li{list-style:none;font-size:.95vw;color:var(--ink);padding:.4vw 0 .4vw 1.2vw;position:relative;line-height:1.5}
-  .reasons li::before{content:"\2014";position:absolute;left:0;color:var(--deep)}
+/* P3 about */
+#p3 .am-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:260px 1px 1fr;background:var(--white);min-height:0;}
+#p3 .am-left{background:var(--nv-pale);padding:36px 30px;display:flex;flex-direction:column;gap:20px;overflow:hidden;}
+#p3 .am-right{display:flex;flex-direction:column;overflow:hidden;}
+#p3 .photo-ph{width:84px;height:84px;background:var(--g100);border:1px dashed var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;color:var(--g400);text-align:center;}
+#p3 .irow{display:grid;grid-template-columns:38px 1fr;gap:4px;font-size:13px;align-items:baseline;}
+#p3 .ikey{font-family:var(--fm);font-size:9px;color:var(--g400);letter-spacing:0.08em;text-transform:uppercase;}
+#p3 .sk-pill{font-family:var(--fm);font-size:10px;padding:4px 9px;border:1px solid var(--g200);color:var(--g600);background:var(--white);}
+#p3 .career-bar{border-bottom:1px solid var(--g100);padding:14px 80px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;}
+#p3 .chip-dk{font-family:var(--fm);font-size:11px;padding:5px 14px;letter-spacing:0.04em;background:var(--nv);color:var(--white);}
+#p3 .chip-lt{font-family:var(--fm);font-size:11px;padding:5px 14px;letter-spacing:0.04em;background:var(--g100);color:var(--g600);}
+#p3 .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);flex-shrink:0;}
+#p3 .mc{padding:18px 80px;border-right:1px solid var(--g100);}
+#p3 .mc:last-child{border-right:none;}
+#p3 .mc-num{font-family:var(--fd);font-size:38px;font-weight:300;color:var(--black);letter-spacing:-0.03em;}
+#p3 .mc-desc{font-size:12px;color:var(--g500);line-height:1.5;margin-top:4px;}
+#p3 .str-area{padding:20px 80px;flex:1;overflow:hidden;display:flex;flex-direction:column;}
 
-  .declare{background:linear-gradient(105deg,var(--navy),var(--deep));color:#fff;padding:1.7vw 2.2vw;border-radius:12px;font-size:1.45vw;font-weight:600;line-height:1.6;margin-bottom:1.8vw}
-  .declare .sm{display:block;font-size:1.02vw;color:#AEC3E2;font-weight:400;margin-top:.8vw;line-height:1.65}
-  .declare b{color:#9DBDEC}
-  .dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;flex:1}
-  .dir{border-top:2px solid var(--blue);padding-top:1.1vw;display:flex;flex-direction:column}
-  .dir .dn{font-family:var(--mono);font-size:1.25vw;color:var(--blue);font-weight:700;margin-bottom:.5vw}
-  .dir h4{font-size:1.12vw;color:var(--navy);font-weight:700;line-height:1.35;margin-bottom:.9vw;min-height:3.1em}
-  .dir dl{font-size:.9vw}
-  .dir dt{font-family:var(--mono);font-size:.72vw;letter-spacing:.06em;color:var(--graylt);text-transform:uppercase;margin-top:.7vw}
-  .dir dd{color:var(--ink);line-height:1.5;margin-top:.2em}
-  .dir dd.pain{color:var(--red)}
-  .dfoot{margin-top:1.5vw;padding:1.2vw;border-radius:10px;background:var(--off);text-align:center;font-size:1.02vw;line-height:1.6;color:var(--ink)}
-  .dfoot b{color:var(--deep)}
+/* P4 about-2 career path */
+#p4 .ess-wrap{margin:0 28px 28px;flex:1;display:grid;grid-template-columns:1fr 1px 1fr;background:var(--white);min-height:0;}
+#p4 .ess-col{padding:44px 90px;display:flex;flex-direction:column;gap:18px;overflow:hidden;}
+#p4 .ess-vr{background:var(--g100);}
+#p4 .ess-head{font-size:23px;font-weight:700;letter-spacing:-0.4px;color:var(--black);line-height:1.4;margin-top:8px;}
+#p4 .bring-item{padding:18px 0;border-bottom:1px solid var(--g100);display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start;}
+#p4 .bring-item:last-child{border-bottom:none;}
+#p4 .bn{font-family:var(--fm);font-size:11px;color:var(--nv);padding-top:2px;}
+#p4 .bt{font-size:15px;font-weight:600;color:var(--black);margin-bottom:6px;}
+#p4 .bd{font-size:13px;color:var(--g500);line-height:1.75;}
 
-  .closing{background:var(--navy);color:#fff;align-items:center;justify-content:center;text-align:center}
-  .closing .inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6%}
-  .closing h2{color:#fff;font-size:2.3vw;line-height:1.5}
-  .closing h2 .hl{color:var(--bluelt)}
-  .closing .sig{font-family:var(--mono);font-size:1vw;letter-spacing:.16em;color:#7F93B5;margin-top:2.4vw}
+/* exp pages */
+.exp-grid5{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.exp-col{border-top:2px solid var(--nv);padding-top:14px;}
+.exp-col h4{font-size:15px;color:var(--black);font-weight:700;margin-bottom:10px;}
+.exp-col ul{list-style:none;}
+.exp-col li{font-size:13px;color:var(--g600);line-height:1.6;padding:4px 0 4px 12px;position:relative;}
+.exp-col li::before{content:"·";position:absolute;left:0;color:var(--nv);}
+.exp-points{display:flex;flex-direction:column;}
+.exp-points .ep{padding:18px 0;border-bottom:1px solid var(--g100);}
+.exp-points .ep:last-child{border-bottom:none;}
+.exp-points .ep h4{font-size:16px;color:var(--black);font-weight:600;margin-bottom:6px;}
+.exp-points .ep p{font-size:14px;color:var(--g500);line-height:1.7;}
 
-  .hint{position:fixed;bottom:18px;right:20px;z-index:50;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#fff;background:rgba(10,34,64,.7);padding:7px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+/* project cover */
+.pcov{flex:1;display:flex;flex-direction:column;min-height:0;}
+.pcov-info{padding:48px 150px 32px;display:flex;flex-direction:column;gap:18px;border-bottom:1px solid var(--g100);background:var(--white);}
+.pcov-num{font-family:var(--fm);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--nv);margin-bottom:6px;}
+.pcov-title{font-family:var(--fb);font-size:54px;font-weight:700;letter-spacing:-0.03em;line-height:1.12;color:var(--black);}
+.pcov-desc{font-size:17px;color:var(--g500);line-height:1.75;max-width:1100px;}
+.pcov-meta{display:flex;gap:48px;flex-wrap:wrap;}
+.pcov-ml{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:4px;}
+.pcov-mv{font-size:15px;color:var(--g700);}
+.pcov-kr{display:grid;gap:0;background:var(--white);flex:1;min-height:0;}
+.pcov-kri{padding:0 150px;border-right:1px solid var(--g100);display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.pcov-kri:last-child{border-right:none;}
+.pcov-num2{font-family:var(--fd);font-size:56px;font-weight:300;color:var(--nv);letter-spacing:-0.04em;line-height:1;}
+.pcov-unit{font-size:22px;color:var(--g400);margin-left:3px;}
+.pcov-lbl{font-size:16px;color:var(--g500);line-height:1.6;}
+.pcov-sub{font-family:var(--fm);font-size:10px;color:var(--g300);letter-spacing:0.04em;margin-top:3px;}
 
-  @media(max-width:760px){
-    body{background:#fff}
-    .slide{height:auto;max-height:none;width:100%}
-    html{scroll-snap-type:none}
-    h2{font-size:21px}.lead,.exp-lead{font-size:14px}
-    .stag,.spage,.stag .chip{font-size:11px}
-    .cover::after{display:none}.cc{position:static;transform:none;width:100%;margin-top:24px}
-    .cv-mid h1{font-size:28px}.cv-sub{font-size:14px;max-width:none}
-    .cv-foot{font-size:12px;flex-wrap:wrap;gap:16px}.cv-foot .l{font-size:10px}
-    .cc .i,.cc .t{font-size:12px}.cc .i .n{font-size:10px}
-    .pad{padding:28px 22px}
-    .toc-grid{grid-template-columns:1fr;gap:0}.toc-item .tt{font-size:16px}.toc-item .tn{font-size:14px}.toc-item .td{font-size:12px}
-    .about-row{grid-template-columns:1fr;gap:24px}.about-card .nm{font-size:24px}.about-card .role,.about-card .meta{font-size:13px}
-    .about-main h3{font-size:17px}.about-main p{font-size:14px}.skill-tags span{font-size:12px}
-    .exp-grid{grid-template-columns:1fr 1fr;gap:14px}.exp-col h4{font-size:14px}.exp-col li{font-size:12px}
-    .exp2-row{grid-template-columns:1fr;gap:24px}.exp2-points .ep h4{font-size:16px}.exp2-points .ep p{font-size:13px}
-    .pj-body{grid-template-columns:1fr;gap:22px}.pj-bg-txt,.pj-do li{font-size:14px}.pj-tagrow span{font-size:12px}
-    .pj2-row{grid-template-columns:1fr;gap:24px}.img-ph{min-height:180px;font-size:12px}
-    .pj2-side .scr-desc,.pj2-side .scr-list li{font-size:14px}.kpi .big{font-size:24px}.kpi .dl{font-size:12px}
-    .cluster-grid{grid-template-columns:1fr 1fr;gap:10px}.cluster h4{font-size:16px}.cluster .app,.cluster .r .rv,.cluster .ct{font-size:12px}
-    .insight{font-size:16px;margin-top:14px}
-    .map-row{grid-template-columns:1fr;gap:40px}.pmap{max-width:90%;aspect-ratio:1/1}
-    .dot .lb{font-size:10px}.dot.empty{width:38%;height:60px}.dot.empty .k{font-size:14px}
-    .find h4{font-size:16px}.find p{font-size:14px}.reasons li{font-size:13px}.ax-x,.ax-y span{font-size:11px}
-    .declare{font-size:17px}.declare .sm{font-size:14px}
-    .dir-grid{grid-template-columns:1fr;gap:20px}.dir h4{min-height:0;font-size:16px}.dir dl{font-size:13px}.dfoot{font-size:14px}
-    .closing h2{font-size:20px}.closing .sig{font-size:12px}
-    .hint{display:none}
-  }
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* KBO analysis */
+.cluster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.cluster{border:1px solid var(--g200);border-radius:6px;padding:24px 22px;display:flex;flex-direction:column;background:var(--white);}
+.cluster .ct{font-family:var(--fm);font-size:11px;color:var(--nv);letter-spacing:0.1em;margin-bottom:16px;}
+.cluster h4{font-size:21px;color:var(--black);font-weight:700;margin-bottom:6px;line-height:1.3;}
+.cluster .app{font-size:13px;color:var(--g400);margin-bottom:20px;}
+.cluster .r{font-size:14px;padding:11px 0;border-top:1px solid var(--g100);margin-top:auto;}
+.cluster .r .rl{font-size:10px;font-family:var(--fm);color:var(--g400);letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:4px;}
+.cluster .r .rv{color:var(--g700);}
+.insight-box{padding:28px 32px;border-radius:6px;background:linear-gradient(100deg,var(--nv),var(--nv-mid));color:#fff;font-size:22px;font-weight:600;line-height:1.6;}
+.insight-box b{color:#9DA8E8;}
+
+.pmap{position:relative;width:100%;height:100%;}
+.pmap-grid{position:absolute;inset:0;border:1px solid var(--g200);border-radius:6px;background:linear-gradient(var(--g200),var(--g200)) center/1px 100% no-repeat,linear-gradient(var(--g200),var(--g200)) center/100% 1px no-repeat,var(--white);}
+.ax-x{position:absolute;bottom:-30px;width:100%;display:flex;justify-content:space-between;font-size:14px;color:var(--g600);font-weight:600;}
+.ax-y{position:absolute;left:-16px;top:0;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
+.ax-y span{writing-mode:vertical-rl;transform:translateX(-100%);font-size:14px;color:var(--g600);font-weight:600;}
+.dot{position:absolute;transform:translate(-50%,-50%);text-align:center;}
+.dot .pt{width:12px;height:12px;border-radius:50%;background:var(--g500);margin:0 auto 8px;}
+.dot .lb{font-size:14px;color:var(--black);font-weight:600;white-space:nowrap;}
+.dot .lb small{display:block;color:var(--g400);font-weight:400;font-size:12px;}
+.dot.empty{width:200px;height:120px;border:2px dashed var(--nv);border-radius:8px;background:var(--nv-pale);display:flex;align-items:center;justify-content:center;}
+.dot.empty .k{color:var(--nv);font-weight:800;font-size:24px;line-height:1.3;text-align:center;}
+.dot.empty .k small{display:block;font-size:12px;font-weight:500;opacity:0.75;margin-top:5px;}
+.dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.dir{border-top:2px solid var(--nv);padding-top:16px;}
+.dir .dn{font-family:var(--fm);font-size:18px;color:var(--nv);font-weight:700;margin-bottom:10px;}
+.dir h4{font-size:17px;color:var(--black);font-weight:700;line-height:1.4;margin-bottom:14px;}
+.dir dl{font-size:14px;}
+.dir dt{font-family:var(--fm);font-size:10px;letter-spacing:0.06em;color:var(--g400);text-transform:uppercase;margin-top:12px;}
+.dir dd{color:var(--g700);line-height:1.6;margin-top:3px;}
+.dir dd.pain{color:var(--nv);font-weight:500;}
+
+/* P-end closing */
+#pend{background:var(--nv);display:grid;grid-template-columns:1fr 400px;}
+#pend .el{padding:var(--gut);display:flex;flex-direction:column;justify-content:space-between;}
+#pend .er{background:linear-gradient(165deg,var(--nv-mid),#0A1150);padding:64px 52px;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;}
+#pend .eh{font-family:var(--fb);font-size:44px;font-weight:700;letter-spacing:-0.03em;line-height:1.3;color:var(--white);}
+#pend .ee{color:#7F8DE0;}
+#pend .ecl{font-family:var(--fm);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+#pend .ecv{font-size:15px;color:rgba(255,255,255,0.85);}
+#pend .ebar{width:32px;height:3px;background:rgba(255,255,255,0.4);margin-bottom:12px;}
+#pend .pn{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,0.2);}
+
+@media print{body{background:white;padding:0;gap:0;}.page{box-shadow:none;page-break-after:always;}.plabel{display:none;}}
 </style>
 </head>
 <body>
-<div class="deck">
 
-  <!-- 1 COVER -->
-  <section class="slide cover">
-    <div class="inner">
-      <div class="cv-top">KBO 2026 MEDIA · 앱 서비스 기획 인턴 지원</div>
-      <div class="cv-mid">
-        <h1>야구 앱 시장을 읽고,<br><span class="hl">KBO 앱이 갈 방향</span>을<br>제안합니다</h1>
-        <p class="cv-sub">JD의 다섯 가지 업무를 이미 해본 서비스기획자,<br>그리고 야구를 일상으로 사는 팬, 김수진입니다.</p>
-      </div>
-      <div class="cv-foot">
-        <div><div class="l">NAME</div><div class="v">김수진</div></div>
-        <div><div class="l">POSITION</div><div class="v">서비스기획 / PM</div></div>
-        <div><div class="l">PHONE</div><div class="v">010-4772-6950</div></div>
-        <div><div class="l">EMAIL</div><div class="v">soowlsee@gmail.com</div></div>
-      </div>
-    </div>
-    <div class="cc">
-      <div class="t">CORE COMPETENCY</div>
-      <div class="i"><span class="n">01</span>앱 서비스 구조 분석 · 개선 문서화</div>
-      <div class="i"><span class="n">02</span>화면설계 · 기능 요구사항 정의</div>
-      <div class="i"><span class="n">03</span>국내외 서비스 벤치마킹</div>
-      <div class="i"><span class="n">04</span>데이터 기반 문제 정의 · 가설 수립</div>
-      <div class="i"><span class="n">05</span>개발사 · 유관부서 협업 자료 작성</div>
-      <div class="i"><span class="n">06</span>운영 정책 수립 · 가이드라인 문서화</div>
-    </div>
-  </section>
-
-  <!-- 2 TOC -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag">Contents</div><div class="spage">02</div></div>
-      <h2>목차</h2>
-      <div class="toc-grid">
-        <div class="toc-item"><span class="tn">01</span><span><span class="tt">About Me</span><span class="td">서비스기획자 김수진 소개</span></span></div>
-        <div class="toc-item"><span class="tn">02</span><span><span class="tt">제작 경험</span><span class="td">직접 기획·제작한 웹·앱 서비스</span></span></div>
-        <div class="toc-item"><span class="tn">03</span><span><span class="tt">Project 01</span><span class="td">기부금영수증 간편 발급 서비스</span></span></div>
-        <div class="toc-item"><span class="tn">04</span><span><span class="tt">Project 02</span><span class="td">굿즈 캠페인 중단 리스크 관리</span></span></div>
-        <div class="toc-item"><span class="tn">05</span><span><span class="tt">KBO 앱 분석 &amp; 방향 제안</span><span class="td">시장 분석 → 포지셔닝 → 방향</span></span></div>
-        <div class="toc-item"><span class="tn">06</span><span><span class="tt">Closing</span><span class="td">맺음말</span></span></div>
+<!-- P1 표지 -->
+<div class="plabel"><span>KBO 2026 MEDIA — 앱 서비스 기획 인턴 · 김수진</span><span>P.01</span></div>
+<div class="page" id="p1">
+  <div class="pl">
+    <div>
+      <div class="or-bar"></div>
+      <h1 class="headline">야구 앱 시장을 읽고,<br><em>KBO 앱이 갈 방향</em>을<br>제안합니다.</h1>
+      <p class="sub">JD의 다섯 가지 업무를 이미 해본 서비스기획자,<br>그리고 야구를 일상으로 사는 팬, 김수진입니다.</p>
+      <div class="cg">
+        <div><p class="cl">name</p><p class="cv">김수진</p></div>
+        <div><p class="cl">phone</p><p class="cv">010-4772-6950</p></div>
+        <div><p class="cl">email</p><p class="cv">soowlsee@gmail.com</p></div>
+        <div><p class="cl">position</p><p class="cv">서비스기획 / PM</p></div>
       </div>
     </div>
-  </section>
+    <div class="pn">01 / 13</div>
+  </div>
+  <div class="pr">
+    <div>
+      <p class="r-lbl">core competency</p>
+      <div class="rtags">
+        <div class="rtag"><span class="rtag-n">01</span>앱 서비스 구조 분석 · 개선 문서화</div>
+        <div class="rtag"><span class="rtag-n">02</span>화면설계 · 기능 요구사항 정의</div>
+        <div class="rtag"><span class="rtag-n">03</span>국내외 서비스 벤치마킹</div>
+        <div class="rtag"><span class="rtag-n">04</span>데이터 기반 문제 정의 · 가설 수립</div>
+        <div class="rtag"><span class="rtag-n">05</span>개발사 · 유관부서 협업 자료 작성</div>
+        <div class="rtag"><span class="rtag-n">06</span>운영 정책 수립 · 가이드라인 문서화</div>
+      </div>
+    </div>
+    <p class="r-bot">kim soojin — kbo media intern portfolio 2026</p>
+  </div>
+</div>
 
-  <!-- 3 ABOUT -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">01</span> About Me</div><div class="spage">03</div></div>
-      <h2>서비스기획자 김수진</h2>
-      <div class="about-row" style="margin-top:1.6%">
-        <div class="about-card">
-          <div class="nm">김수진</div>
-          <div class="role">서비스기획 / PM</div>
-          <div class="meta">
-            <div><b>경력</b> · 약 2년 (웹서비스 기획)</div>
-            <div><b>주요</b> · 굿네이버스 인터내셔널</div>
-            <div><b>설계 화면</b> · 300+ (기획·정의)</div>
-            <div><b>협업</b> · 법무·개발·마케팅·CS 등</div>
+<!-- P2 목차 -->
+<div class="plabel"><span>CONTENTS</span><span>P.02</span></div>
+<div class="page" id="p2">
+  <div class="topbar"><span class="ltag nv">contents</span><span class="ltag">kim soojin — kbo media intern portfolio 2026</span></div>
+  <div class="toc-wrap">
+    <div class="toc-left">
+      <div>
+        <p class="ltag nv" style="margin-bottom:14px;">contents</p>
+        <h2 class="toc-big">포트폴리오<br>목차</h2>
+        <p class="toc-desc">시장과 서비스를 분석해<br>방향을 제안하고, 그것을 화면과<br>문서로 풀어내온 기획자입니다.</p>
+      </div>
+      <p class="pn">02 / 13</p>
+    </div>
+    <div class="toc-vr"></div>
+    <div class="toc-right">
+      <div class="toc-item"><span class="toc-pg">03 – 04</span><div><p class="toc-eye">about me</p><p class="toc-name">김수진 소개 · 커리어 패스</p><p class="toc-sub">경력 흐름 · 핵심 수치 · 강점 · 스킬</p></div></div>
+      <div class="toc-item"><span class="toc-pg">05 – 06</span><div><p class="toc-eye">work experience</p><p class="toc-name">직접 기획·제작한 웹·앱 서비스</p><p class="toc-sub">모바일 회지 · 회원 서비스 · 페이지 제작 · 앱 출시</p></div></div>
+      <div class="toc-item"><span class="toc-pg">07 – 08</span><div><p class="toc-eye">project 01</p><p class="toc-name">기부금영수증 간편 발급 서비스</p><p class="toc-sub">비로그인 발급 구조 설계 · CS 34.8% 감소</p><div class="toc-bdg"><span class="badge nv">서비스 구조 분석</span><span class="badge nv">화면 설계</span><span class="badge nv">유관부서 협업</span></div></div></div>
+      <div class="toc-item"><span class="toc-pg">09 – 10</span><div><p class="toc-eye">project 02</p><p class="toc-name">굿즈 캠페인 구독 중단 리스크 관리</p><p class="toc-sub">중단 방어 UX 설계 · 최대 27.3% 방어</p><div class="toc-bdg"><span class="badge nv">유저 행동 분석</span><span class="badge nv">팝업 UX</span><span class="badge nv">운영 정책</span></div></div></div>
+      <div class="toc-item"><span class="toc-pg">11 – 13</span><div><p class="toc-eye">kbo app proposal</p><p class="toc-name">KBO 앱 서비스 분석 &amp; 방향 제안</p><p class="toc-sub">시장 분석 → 포지셔닝 → 방향 제안</p><div class="toc-bdg"><span class="badge nv">시장 벤치마킹</span><span class="badge nv">포지셔닝</span><span class="badge nv">방향 제안</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- P3 About Me (통합) -->
+<div class="plabel"><span>ABOUT ME</span><span>P.03</span></div>
+<div class="page" id="p3">
+  <div class="topbar"><span class="ltag nv">about me</span><span class="ltag">kim soojin — kbo media intern portfolio 2026</span></div>
+  <div class="am-wrap">
+    <div class="am-left">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="photo-ph">사진<br>삽입</div>
+        <div>
+          <p style="font-family:var(--fd);font-size:22px;font-weight:400;color:var(--black);letter-spacing:-0.01em;">김수진</p>
+          <p style="font-size:13px;color:var(--g500);margin-top:3px;">서비스기획 / PM</p>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--g100);"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p class="ltag" style="margin-bottom:3px;">info</p>
+        <div class="irow"><span class="ikey">birth</span><span style="color:var(--g700);">1996.10.18</span></div>
+        <div class="irow"><span class="ikey">tel</span><span style="color:var(--g700);">010-4772-6950</span></div>
+        <div class="irow"><span class="ikey">mail</span><span style="font-size:11px;color:var(--g700);">soowlsee@gmail.com</span></div>
+      </div>
+      <div style="height:1px;background:var(--g100);"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p class="ltag" style="margin-bottom:3px;">tools &amp; skills</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="sk-pill">Figma</span><span class="sk-pill">GA</span><span class="sk-pill">SQL</span>
+          <span class="sk-pill">Notion</span><span class="sk-pill">JIRA</span><span class="sk-pill">Confluence</span>
+          <span class="sk-pill">Claude</span><span class="sk-pill">GPT</span><span class="sk-pill">Excel</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--g100);"></div>
+    <div class="am-right">
+      <div class="career-bar">
+        <span class="ltag" style="margin-right:6px;">career</span>
+        <span class="chip-dk">굿네이버스 인터내셔날 · 서비스팀 PM · 2022.08–2024.08</span>
+        <span class="chip-lt">마케팅·브랜딩 컨설팅 · 2021</span>
+        <span class="chip-lt">도서앱 사이드프로젝트 · PM · 2025.03– 진행중</span>
+      </div>
+      <div class="metrics-row">
+        <div class="mc"><p class="mc-num">6</p><p class="mc-desc">신규 서비스 기획 PM<br>기획~운영 전 과정 직접 수행</p></div>
+        <div class="mc"><p class="mc-num">100+</p><p class="mc-desc">다부서 이해관계자<br>협업 경험</p></div>
+        <div class="mc"><p class="mc-num">300+</p><p class="mc-desc">서비스 화면·기능 정의<br>및 운영 정책 설계</p></div>
+      </div>
+      <div style="padding:32px 80px;flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+        <div>
+          <p class="ltag nv" style="margin-bottom:16px;">career path</p>
+          <h3 style="font-size:23px;font-weight:700;letter-spacing:-0.4px;color:var(--black);line-height:1.4;margin-bottom:18px;">시장 분석에서 출발해, 서비스를<br>기획하고 운영해온 기획자입니다.</h3>
+          <div style="font-size:14px;color:var(--g600);line-height:1.95;">
+            <p style="margin-bottom:14px;">저는 <strong style="color:var(--black);">시장을 읽고 전략을 제안하는 일</strong>에서 커리어를 시작했습니다. 마케팅·브랜딩 컨설팅 분야에서 직접 시장조사를 수행하고, 그 분석을 바탕으로 전략을 설계해 제안서로 정리하고 마케팅을 집행했습니다. 외부의 시선으로 시장을 분석하고, 그것을 의사결정이 가능한 자료로 만드는 훈련을 이때 쌓았습니다.</p>
+            <p>이후에는 그 시선을 <strong style="color:var(--black);">제품 안으로</strong> 가져왔습니다. 시장과 사용자를 분석해 무엇을 만들지 방향을 정하고, 그것을 화면설계와 요구사항 문서로 풀어내며 웹·앱 서비스를 기획하고 운영·관리해왔습니다.</p>
           </div>
         </div>
-        <div class="about-main">
-          <h3>시장과 서비스를 분석해 방향을 잡고,<br>그것을 화면과 문서로 풀어내는 기획자입니다.</h3>
-          <p>회원이 실제로 사용하는 웹·앱 서비스를 상시 기획·제작·검수해왔습니다. 서비스 구조를 분석하고, 개선 방향을 화면설계와 요구사항 문서로 정의하며, 서로 다른 요구를 가진 여러 부서를 한 방향으로 맞추는 일을 직접 이끌었습니다.</p>
-          <p>무엇을 만들지 정하고, 그것을 자료로 설득해 실제 서비스로 만들어내는 과정 전반을 경험했습니다.</p>
-          <div class="skill-tags">
-            <span>화면설계 · 스토리보드</span><span>요구사항 정의</span><span>GA · 데이터 분석</span><span>SQL</span><span>Figma</span><span>부서 협업</span>
-          </div>
+        <div class="flow">
+          <span class="fstep on">시장조사 · 전략 제안</span><span class="farr">→</span>
+          <span class="fstep on">서비스 기획</span><span class="farr">→</span>
+          <span class="fstep on">운영 · 관리</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 4-1 MAKE EXPERIENCE -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">02</span> Experience</div><div class="spage">04</div></div>
-      <h2>다양한 웹·앱 서비스를 직접 기획하고 제작해왔습니다</h2>
-      <p class="exp-lead">굿네이버스 웹서비스팀에서 회원이 실제로 사용하는 서비스를 상시 기획·제작·검수했습니다. 소식지부터 후원 서비스, 캠페인 페이지까지 — 기획부터 디자인·개발 요청, 검수, 일정 관리까지 직접 담당했습니다.</p>
-      <div class="exp-grid">
-        <div class="exp-col"><h4>모바일 회지</h4><ul><li>좋은이웃 소식지 모바일화</li><li>일반·시니어 구분 제공</li><li>접근성 개선 기획</li></ul></div>
-        <div class="exp-col"><h4>회원 보고서</h4><ul><li>후원사업별 보고서</li><li>200일 서비스 페이지</li><li>후원 신뢰도 기여</li></ul></div>
-        <div class="exp-col"><h4>웹·앱 접근성</h4><ul><li>간편 로그인</li><li>간편 증액</li><li>중단회원 결연아동 노출</li></ul></div>
-        <div class="exp-col"><h4>페이지 제작</h4><ul><li>캠페인 피드백</li><li>회원활동안내서</li><li>세이프가딩 신규</li></ul></div>
-        <div class="exp-col"><h4>정기 서비스</h4><ul><li>문화이벤트</li><li>좋은이웃이야기</li><li>정기웹메일</li></ul></div>
+<!-- P5 제작 경험 1 -->
+<div class="plabel"><span>WORK EXPERIENCE — 제작 경험</span><span>P.04</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">work experience</span><span class="ltag">kim soojin — kbo media intern portfolio 2026</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">EXPERIENCE</span><span class="sec-t">다양한 웹·앱 서비스를 직접 기획하고 제작해왔습니다</span></div>
+    <p style="font-size:15px;color:var(--g600);line-height:1.75;max-width:1300px;">굿네이버스 웹서비스팀에서 회원이 실제로 사용하는 서비스를 상시 기획·제작·검수했습니다. 소식지부터 후원 서비스, 캠페인 페이지까지 — 기획부터 디자인·개발 요청, 검수, 일정 관리까지 직접 담당했습니다.</p>
+    <div class="rule"></div>
+    <div class="exp-grid5" style="margin-top:6px;">
+      <div class="exp-col"><h4>모바일 회지 · 보고서</h4><ul><li>좋은이웃 소식지 모바일화</li><li>후원사업별 보고서 제작</li><li>일반·시니어 구분 제공</li><li>200일 서비스 페이지</li></ul></div>
+      <div class="exp-col"><h4>웹·앱 접근성</h4><ul><li>간편 로그인 기획</li><li>간편 증액 기획</li><li>중단회원 결연아동 노출</li><li>히스토리·어드민 운영</li></ul></div>
+      <div class="exp-col"><h4>페이지 제작</h4><ul><li>웹·앱 이벤트 페이지</li><li>회원활동안내서 리뉴얼</li><li>세이프가딩 신규 제작</li><li>캠페인 피드백 페이지</li></ul></div>
+      <div class="exp-col"><h4>독서 앱 출시 (사이드)</h4><ul><li>iOS·Android 출시 완료</li><li>서비스 기획 및 디자인 진행</li><li>5인 팀 사이드 프로젝트 PM</li><li>기획~배포 전 과정 주도</li></ul></div>
+    </div>
+    <div class="rule" style="margin-top:auto;"></div>
+    <p style="font-size:13px;color:var(--g500);line-height:1.6;">회원 서비스부터 직접 출시한 앱까지 — 기획·제작·운영의 전 과정을 반복적으로 경험했습니다.</p>
+  </div>
+</div>
+
+<!-- P6 제작 경험 2 (화면) -->
+<div class="plabel"><span>WORK EXPERIENCE — 서비스 화면</span><span>P.05</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">work experience</span><span class="ltag">kim soojin — kbo media intern portfolio 2026</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">EXPERIENCE</span><span class="sec-t">사용자 관점에서 만든 서비스 화면</span></div>
+    <div style="flex:1;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;min-height:0;">
+      <div class="iph" style="height:78%;">[ 이미지 — 모바일 회지 / 캠페인 페이지 화면 캡처 ]</div>
+      <div class="exp-points">
+        <div class="ep"><h4>시니어 접근성</h4><p>버튼 크기 조절·재배치, 콘텐츠 위계 단순화로 터치 환경을 개선했습니다.</p></div>
+        <div class="ep"><h4>기기 호환성</h4><p>콘텐츠를 병렬 배치해 다양한 화면에서 익숙한 경험을 제공했습니다.</p></div>
+        <div class="ep"><h4>이탈 감소</h4><p>휴대폰 인증 간편 로그인으로 시니어 회원의 서비스 이탈을 줄였습니다.</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 4-2 MAKE EXPERIENCE - SCREENS -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">02</span> Experience</div><div class="spage">05</div></div>
-      <h2>사용자 관점에서 만든 서비스 화면</h2>
-      <div class="exp2-row">
-        <div class="img-ph">[ 이미지 자리 — 모바일 회지 / 캠페인 페이지 화면 캡처<br>made01.png ]</div>
-        <div class="exp2-points">
-          <div class="ep"><h4>시니어 접근성</h4><p>버튼 크기 조절·재배치, 콘텐츠 위계 단순화로 터치 환경을 개선했습니다.</p></div>
-          <div class="ep"><h4>기기 호환성</h4><p>콘텐츠를 병렬 배치해 다양한 화면에서 익숙한 경험을 제공했습니다.</p></div>
-          <div class="ep"><h4>이탈 감소</h4><p>휴대폰 인증 간편 로그인으로 시니어 회원의 서비스 이탈을 줄였습니다.</p></div>
+<!-- P7 Project 01 배경·실행 -->
+<div class="plabel"><span>PROJECT 01 — 배경 · 실행</span><span>P.06</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">project 01</span><span class="ltag">기부금영수증 간편 발급 서비스</span></div>
+  <div class="inner">
+    <div>
+      <p class="pcov-num">PROJECT 01</p>
+      <h2 style="font-family:var(--fb);font-size:34px;font-weight:700;letter-spacing:-0.5px;color:var(--black);margin-bottom:10px;">기부금영수증 간편 발급 서비스</h2>
+      <p style="font-size:15px;color:var(--g500);line-height:1.7;">로그인 없이 기부금영수증을 발급받는 유저 서비스 화면을 기획·설계한 프로젝트</p>
+      <div class="tagrow" style="margin-top:14px;"><span class="badge nv">서비스 구조 분석</span><span class="badge nv">비로그인 플로우 설계</span><span class="badge nv">화면 설계</span><span class="badge nv">유관 부서 협업</span></div>
+    </div>
+    <div class="rule"></div>
+    <div class="g2" style="flex:1;min-height:0;align-content:start;">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">배경 및 문제 정의</span></div>
+        <p style="font-size:15px;color:var(--g700);line-height:1.8;margin-bottom:16px;">연말정산 시즌마다 기부금영수증 관련 CS 문의가 급증했습니다. 데이터를 보니 발급 과정의 <strong style="color:var(--black);">로그인 단계에서 이탈이 집중</strong>됐고, 안내를 강화하는 방식으로는 해결되지 않았습니다. 접근 구조 자체가 문제라고 판단했습니다.</p>
+        <div class="pbox hi"><p class="pbox-t">핵심 문제 정의</p><p class="pbox-b">원인은 '안내 부족'이 아니라 '로그인 접근 구조'. 발급에 계정 보유를 전제로 두는 구조가 본질적 병목.</p></div>
+      </div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">실행</span></div>
+        <ul class="cl">
+          <li>로그인 화면 이탈 구간을 분석해 원인을 접근 구조에서 특정</li>
+          <li class="hi">로그인을 제거한 비로그인 발급 구조로 재설계 (이름+연락처 입력 → 즉시 발급)</li>
+          <li>시니어 사용자를 고려한 UI 설계 (버튼 크기, 정보 위계)</li>
+          <li>개발·법무·CS와 협업해 인증·보안 조건 정의</li>
+        </ul>
+        <div class="atb" style="margin-top:18px;">
+          <div class="asis"><p class="at-l">As-Is</p><p class="at-b">회원가입 → 로그인 → 실명인증<br>이탈률 80%+</p></div>
+          <div class="arr-c">→</div>
+          <div class="tobe"><p class="at-l">To-Be</p><p class="at-b">회원번호+이름 기반<br>비로그인 간편 확인</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 5-1 PROJECT 01 : 배경+실행 -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">03</span> Project 01</div><div class="spage">06</div></div>
-      <h2>기부금영수증 간편 발급 서비스</h2>
-      <div class="pj-tagrow"><span>서비스 구조 분석</span><span>비로그인 플로우 설계</span><span>화면 설계</span><span>유관 부서 협업</span></div>
-      <div class="pj-body">
-        <div class="pj-block">
-          <h4>Background</h4>
-          <p class="pj-bg-txt">연말정산 시즌마다 기부금영수증 관련 CS 문의가 급증했습니다. 데이터를 보니 발급 과정의 로그인 단계에서 이탈이 집중됐고, 안내를 강화하는 방식으로는 해결되지 않았습니다. 접근 구조 자체가 문제라고 판단했습니다.</p>
-        </div>
-        <div class="pj-block">
-          <h4>Action</h4>
-          <ul class="pj-do">
-            <li>로그인 화면 이탈 구간을 분석해 원인을 접근 구조에서 특정</li>
-            <li>로그인을 제거한 비로그인 발급 구조로 재설계 (이름+연락처 입력 → 즉시 발급)</li>
-            <li>시니어 사용자를 고려한 UI 설계 (버튼 크기, 정보 위계)</li>
-            <li>개발·법무·CS와 협업해 인증·보안 조건 정의</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5-2 PROJECT 01 : 화면+성과 -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">03</span> Project 01</div><div class="spage">07</div></div>
-      <h2>사용자가 보는 발급 화면</h2>
-      <div class="pj2-row">
-        <div class="img-ph">[ 이미지 자리 — 기부금영수증 발급 화면 3컷<br>project01.png ]</div>
-        <div class="pj2-side">
-          <p class="scr-desc">로그인 없이, 입력 한 번으로 발급까지. 단계를 줄이는 데 집중했습니다.</p>
-          <ul class="scr-list">
-            <li>회원번호·이름 기반 비로그인 확인</li>
-            <li>최초 발급 시에만 실명인증, 이후 즉시 발급</li>
-            <li>기부금 내역을 동일 화면에서 확인 (탐색 깊이 축소)</li>
-          </ul>
-          <div class="kpi-row">
-            <div class="kpi"><div class="big">34.8<span class="u">%</span></div><div class="dl">CS 문의 감소</div></div>
-            <div class="kpi"><div class="big">47.5<span class="u">%</span></div><div class="dl">유입 고객 자가 발급 전환</div></div>
-          </div>
+<!-- P8 Project 01 화면·성과 -->
+<div class="plabel"><span>PROJECT 01 — 화면 · 성과</span><span>P.07</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">project 01</span><span class="ltag">기부금영수증 간편 발급 서비스</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03</span><span class="sec-t">사용자가 보는 발급 화면</span></div>
+    <div style="flex:1;display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;min-height:0;">
+      <div class="iph" style="height:80%;">[ 이미지 — 기부금영수증 발급 화면 3컷 ]</div>
+      <div>
+        <p style="font-size:16px;color:var(--g700);line-height:1.7;margin-bottom:20px;">로그인 없이, 입력 한 번으로 발급까지. <strong style="color:var(--black);">단계를 줄이는 데 집중</strong>했습니다.</p>
+        <ul class="cl" style="margin-bottom:28px;">
+          <li>회원번호·이름 기반 비로그인 확인</li>
+          <li>최초 발급 시에만 실명인증, 이후 즉시 발급</li>
+          <li>기부금 내역을 동일 화면에서 확인 (탐색 깊이 축소)</li>
+        </ul>
+        <div class="rule" style="margin-bottom:20px;"></div>
+        <div class="g2">
+          <div><p class="big-num">34.8<span style="font-size:22px;color:var(--g400);">%</span></p><p class="big-desc">CS 문의 감소</p></div>
+          <div><p class="big-num">47.5<span style="font-size:22px;color:var(--g400);">%</span></p><p class="big-desc">유입 고객 자가 발급 전환</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 6-1 PROJECT 02 : 배경+실행 -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">04</span> Project 02</div><div class="spage">08</div></div>
-      <h2>굿즈 캠페인 구독 중단 리스크 관리</h2>
-      <div class="pj-tagrow"><span>유저 행동 분석</span><span>이탈 방어 UX 설계</span><span>팝업 UX</span><span>운영 정책 수립</span></div>
-      <div class="pj-body">
-        <div class="pj-block">
-          <h4>Background</h4>
-          <p class="pj-bg-txt">굿즈 수령 직후 후원을 중단하는 패턴이 반복됐습니다. "목적 달성" 인식으로 중단이 급증했고 CS 인입도 집중됐습니다. 중단을 막는 것이 아니라, 다른 선택지를 먼저 보여주는 구조가 필요하다고 봤습니다.</p>
-        </div>
-        <div class="pj-block">
-          <h4>Action</h4>
-          <ul class="pj-do">
-            <li>중단 클릭 시 즉시 처리되던 구조를 분석</li>
-            <li>중단 버튼을 누른 순간 선택지를 제시하는 팝업 UX 설계</li>
-            <li>강제로 막지 않고 선택지를 주는 방식으로 UX 신뢰 유지</li>
-            <li>운영 정책 수립 및 캠페인 확장 기준 정의</li>
-          </ul>
-        </div>
-      </div>
+<!-- P9 Project 02 배경·실행 -->
+<div class="plabel"><span>PROJECT 02 — 배경 · 실행</span><span>P.08</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">project 02</span><span class="ltag">굿즈 캠페인 구독 중단 리스크 관리</span></div>
+  <div class="inner">
+    <div>
+      <p class="pcov-num">PROJECT 02</p>
+      <h2 style="font-family:var(--fb);font-size:34px;font-weight:700;letter-spacing:-0.5px;color:var(--black);margin-bottom:10px;">굿즈 캠페인 구독 중단 리스크 관리</h2>
+      <p style="font-size:15px;color:var(--g500);line-height:1.7;">후원 중단을 누르는 순간의 유저 경험을 재설계한 프로젝트</p>
+      <div class="tagrow" style="margin-top:14px;"><span class="badge nv">유저 행동 분석</span><span class="badge nv">이탈 방어 UX 설계</span><span class="badge nv">팝업 UX</span><span class="badge nv">운영 정책 수립</span></div>
     </div>
-  </section>
-
-  <!-- 6-2 PROJECT 02 : 화면+성과 -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">04</span> Project 02</div><div class="spage">09</div></div>
-      <h2>중단을 막지 않고, 다른 길을 먼저 보여주다</h2>
-      <div class="pj2-row">
-        <div class="img-ph">[ 이미지 자리 — 중단 방어 팝업 플로우<br>project02.png ]</div>
-        <div class="pj2-side">
-          <p class="scr-desc">중단 버튼을 누른 순간, 세 가지 선택지를 먼저 제시하는 구조로 설계했습니다.</p>
-          <ul class="scr-list">
-            <li>쉬어가기 — 최대 3개월 일시중지 (완전 중단 없이 유지)</li>
-            <li>원클릭 감액 — 페이지 이동 없이 즉시 금액 조정</li>
-            <li>후원 의미 리마인드 — 후원 성과로 감정적 연결 강화</li>
-          </ul>
-          <div class="kpi-row">
-            <div class="kpi"><div class="big">최대 27.3<span class="u">%</span></div><div class="dl">중단 방어</div></div>
-            <div class="kpi"><div class="big">4<span class="u">개</span></div><div class="dl">캠페인 확장 적용</div></div>
-          </div>
+    <div class="rule"></div>
+    <div class="g2" style="flex:1;min-height:0;align-content:start;">
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">배경 및 문제 정의</span></div>
+        <p style="font-size:15px;color:var(--g700);line-height:1.8;margin-bottom:16px;">굿즈 수령 직후 후원을 중단하는 패턴이 반복됐습니다. "목적 달성" 인식으로 중단이 급증했고 CS 인입도 집중됐습니다.</p>
+        <div class="pbox hi"><p class="pbox-t">관점 전환</p><p class="pbox-b">중단을 막는 것이 아니라, 다른 선택지를 먼저 보여주는 구조가 필요하다고 판단.</p></div>
+      </div>
+      <div>
+        <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">실행</span></div>
+        <ul class="cl">
+          <li>중단 클릭 시 즉시 처리되던 구조를 분석</li>
+          <li class="hi">중단 버튼을 누른 순간 선택지를 제시하는 팝업 UX 설계</li>
+          <li>강제로 막지 않고 선택지를 주는 방식으로 UX 신뢰 유지</li>
+          <li>운영 정책 수립 및 캠페인 확장 기준 정의</li>
+        </ul>
+        <div class="atb" style="margin-top:18px;">
+          <div class="asis"><p class="at-l">As-Is</p><p class="at-b">중단 클릭 → 즉시 중단 처리<br>설득 기회 없음</p></div>
+          <div class="arr-c">→</div>
+          <div class="tobe"><p class="at-l">To-Be</p><p class="at-b">중단 클릭 → 방어 팝업<br>3가지 선택지 제시</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 7-1 MARKET -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">05</span> KBO · Market</div><div class="spage">10</div></div>
-      <h2>야구 앱 시장은 어디로 가고 있는가</h2>
-      <p class="lead" style="margin-bottom:2.2%">SSG 팬으로서 여러 야구 앱을 써왔습니다. 사용자로서, 기획자의 눈으로 시장을 정리해보니 네 개의 군집과 각자의 사업 방향이 보였습니다.</p>
-      <div class="cluster-grid">
-        <div class="cluster"><div class="ct">CLUSTER 01</div><h4>실시간<br>정보 도구</h4><div class="app">빅이닝 · 한눈에야구</div><div class="r"><span class="rl">사업 방향</span><span class="rv">빠르게, 앱 안 열고도</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">위젯 · 잠금화면 속도</span></div></div>
-        <div class="cluster"><div class="ct">CLUSTER 02</div><h4>팬 경험<br>아카이빙</h4><div class="app">직관 기록 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">내 야구 역사를 남긴다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">개인 기록 데이터</span></div></div>
-        <div class="cluster"><div class="ct">CLUSTER 03</div><h4>팬십<br>+ 커머스</h4><div class="app">SSG · KT 등 구단 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">우리 팀 팬을 묶는다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">티켓 · 멤버십</span></div></div>
-        <div class="cluster"><div class="ct">CLUSTER 04</div><h4>리그<br>통합 플랫폼</h4><div class="app">MLB 공식 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">리그 전체를 담는다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">개인화 + 공식 데이터</span></div></div>
+<!-- P10 Project 02 화면·성과 -->
+<div class="plabel"><span>PROJECT 02 — 화면 · 성과</span><span>P.09</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">project 02</span><span class="ltag">굿즈 캠페인 구독 중단 리스크 관리</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03</span><span class="sec-t">중단을 막지 않고, 다른 길을 먼저 보여주다</span></div>
+    <div style="flex:1;display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;min-height:0;">
+      <div class="iph" style="height:80%;">[ 이미지 — 중단 방어 팝업 플로우 ]</div>
+      <div>
+        <p style="font-size:16px;color:var(--g700);line-height:1.7;margin-bottom:20px;">중단 버튼을 누른 순간, <strong style="color:var(--black);">세 가지 선택지를 먼저 제시</strong>하는 구조로 설계했습니다.</p>
+        <ul class="cl" style="margin-bottom:28px;">
+          <li>쉬어가기 — 최대 3개월 일시중지 (완전 중단 없이 유지)</li>
+          <li>원클릭 감액 — 페이지 이동 없이 즉시 금액 조정</li>
+          <li>후원 의미 리마인드 — 후원 성과로 감정적 연결 강화</li>
+        </ul>
+        <div class="rule" style="margin-bottom:20px;"></div>
+        <div class="g2">
+          <div><p class="big-num">27.3<span style="font-size:22px;color:var(--g400);">%</span></p><p class="big-desc">최대 중단 방어율</p></div>
+          <div><p class="big-num">4<span style="font-size:22px;color:var(--g400);">개</span></p><p class="big-desc">캠페인 확장 적용</p></div>
+        </div>
       </div>
-      <div class="insight">네 군집의 방향은 다르지만, 향하는 곳은 하나로 모입니다 — <b>"팬이 야구와 더 자주, 더 깊이 연결되게 만드는 것."</b></div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- 7-2 MAP -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">05</span> KBO · Positioning</div><div class="spage">11</div></div>
-      <h2>모두가 향하는 곳, 아무도 없는 자리</h2>
-      <div class="map-row">
+<!-- P11 KBO 시장 분석 -->
+<div class="plabel"><span>KBO APP PROPOSAL — 시장 분석</span><span>P.10</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">kbo app proposal · market</span><span class="ltag">KBO 앱 서비스 분석 &amp; 방향 제안</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">01</span><span class="sec-t">야구 앱 시장은 어디로 가고 있는가</span></div>
+    <p style="font-size:15px;color:var(--g600);line-height:1.7;max-width:1300px;">SSG 팬으로서 여러 야구 앱을 써왔습니다. 사용자로서, 그리고 기획자의 눈으로 시장을 정리해보니 네 개의 군집과 각자의 사업 방향이 보였습니다.</p>
+    <div class="cluster-grid" style="flex:1;min-height:0;align-content:center;">
+      <div class="cluster"><div class="ct">CLUSTER 01</div><h4>실시간<br>정보 도구</h4><div class="app">빅이닝 · 한눈에야구</div><div class="r"><span class="rl">사업 방향</span><span class="rv">빠르게, 앱 안 열고도</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">위젯 · 잠금화면 속도</span></div></div>
+      <div class="cluster"><div class="ct">CLUSTER 02</div><h4>팬 경험<br>아카이빙</h4><div class="app">직관 기록 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">내 야구 역사를 남긴다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">개인 기록 데이터</span></div></div>
+      <div class="cluster"><div class="ct">CLUSTER 03</div><h4>팬십<br>+ 커머스</h4><div class="app">SSG · KT 등 구단 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">우리 팀 팬을 묶는다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">티켓 · 멤버십</span></div></div>
+      <div class="cluster"><div class="ct">CLUSTER 04</div><h4>리그<br>통합 플랫폼</h4><div class="app">MLB 공식 앱</div><div class="r"><span class="rl">사업 방향</span><span class="rv">리그 전체를 담는다</span></div><div class="r"><span class="rl">핵심 자산</span><span class="rv">개인화 + 공식 데이터</span></div></div>
+    </div>
+    <div class="insight-box">네 군집의 방향은 다르지만, 향하는 곳은 하나로 모입니다 — <b>"팬이 야구와 더 자주, 더 깊이 연결되게 만드는 것."</b></div>
+  </div>
+</div>
+
+<!-- P12 KBO 포지셔닝 맵 -->
+<div class="plabel"><span>KBO APP PROPOSAL — 포지셔닝</span><span>P.11</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">kbo app proposal · positioning</span><span class="ltag">KBO 앱 서비스 분석 &amp; 방향 제안</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">02</span><span class="sec-t">모두가 향하는 곳, 아무도 없는 자리</span></div>
+    <div style="flex:1;display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center;min-height:0;padding:0 40px;">
+      <div style="position:relative;height:74%;">
         <div class="pmap">
           <div class="pmap-grid"></div>
           <div class="ax-x"><span>한 팀 중심</span><span>리그 전체</span></div>
           <div class="ax-y"><span>일상 전반</span><span>경기 순간</span></div>
-          <div class="dot" style="left:26%;top:74%"><div class="pt"></div><div class="lb">구단 앱<small>직관 당일 · 우리 팀</small></div></div>
-          <div class="dot" style="left:24%;top:28%"><div class="pt"></div><div class="lb">구단 멤버십<small>일부 기능</small></div></div>
-          <div class="dot" style="left:74%;top:76%"><div class="pt"></div><div class="lb">빅이닝 · 한눈에야구<small>실시간 스코어</small></div></div>
-          <div class="dot empty" style="left:74%;top:30%"><div class="k">KBO ?<small>비어있는 자리</small></div></div>
-        </div>
-        <div class="find">
-          <h4>핵심 발견</h4>
-          <p>대부분의 앱은 <b>한 팀</b>을 깊게 묶거나, <b>경기 순간</b>의 정보를 빠르게 전달합니다. 하지만 리그 전체를, 경기가 없는 순간에도 팬과 연결하는 앱은 없습니다.</p>
-          <ul class="reasons">
-            <li>구단 앱은 구조상 한 팀만 다룰 수 있음</li>
-            <li>서드파티 앱은 공식 데이터·이벤트 권한이 없음</li>
-            <li>리그 전체를 대표하는 공식 주체 = KBO만 채울 수 있는 자리</li>
-          </ul>
+          <div class="dot" style="left:26%;top:74%;"><div class="pt"></div><div class="lb">구단 앱<small>직관 당일 · 우리 팀</small></div></div>
+          <div class="dot" style="left:24%;top:28%;"><div class="pt"></div><div class="lb">구단 멤버십<small>일부 기능</small></div></div>
+          <div class="dot" style="left:74%;top:76%;"><div class="pt"></div><div class="lb">빅이닝 · 한눈에야구<small>실시간 스코어</small></div></div>
+          <div class="dot empty" style="left:74%;top:30%;"><div class="k">KBO ?<small>비어있는 자리</small></div></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 7-3 DIRECTION -->
-  <section class="slide">
-    <div class="pad">
-      <div class="shead"><div class="stag"><span class="chip">05</span> KBO · Direction</div><div class="spage">12</div></div>
-      <h2>KBO 앱의 자리: 기존 팬의 '야구 일상화'</h2>
-      <div class="declare" style="margin-top:1.4%">
-        KBO 앱이 가장 잘할 수 있는 일은 신규 유입이 아닙니다.
-        <span class="sm">KBO 앱만이 할 수 있는 일은 — <b>이미 야구를 좋아하는 팬이, 영상을 볼 수 없는 순간에도, 리그 전체와 연결되어 있게 만드는 것</b>입니다.</span>
+      <div>
+        <h4 style="font-size:19px;color:var(--black);font-weight:700;margin-bottom:12px;">핵심 발견</h4>
+        <p style="font-size:15px;color:var(--g600);line-height:1.7;margin-bottom:24px;">대부분의 앱은 <strong style="color:var(--black);">한 팀</strong>을 깊게 묶거나, <strong style="color:var(--black);">경기 순간</strong>의 정보를 빠르게 전달합니다. 하지만 리그 전체를, 경기가 없는 순간에도 팬과 연결하는 앱은 없습니다.</p>
+        <div class="quote">
+          — 구단 앱은 구조상 한 팀만 다룰 수 있음<br>
+          — 서드파티 앱은 공식 데이터·이벤트 권한이 없음<br>
+          — 리그 전체를 대표하는 공식 주체 = KBO만 채울 수 있는 자리
+        </div>
       </div>
-      <div class="dir-grid">
-        <div class="dir"><div class="dn">01</div><h4>못 보는 순간에도 곁에 있는 야구 — 야구 일상화</h4><dl><dt>Pain</dt><dd class="pain">경기는 진행 중인데 야근·약속·이동으로 영상을 볼 수 없는 순간</dd><dt>Market</dt><dd>빅이닝·한눈에야구가 위젯·잠금화면 하나로 앱스토어 1·2위</dd><dt>Direction</dt><dd>잠금화면 실시간 스코어, 내 팀 경기 알림, 홈 위젯</dd></dl></div>
-        <div class="dir"><div class="dn">02</div><h4>리그 전체를 보는 시선 — 구단 앱이 못 하는 것</h4><dl><dt>Market</dt><dd>구단 앱은 구조상 한 팀만. 리그 자체를 즐기는 팬의 집이 없음</dd><dt>Asset</dt><dd>10개 구단 전체 데이터 · 순위 · 이벤트</dd><dt>Direction</dt><dd>멀티팀 팔로우, 리그 순위 트래킹, 입문 팬 진입점</dd></dl></div>
-        <div class="dir"><div class="dn">03</div><h4>공식 데이터·이벤트의 콘텐츠화 — 여기서만 되는 것</h4><dl><dt>Market</dt><dd>서드파티 앱은 공식 기록·이벤트 권한이 없음</dd><dt>Asset</dt><dd>공식 기록 인증, 공식 투표·시상 이벤트</dd><dt>Direction</dt><dd>MVP·골든글러브 레이스 트래킹, 공식 인증 직관 기록</dd></dl></div>
-      </div>
-      <div class="dfoot">세 방향 모두 <b>기존 팬의 리텐션과 일상화</b>를 향하고, 셋 다 <b>공식 앱만이 할 수 있는 일</b>입니다. 이것이 KBO가 자체 앱 서비스를 운영해야 하는 이유입니다.</div>
     </div>
-  </section>
-
-  <!-- 8 CLOSING -->
-  <section class="slide closing">
-    <div class="inner">
-      <h2>야구를 일상으로 사는 팬의 시선과,<br>구조를 설계해온 기획자의 손으로<br><span class="hl">KBO 앱의 다음을 함께 만들고 싶습니다.</span></h2>
-      <div class="sig">KIM SOOJIN · 2026 KBO MEDIA INTERN</div>
-    </div>
-  </section>
-
+  </div>
 </div>
-<div class="hint">&#8593; &#8595; SCROLL</div>
-<script>
-  const slides=[...document.querySelectorAll('.slide')];let idx=0;
-  function go(n){idx=Math.max(0,Math.min(slides.length-1,n));slides[idx].scrollIntoView({behavior:'smooth'});}
-  window.addEventListener('keydown',e=>{
-    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1);}
-    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1);}
-  });
-  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)idx=slides.indexOf(en.target);})},{threshold:.6});
-  slides.forEach(s=>io.observe(s));
-</script>
+
+<!-- P13 KBO 방향 제안 -->
+<div class="plabel"><span>KBO APP PROPOSAL — 방향 제안</span><span>P.12</span></div>
+<div class="page" style="background:var(--g50);display:flex;flex-direction:column;">
+  <div class="topbar"><span class="ltag nv">kbo app proposal · direction</span><span class="ltag">KBO 앱 서비스 분석 &amp; 방향 제안</span></div>
+  <div class="inner">
+    <div class="sec-h"><div class="sec-bar"></div><span class="sec-n">03</span><span class="sec-t">KBO 앱의 자리: 기존 팬의 '야구 일상화'</span></div>
+    <div class="insight-box" style="font-size:18px;">
+      KBO 앱이 가장 잘할 수 있는 일은 신규 유입이 아닙니다.
+      <span style="display:block;font-size:15px;color:#AEB6E8;font-weight:400;margin-top:10px;line-height:1.6;">KBO 앱만이 할 수 있는 일은 — <b style="color:#fff;">이미 야구를 좋아하는 팬이, 영상을 볼 수 없는 순간에도, 리그 전체와 연결되어 있게 만드는 것</b>입니다.</span>
+    </div>
+    <div class="dir-grid" style="flex:1;min-height:0;align-content:start;">
+      <div class="dir"><div class="dn">01</div><h4>못 보는 순간에도 곁에 있는 야구 — 야구 일상화</h4><dl><dt>Pain</dt><dd class="pain">경기는 진행 중인데 야근·약속·이동으로 영상을 볼 수 없는 순간</dd><dt>Market</dt><dd>빅이닝·한눈에야구가 위젯·잠금화면 하나로 앱스토어 1·2위 — 니즈가 실재한다는 증거</dd><dt>Direction</dt><dd>잠금화면 실시간 스코어, 내 팀 경기 알림, 홈 위젯</dd></dl></div>
+      <div class="dir"><div class="dn">02</div><h4>리그 전체를 보는 시선 — 구단 앱이 못 하는 것</h4><dl><dt>Market</dt><dd>구단 앱은 구조상 한 팀만. 리그 자체를 즐기는 팬의 집이 없음</dd><dt>Asset</dt><dd>10개 구단 전체 데이터 · 순위 · 이벤트</dd><dt>Direction</dt><dd>멀티팀 팔로우, 리그 순위 경쟁 트래킹, 입문 팬 진입점</dd></dl></div>
+      <div class="dir"><div class="dn">03</div><h4>공식 데이터·이벤트의 콘텐츠화 — 여기서만 되는 것</h4><dl><dt>Market</dt><dd>서드파티 앱은 공식 기록·이벤트 권한이 없음</dd><dt>Asset</dt><dd>공식 기록 인증, 공식 투표·시상 이벤트</dd><dt>Direction</dt><dd>MVP·골든글러브 레이스 트래킹, 공식 인증 직관 기록</dd></dl></div>
+    </div>
+    <div class="pbox hi"><p class="pbox-t">결론</p><p class="pbox-b">세 방향 모두 <strong style="color:var(--nv);">기존 팬의 리텐션과 일상화</strong>를 향하고, 셋 다 <strong style="color:var(--nv);">공식 앱만이 할 수 있는 일</strong>입니다. 이것이 KBO가 자체 앱 서비스를 운영해야 하는 이유입니다.</p></div>
+  </div>
+</div>
+
+<!-- P-END 마무리 -->
+<div class="plabel"><span>CLOSING</span><span>P.13</span></div>
+<div class="page" id="pend">
+  <div class="el">
+    <div>
+      <div class="ebar"></div>
+      <p class="ltag" style="color:rgba(255,255,255,0.5);">closing</p>
+    </div>
+    <h1 class="eh">야구를 일상으로 사는 팬의 시선과,<br>구조를 설계해온 기획자의 손으로<br><span class="ee">KBO 앱의 다음을 함께 만들고 싶습니다.</span></h1>
+    <p class="pn">13 / 13</p>
+  </div>
+  <div class="er">
+    <div><p class="ecl">name</p><p class="ecv">김수진</p></div>
+    <div><p class="ecl">phone</p><p class="ecv">010-4772-6950</p></div>
+    <div><p class="ecl">email</p><p class="ecv">soowlsee@gmail.com</p></div>
+    <div><p class="ecl">position</p><p class="ecv">서비스기획 / PM</p></div>
+  </div>
+</div>
+
 </body>
 </html>
